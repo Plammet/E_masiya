@@ -1,0 +1,83 @@
+/*
+색의 통일성을 위해 자주 사용하는 색은 아래와 같이 통일합니다 
+이외에 사용하는 색이 있으시면 여기에도 추가해주세요   
+*/
+
+nothing {
+    color : white;        /* 흰색 */
+    color : gold;         /* 노랑 */
+    color : ivory;        /* 연노랑(배경) */
+    color : green;        /* 초록 */
+    color : lightgrey;    /* 연회색 */
+    color : grey;         /* 진회색 */
+    color : lightpink;    /* 분홍(버튼)*/
+    color : red;          /* 빨강 */
+    color : #EEF5EE;      /* 연초록(입력필드, 버튼) */
+}
+
+* {
+    font-family : Calibri, sans-serif;
+}
+
+/* 상단 메뉴바 */
+nav {
+    overflow : hidden;
+    background-color : white; 
+    white-space : nowrap; 
+    width : 1500px;
+    height : 90px;
+    margin : 0px;
+    padding : 0px;
+}
+
+nav img#logo{
+    float : left;
+    margin : 25px 50px 0px 100px;
+}
+
+nav img#profile{
+    float : right;
+    margin :35px 0px 0px 0px;
+}
+
+
+nav li a{
+    font-size : 18px;
+    float : left;
+    display : block;
+    color : black;
+    text-align : center;
+    text-decoration: none;
+    padding : 40px 60px 40px 60px;
+    margin : 0px 0px 0px;
+}
+
+nav li a.rightmenu{
+    float : right;
+    padding : 40px 40px;
+}
+nav li a:hover {
+    background-color : gold;
+}
+
+/* 노란 가로선 */
+#yellowLine {
+    height : 15px;
+    width : 1500px;
+    background-color: gold;
+    border : 0px;
+    margin : 0px 0px;
+    box-shadow : 0px 3px 3px 1px grey;
+
+}
+
+/* 회색 가로선 */
+#greyLine {
+    height : 1px;
+    width : 1500px;
+    background-color: grey;
+    border : 0px;
+    margin : 0px 0px;
+    box-shadow : 0px 2px 6px 1px grey;
+
+}
