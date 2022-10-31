@@ -16,7 +16,7 @@ nothing {
 }
 
 * {
-    font-family : Calibri, sans-serif;
+    font-family : Arial, sans-serif;
 }
 
 /* 상단 메뉴바 */
@@ -63,23 +63,30 @@ nav li a:hover {
 /* 노란 가로선 */
 #yellowLine {
     height : 15px;
-    width : 1520px;
+    width : 100%;
     background-color: gold;
     border : 0px;
     margin : 0px 0px;
     box-shadow : 0px 3px 3px 1px grey;
-
 }
 
 /* 회색 가로선 */
 #greyLine {
     height : 1px;
-    width : 1520px;
+    width : 100%;
     background-color: grey;
     border : 0px;
     margin : 0px 0px;
     box-shadow : 0px 2px 6px 1px grey;
+}
 
+/* 검정 가로선 */
+#blackLine {
+    height : 1px;
+    width : 1000px;
+    text-align : center;
+    background-color: black;
+    border : 0px;
 }
 
 /* 초록색 필드 */
@@ -93,3 +100,30 @@ nav li a:hover {
 }
 
 #greenField:focus {outline : none;}
+
+/* 가게 정보 요약 배너 */
+div.shop_info_container{
+    display : grid;
+    width : 1020px;
+    height : 150px;
+    padding : 10px 250px;
+    align-items : end;
+    overflow : hidden;
+    grid-template-columns : 500px auto;
+    grid-template-rows : 1fr 1fr;
+    background-color : gold;
+    box-shadow : inset 0px 2px 6px 1px grey;
+}
+
+/* 식당 분류(한식, 일식, 양식 등) */
+span.type{
+    border : none;
+    border-radius : 20px;
+    padding : 3px 10px;
+    text-align : center;
+    font-size : 14px;
+    font-weight : bold;
+    background-color: white;
+}
+
+

@@ -1,0 +1,38 @@
+div.review_container{
+    display : grid;
+    align-items : stretch;
+    overflow : hidden;
+    justify-content:center;
+    grid-template-columns : 200px 800px;
+    grid-template-rows : 100px 75px 150px auto;
+}
+
+div.review_item{
+    text-align : left;
+    vertical-align : middle;
+    border-bottom : solid 1px black;
+    padding : 20px 20px;
+}
+
+div.reviewTag{
+    display : inline-block;
+    padding : 5px 20px;
+    text-align : center;
+    font-weight : bold;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : #EEF5EE;
+}
+
+div#reviewBox{
+    height : 200px;
+    width : 650px;
+    position : relative;
+    left : 100px;
+    top : 15px;
+    border : 1px solid black;
+    border-radius : 20px;
+    text-indent : 0px;
+    padding : 10px 10px;
+
+}
