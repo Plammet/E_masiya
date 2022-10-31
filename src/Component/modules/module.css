@@ -7,7 +7,7 @@ nothing {
     color : white;        /* 흰색 */
     color : gold;         /* 노랑 */
     color : ivory;        /* 연노랑(배경) */
-    color : green;        /* 초록 */
+    color : darkgreen;    /* 초록 */
     color : lightgrey;    /* 연회색 */
     color : grey;         /* 진회색 */
     color : lightpink;    /* 분홍(버튼)*/
@@ -63,7 +63,7 @@ nav li a:hover {
 /* 노란 가로선 */
 #yellowLine {
     height : 15px;
-    width : 1500px;
+    width : 1520px;
     background-color: gold;
     border : 0px;
     margin : 0px 0px;
@@ -74,10 +74,22 @@ nav li a:hover {
 /* 회색 가로선 */
 #greyLine {
     height : 1px;
-    width : 1500px;
+    width : 1520px;
     background-color: grey;
     border : 0px;
     margin : 0px 0px;
     box-shadow : 0px 2px 6px 1px grey;
 
 }
+
+/* 초록색 필드 */
+#greenField{
+    width : 600px;
+    height : 35px;
+    border : none;
+    border-radius : 20px;
+    text-indent : 20px;
+    background-color : #EEF5EE;
+}
+
+#greenField:focus {outline : none;}

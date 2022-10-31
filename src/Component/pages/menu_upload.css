@@ -1,0 +1,51 @@
+/* 맵기 선택 Radiobutton */
+
+    input[type="radio"],input[type="checkbox"] {
+        appearance: none;
+    }
+
+    input[type="radio"]:checked + label{
+        background-color : gold;
+    }
+
+    input[type="checkbox"]:checked + label{
+        background-color : gold;
+    }
+
+    label.spicy,label.etc{
+        display: inline-block;
+        padding: 10px 25px;
+        border-radius: 20px;
+        background-color : #EEF5EE;
+        font-size:15px;
+    }
+
+    label.spicy:hover,label.etc:hover{
+        background-color : khaki;
+    }
+
+
+/* 파일 업로드 */
+    input[type="file"]{
+        display:inline-block;
+        width:0px;
+        height:0px;
+    }
+
+    label.menuImage{
+        display: inline-block;
+        padding: 130px 300px;
+        border-radius: 20px;
+        background-color : #EEF5EE;
+    }
+
+/* 제출 버튼 */
+    #submit{
+        font-size : 18px;
+        font-weight : bold;
+        background-color: gold;
+        border : none;
+        border-radius: 20px;
+        height : 40px;
+        width : 150px;
+    }
