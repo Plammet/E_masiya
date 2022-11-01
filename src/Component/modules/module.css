@@ -126,4 +126,14 @@ span.type{
     background-color: white;
 }
 
+/* 사진이 들어갈 자리(작은크기) */
+.thumbnail{
+    float : left;
+    width : 150px;
+    height : 150px;
+    background-color : lightgrey;
+    border-radius : 20px;
+    margin : 20px;
+
+}
 

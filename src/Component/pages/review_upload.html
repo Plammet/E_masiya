@@ -2,6 +2,7 @@
 <html>
     <head>
        <link rel = "stylesheet" type = "text/css" href = "../modules/module.css">
+       <link rel = "stylesheet" type = "text/css" href = "review_upload.css">
        <link rel="preconnect" href="https://fonts.gstatic.com" />
        <link
            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
@@ -25,6 +26,170 @@
             </ul>
             <a href = "../pages/my_store.html"/><img src = "../../Images/default_profile.png" id = "profile" style = "float : right"/></a>
         </nav>
-       
+
+        <hr id = "greyLine" />
+        
+        <div class = "shop_info_container">
+            <div class="shop_info_item" style="line-height : 2.0;">
+                <b style="color:dimgrey; vertical-align : middle">영업중 </b>&nbsp;
+                <span class = "type" style="vertical-align : middle">한식</span><br>
+                <span>  
+                    <img src = "../../Images/sample_stars_green.png" style="height : 25px; vertical-align : middle;"/>        <!--별점 샘플이미지-->
+                </span>
+                <span stlye="vertical-align : center">5.0</span><br>
+            </div>
+            <div></div>
+            <div class="shop_info_item">
+                <b style="font-size:50px">식당 이름</b>&nbsp;&nbsp;
+                <img src = "../../Images/thumbup.png" style="vertical-align:top"/>
+                <span style="position:relative; top:5px; left:-40px;"> 찜 56</span>
+                
+            </div>
+            <div class="shop_info_item">
+                http://www.홈페이지, 인스타그램 등<br>
+                서울특별시 서대문구 이화여대길 00 | 02-000-0000 | 주차 가능
+            </div>
+        </div>
+
+        <br>
+
+        <div style="text-align :center">
+            <div style="display:inline-block; width:1000px; text-align:left">
+                <b style = "font-size:30px; color:darkgreen">리뷰 작성</b>&nbsp;
+            </div>
+
+            <hr id="blackLine" style="height:4px; position:relative; top:10px;"/>
+
+            <form>
+            <div class="review_container">
+                <div class="review_item" style="text-align : right">작성자</div>
+                <div class="review_item">userName</div>
+    
+
+                <div class="review_item" style="text-align : right; line-height : 40px">소요시간<br>청결<br>분위기</div>
+                <div class="review_item">
+                    <div>
+                        <input type="radio" class="reviewTag" name="time" id="5min" value="5min">
+                        <label class="reviewTag" for="5min">5분 미만</label>
+                        <input type="radio" class="reviewTag" name="time" id="15min" value="15min">
+                        <label class="reviewTag" for="15min">5분~15분</label>  
+                        <input type="radio" class="reviewTag" name="time" id="30min" value="30min">
+                        <label class="reviewTag" for="30min">15분~30분</label>  
+                        <input type="radio" class="reviewTag" name="time" id="1hour" value="1hour">
+                        <label class="reviewTag" for="1hour">30분~1시간</label>  
+                        <input type="radio" class="reviewTag" name="time" id="more" value="more">
+                        <label class="reviewTag" for="more">1시간 이상</label><br>  
+                    </div>
+
+                    <div class="star-rating space-x-4 mx-auto">
+                        <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+                        <label for="5-stars" class="star pr-4">★</label>
+                        <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+                        <label for="4-stars" class="star">★</label>
+                        <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+                        <label for="3-stars" class="star">★</label>
+                        <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+                        <label for="2-stars" class="star">★</label>
+                        <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+                        <label for="1-star" class="star">★</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="reviewTag" name="mood" id="road" value="road">
+                        <label class="reviewTag" for="road">길거리음식</label>
+                        <input type="checkbox" class="reviewTag" name="mood" id="alone" value="alone">
+                        <label class="reviewTag" for="alone">혼밥가능</label>
+                        <input type="checkbox" class="reviewTag" name="mood" id="dating" value="dating">
+                        <label class="reviewTag" for="dating">데이트</label>
+                        <input type="checkbox" class="reviewTag" name="mood" id="family" value="family">
+                        <label class="reviewTag" for="family">가족식사</label>
+                        <input type="checkbox" class="reviewTag" name="mood" id="study" value="study">
+                        <label class="reviewTag" for="study">카공가능</label>
+                    </div>
+                    
+                </div>
+
+                <div class="review_item" style="text-align : right">메뉴</div>
+                <div class="review_item">
+                   <input type="text" id="greenField">
+                   &nbsp;
+                   <button style="border:0px; background-color:transparent">추가</button>
+                </div>
+                
+                <div class="review_item"></div>
+                <div class="review_item">
+                    <div>
+                        <div class="thumbnail"></div>
+                        <div style="float:left; vertical-align: middle;">
+                            <br>
+                            <b style="font-size : 25px"> 메뉴이름 </b>
+                            <b style="color:red">삭제</b><br><br>
+                            <span> 10000원</span><br><br>
+                        </div>
+
+                        <hr id="blackLine" style="width:780px">
+                    </div>
+                    
+                    <b style="font-size:20px">별점을 남겨주세요</b>&nbsp;&nbsp;
+                    <div class="star-rating space-x-4 mx-auto" style="display:inline">
+                        <input type="radio" id="menu1-5-stars" name="menu1-rating" value="5" v-model="ratings"/>
+                        <label for="menu1-5-stars" class="star pr-4">★</label>
+                        <input type="radio" id="menu1-4-stars" name="menu1-rating" value="4" v-model="ratings"/>
+                        <label for="menu1-4-stars" class="star">★</label>
+                        <input type="radio" id="menu1-3-stars" name="menu1-rating" value="3" v-model="ratings"/>
+                        <label for="menu1-3-stars" class="star">★</label>
+                        <input type="radio" id="menu1-2-stars" name="menu1-rating" value="2" v-model="ratings"/>
+                        <label for="menu1-2-stars" class="star">★</label>
+                        <input type="radio" id="menu1-1-star" name="menu1-rating" value="1" v-model="ratings" />
+                        <label for="menu1-1-star" class="star">★</label>
+                    </div>
+                    
+                    <hr id="blackLine" style="width:780px">
+
+                    <span style="line-height:40px">맵기</span>
+
+                    <input type="radio" class="reviewTag" name="spicy" id="0" value="0">
+                    <label class="reviewTag" for="0">안매움</label>  
+
+                    <input type="radio" class="reviewTag" name="spicy" id="1" value="1">
+                    <label class="reviewTag" for="1">신라면</label>  
+
+                    <input type="radio" class="reviewTag" name="spicy" id="2" value="2">
+                    <label class="reviewTag" for="2">불닭</label>  
+
+                    <input type="radio" class="reviewTag" name="spicy" id="3" value="3">
+                    <label class="reviewTag" for="3">죽음</label>  
+                    <br>
+
+                    <hr id="blackLine" style="width:780px">
+
+                    <b style="font-size:20px; float:left">이미지</b>
+
+
+                    <input type="file" id="menu1-image" name="manuImage" accept="image/*"/>
+                    <label for="menu1-image">
+                        <div class="thumbnail"></div>
+                        <span style="color:red; position:relative; top:140px;">이미지 업로드</span>
+                    </label>
+
+                    <hr id="blackLine" style="width:780px">
+
+                    <b style="font-size:20px; float:left">리뷰 내용</b><br><br>
+                    
+                    <div>
+                        <textarea></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            </form>
+
+
+        </div>
+        
+
+
+
     </body>
 </html>

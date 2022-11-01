@@ -1,0 +1,92 @@
+div.review_container{
+    display : grid;
+    align-items : stretch;
+    overflow : hidden;
+    justify-content:center;
+    grid-template-columns : 200px 800px;
+    grid-template-rows : 60px 160px 75px auto;
+}
+
+div.review_item{
+    text-align : left;
+    vertical-align : middle;
+    border-bottom : solid 1px black;
+    padding : 20px 20px;
+}
+
+input[type="radio"],input[type="checkbox"]{
+    appearance: none;
+}
+
+label.reviewTag:hover{
+    background-color : khaki;
+}
+
+input.reviewTag:checked + label, input.mood:checked + label, input.s{
+    background-color : gold
+}
+
+label.reviewTag{
+    display : inline-block;
+    padding : 5px 20px;
+    text-align : center;
+    font-weight : bold;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : #EEF5EE;
+}
+
+div#reviewBox{
+    height : 200px;
+    width : 650px;
+    position : relative;
+    left : 100px;
+    top : 15px;
+    border : 1px solid black;
+    border-radius : 20px;
+    text-indent : 0px;
+    padding : 10px 10px;
+}
+
+input[type="file"]{
+    display:inline-block;
+    width:0px;
+    height:0px;
+}
+
+textarea{
+    width:780px;
+    height:200px;
+    border-radius:20px;
+
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 30px;
+    justify-content: space-around;
+    padding: 5px 5px;
+    text-align: center;
+    width: 5em;
+  }
+   
+  .star-rating input {
+    display: none;
+  }
+   
+  .star-rating label {
+    -webkit-text-fill-color: lightgrey;
+    cursor: pointer;
+  }
+
+  .star-rating :checked ~ label {
+    -webkit-text-fill-color: gold;
+  }
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    -webkit-text-fill-color: gold;
+  }
+   
+
+   
