@@ -1,0 +1,112 @@
+div.yellowIcon{
+    display : inline-block;
+    padding : 5px 20px;
+    text-align : center;
+    font-weight : bold;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : gold;
+}
+
+div.mainImage{
+    float : left;
+    width : 200px;
+    height : 200px;
+    background-color : lightgrey;
+    border-radius : 20px;
+    margin : 20px;
+}
+
+div.comment{
+    display : inline-block;
+    overflow: hidden;
+    width : 250px;
+    height : 25px;
+    padding : 5px 20px;
+    margin : 5px 5px;
+    text-align : center;
+    font-weight : bold;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : white;
+    border : 1px solid grey;
+}
+
+div.menuComment{
+    display : inline-block;
+    overflow: hidden;
+    width : 250px;
+    height : 20px;
+    padding : 5px 15px;
+    margin : 3px 5px;
+    text-align : left;
+    font-size : 12px;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : white;
+    border : 1px solid grey;
+}
+
+div.times{
+    float : right;
+    width : 140px;
+    height : 190px;
+    padding : 5px 5px;
+    text-align : center;
+    vertical-align: middle;
+    font-weight : bold;
+    color : darkgreen;
+    background-color : #EEF5EE;
+    border : solid 1px grey;
+    border-radius : 20px;
+}
+
+div.menuInfo{
+    float : left;
+    width : 500px;
+    height : 190px;
+    margin : 5px 5px;
+    background-color : whitesmoke;
+    border : 1px solid lightgrey;
+    border-radius : 5px;
+}
+
+div.menuInfo .image{
+    float : left;
+    width : 170px;
+    height : 170px;
+    margin : 10px 20px 10px 10px;
+    background-color : lightgrey;
+    border : none;
+    border-radius : 10px;
+}
+
+
+div.reviews{
+    display : inline-block;
+    text-align: left;
+    width : 700px;
+    height : 250px;
+    margin : 5px 5px;
+    background-color : whitesmoke;
+    border : 1px solid lightgrey;
+    border-radius : 5px;
+}
+
+div.reviews .image{
+    float : left;
+    width : 230px;
+    height : 230px;
+    margin : 10px 20px 10px 10px;
+    background-color : lightgrey;
+    border : none;
+    border-radius : 10px;
+}
+
+div.reviews .text{
+    float : left;
+    width : 420px;
+    height : 90px;
+    overflow : auto;
+    text-align : justify;
+}
