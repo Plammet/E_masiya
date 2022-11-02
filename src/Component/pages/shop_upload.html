@@ -2,6 +2,7 @@
 <html>
     <head>
        <link rel = "stylesheet" type = "text/css" href = "../modules/module.css">
+       <link rel = "stylesheet" type = "text/css" href = "shop_upload.css">
        <link rel="preconnect" href="https://fonts.gstatic.com" />
        <link
            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
@@ -24,6 +25,147 @@
                 <li><a class = "rightmenu" href = "../pages/signup.html"> Sign Up </a></li>
             </ul>
             <a href = "../pages/my_store.html"/><img src = "../../Images/default_profile.png" id = "profile" style = "float : right"/></a>
-        </nav>     
+        </nav>
+
+        <hr id = "greyLine" />
+
+        <br>
+
+        <div style="text-align :center">
+            <div style="display:inline-block; width:1000px; text-align:left">
+                <b style = "font-size:30px; color:darkgreen">맛집 등록</b>&nbsp;
+            </div>
+
+            <hr id="blackLine" style="height:4px; position:relative; top:10px;"/>
+
+            <form>
+            <div class="review_container">
+                <div class="review_item" style="text-align : right">작성자</div>
+                <div class="review_item">userName</div>
+
+                <div class="review_item" style="text-align : right; line-height : 45px">
+                    가게 이름<br>
+                    주소<br>
+                    전화번호<br>
+                </div>
+                <div class="review_item">
+                    <div style="line-height:45px">
+                        <input type="text" id="greenField"><br>
+                    </div>
+
+                    <div style="line-height:45px">
+                        <input type="text" id="greenField"><br>
+                    </div>
+
+                    <div style="line-height:45px">
+                        <input type="tel" id="greenField"><br>
+                    </div>
+                </div>
+
+                <div class="review_item" style="text-align : right"> 영업시간 </div>
+                <div class="review_item">
+                    <div style="line-height:45px">
+                        월
+                        <input type="time" id="greenField" style="width: 150px">&nbsp;
+                        -
+                        <input type="time" id="greenField" style="width: 150px"><br>
+
+                        화
+                        <input type="time" id="greenField" style="width: 150px">&nbsp;
+                        -
+                        <input type="time" id="greenField" style="width: 150px"><br>
+
+                        수
+                        <input type="time" id="greenField" style="width: 150px">&nbsp;
+                        -
+                        <input type="time" id="greenField" style="width: 150px"><br>
+
+                        목
+                        <input type="time" id="greenField" style="width: 150px">&nbsp;
+                        -
+                        <input type="time" id="greenField" style="width: 150px"><br>
+
+                        금
+                        <input type="time" id="greenField" style="width: 150px">&nbsp;
+                        -
+                        <input type="time" id="greenField" style="width: 150px"><br>
+
+                        토
+                        <input type="time" id="greenField" style="width: 150px">&nbsp;
+                        -
+                        <input type="time" id="greenField" style="width: 150px"><br>
+
+                        일
+                        <input type="time" id="greenField" style="width: 150px">&nbsp;
+                        -
+                        <input type="time" id="greenField" style="width: 150px"><br>
+                    </div>
+                </div>
+
+                <div class="review_item" style="text-align : right; line-height: 45px;">
+                    주차<br>
+                    카테고리
+                    <div style="height:70px"></div>
+                    링크<br>
+                </div>
+                <div class="review_item">
+
+                    <div>
+                        <input type="radio" class="reviewTag" name="parking" id="yes" value="1">
+                        <label class="reviewTag" for="yes">가능</label>
+                        <input type="radio" class="reviewTag" name="parking" id="no" value="0">
+                        <label class="reviewTag" for="no">불가능</label>  
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <input type="radio" class="reviewTag" name="category" id="korean" value="korean">
+                        <label class="reviewTag" for="korean">한식</label>
+                        <input type="radio" class="reviewTag" name="category" id="japanese" value="japanese">
+                        <label class="reviewTag" for="japanese">일식</label>
+                        <input type="radio" class="reviewTag" name="category" id="west" value="west">
+                        <label class="reviewTag" for="west">양식</label>
+                        <input type="radio" class="reviewTag" name="category" id="chinese" value="chinese">
+                        <label class="reviewTag" for="chinese">중식</label>
+                        <input type="radio" class="reviewTag" name="category" id="asian" value="asian">
+                        <label class="reviewTag" for="asian">아시안</label>
+                        <div style="height:10px"> </div>
+                        <input type="radio" class="reviewTag" name="category" id="bunsik" value="bunsik">
+                        <label class="reviewTag" for="bunsik">분식</label>
+                        <input type="radio" class="reviewTag" name="category" id="fastfood" value="fastfood">
+                        <label class="reviewTag" for="fastfood">패스트푸드</label>
+                        <input type="radio" class="reviewTag" name="category" id="cafe" value="cafe">
+                        <label class="reviewTag" for="cafe">디저트/카페</label>
+                        <input type="radio" class="reviewTag" name="category" id="etc" value="etc">
+                        <label class="reviewTag" for="etc">기타</label>
+                    </div>
+
+                    <br>
+
+                    <div style="line-height:45px">
+                        &nbsp;&nbsp;&nbsp;<input type="url" id="greenField"><br>
+                    </div>
+                    
+                </div>
+                
+                <div class="review_item" style="text-align : right"> 이미지 </div>
+                <div class="review_item">
+                    <input type="file" id="image" name="manuImage" accept="image/*"/>
+                    <label for="image">
+                        <div class="thumbnail"></div>
+                        <span style="color:red; position:relative; top:140px;">이미지 업로드</span>
+                    </label>
+                </div>
+
+                <br>
+            </div>
+
+                <input type = "submit" value = "맛집 등록" id = "submit"/>
+
+            </form>
+
+
+        </div>
     </body>
 </html>

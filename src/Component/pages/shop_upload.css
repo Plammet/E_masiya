@@ -4,7 +4,7 @@ div.review_container{
     overflow : hidden;
     justify-content:center;
     grid-template-columns : 200px 800px;
-    grid-template-rows : 60px 160px 75px auto;
+    grid-template-rows : 60px 170px 350px auto;
 }
 
 div.review_item{
@@ -22,7 +22,7 @@ label.reviewTag:hover{
     background-color : khaki;
 }
 
-input.reviewTag:checked + label{
+input.reviewTag:checked + label, input.mood:checked + label{
     background-color : gold
 }
 
@@ -54,39 +54,13 @@ input[type="file"]{
     height:0px;
 }
 
-textarea{
-    width:780px;
-    height:200px;
-    border-radius:20px;
-
+#submit{
+    font-size : 18px;
+    font-weight : bold;
+    background-color: gold;
+    border : none;
+    border-radius: 20px;
+    height : 40px;
+    width : 150px;
 }
-
-.star-rating {
-    display: flex;
-    flex-direction: row-reverse;
-    font-size: 30px;
-    justify-content: space-around;
-    padding: 5px 5px;
-    text-align: center;
-    width: 5em;
-  }
-   
-  .star-rating input {
-    display: none;
-  }
-   
-  .star-rating label {
-    -webkit-text-fill-color: lightgrey;
-    cursor: pointer;
-  }
-
-  .star-rating :checked ~ label {
-    -webkit-text-fill-color: gold;
-  }
-  .star-rating label:hover,
-  .star-rating label:hover ~ label {
-    -webkit-text-fill-color: gold;
-  }
-   
-
    
