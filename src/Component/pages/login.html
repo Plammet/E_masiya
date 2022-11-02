@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <link rel = "stylesheet" type = "text/css" href = "../modules/module.css">
+       <link rel = "stylesheet" type = "text/css" href = "module.css">
+		<link rel = "stylesheet" type = "text/css" href = "login.css">
        <link rel="preconnect" href="https://fonts.gstatic.com" />
        <link
            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
@@ -9,8 +10,9 @@
        />
     </head>
     <body>
+		<!--상단 바-->
         <nav>
-            <a href = "../pages/main.html"/><img src = "../../Images/logo.png" id = "logo" style = "float : left"/></a>
+            <a href = "../pages/main.html"/><img src = "../../Images/logo.png" id = "logo" style = "float : left"></a>
             <ul style = "list-style-type:none; margin:0px">
                 <li><a href="../pages/main.html"> Home </a></li>
                 <li><a href="../pages/shop_list.html"> Shop </a></li>
@@ -23,10 +25,43 @@
                 <span style  = "float:right; height : 40px; margin-top : 30px; border-right : solid 2px grey"></span>
                 <li><a class = "rightmenu" href = "../pages/signup.html"> Sign Up </a></li>
             </ul>
-            <a href = "../pages/my_store.html"/><img src = "../../Images/default_profile.png" id = "profile" style = "float : right"/></a>
+            <a href = "../pages/my_store.html"/><img src = "../../Images/default_profile.png" id = "profile" style = "float : right"></a>
         </nav>
 
         <hr id = "greyLine" />
+
+       <!--이맛이야!-->
+       <div class="box1"> </div>
+       <div class="logo">
+		   <!--로고 누르면 메인으로 이동-->
+		   <a target="_blank" href="./pages/main.html"> 
+		   	<img src="https://raw.githubusercontent.com/Plammet/E_masiya/main/src/Images/logo2.png" class="logo">
+		   </a>
+		</div>
+		<br><br>
+
+
+		<form style = "text-align : center">
+			<!--id,pw 입력-->
+           <div class="placeholder_box">
+   		   <label for="placeholder">아이디</label>
+    	   <input type="text" id="placeholder" name="placeholdername" />
+		   </div>
+
+		   <div class="placeholder_box">
+   		   <label for="placeholder">비밀번호</label>
+    	   <input type="password" id="placeholder" name="placeholdername" />
+		   </div>
+			
+			<!--비밀번호 찾기, 아이디 찾기, 회원가입-->
+			<button class="find">비밀번호 찾기</button>
+			<button class="find">아이디 찾기</button>
+			<button class="find">회원가입</button>
+			<br><br>
+			<!-- 로그인 버튼 -->
+			<button class="login">로그인</button>
+
+        </form>
        
     </body>
 </html>
