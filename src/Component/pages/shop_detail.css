@@ -63,9 +63,9 @@ div.times{
 
 div.menuInfo{
     float : left;
-    width : 500px;
+    width : 490px;
     height : 190px;
-    margin : 5px 5px;
+    margin : 10px 10px;
     background-color : whitesmoke;
     border : 1px solid lightgrey;
     border-radius : 5px;
@@ -73,7 +73,7 @@ div.menuInfo{
 
 div.menuInfo .image{
     float : left;
-    width : 170px;
+    width : 160px;
     height : 170px;
     margin : 10px 20px 10px 10px;
     background-color : lightgrey;
@@ -87,7 +87,7 @@ div.reviews{
     text-align: left;
     width : 700px;
     height : 250px;
-    margin : 5px 5px;
+    margin : 10px 10px;
     background-color : whitesmoke;
     border : 1px solid lightgrey;
     border-radius : 5px;
