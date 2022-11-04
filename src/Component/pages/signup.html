@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <link rel = "stylesheet" type = "text/css" href = "../modules/module.css">
+       <link rel = "stylesheet" type = "text/css" href = "module.css">
+	   <link rel = "stylesheet" type = "text/css" href = "signup.css">
        <link rel="preconnect" href="https://fonts.gstatic.com" />
        <link
            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
@@ -27,6 +28,75 @@
         </nav>
 
         <hr id = "greyLine" />
+        
+        <!--회원가입-->
+        <br>
+        <b class="signuptitle">회원가입</b>
+        <br>
+
+        <!--id, pw 입력-->
+        <div class="placeholder_box">
+   		   <label for="placeholder">아이디</label>
+    	   <input type="text" id="placeholder" name="placeholdername" />
+		   </div>
+		   <br>
+
+		   <div class="placeholder_box">
+   		   <label for="placeholder">비밀번호</label>
+    	   <input type="password" id="placeholder" name="placeholdername" />
+		   </div>
+		   <br>
+
+		   <div class="placeholder_box">
+   		   <label for="placeholder">비밀번호 재입력</label>
+    	   <input type="password" id="placeholder" name="placeholdername" />
+		   </div>
+		   <br>
+
+		<!--맵기-->
+		<div>
+			<span style="font-weight:bold; font-size:20px;">맵기</span>
+
+            <input type="radio" class="reviewTag" name="spicy" id="0" value="0">
+            <label class="reviewTag" for="0">안매움</label>  
+
+            <input type="radio" class="reviewTag" name="spicy" id="1" value="1">
+            <label class="reviewTag" for="1">신라면</label>  
+
+            <input type="radio" class="reviewTag" name="spicy" id="2" value="2">
+            <label class="reviewTag" for="2">불닭</label>  
+
+            <input type="radio" class="reviewTag" name="spicy" id="3" value="3">
+            <label class="reviewTag" for="3">죽음</label>  
+			
+		</div>
+        <br>
+        <div>
+			<span style="font-weight:bold; font-size:20px;">음식 취향</span>
+            <input type="checkbox" class="reviewTag" name="like" id="japan" value="japan">
+            <label class="reviewTag" for="japan">일식</label>
+            <input type="checkbox" class="reviewTag" name="like" id="asian" value="asian">
+            <label class="reviewTag" for="asian">아시안</label>
+            <input type="checkbox" class="reviewTag" name="like" id="west" value="west">
+            <label class="reviewTag" for="west">양식</label>
+            <input type="checkbox" class="reviewTag" name="like" id="china" value="china">
+            <label class="reviewTag" for="china">중식</label>
+            <input type="checkbox" class="reviewTag" name="like" id="vegan" value="vegan">
+            <label class="reviewTag" for="vegan">비건</label>
+			<input type="checkbox" class="reviewTag" name="like" id="snack" value="snack">
+            <label class="reviewTag" for="snack">분식</label>
+            <input type="checkbox" class="reviewTag" name="like" id="fast" value="fast">
+            <label class="reviewTag" for="alone">패스트푸드</label>
+            <input type="checkbox" class="reviewTag" name="like" id="dessert" value="dessert">
+            <label class="reviewTag" for="dating">디저트</label>
+            <input type="checkbox" class="reviewTag" name="like" id="dessert" value="dessert">
+            <label class="reviewTag" for="dessert">기타</label>
+       </div>
+
+       <!--회원가입 버튼-->
+       <br><br><br>
+       <button class="signup">회원가입</button>
+        
        
     </body>
 </html>
