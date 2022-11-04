@@ -1,0 +1,80 @@
+/*중앙 정렬*/
+*{
+	text-align:center;
+}
+
+/*회원가입*/
+.signuptitle{
+	color:green;
+	font-size:27px;
+	font-weight:bold;
+}
+
+/*id, pw*/
+.placeholder_box {
+    position: relative;
+    margin: 15px 10px;
+}
+.placeholder_box label {
+	font-weight:bold;
+    color: black;
+    font-size: 20px;
+}
+.placeholder_box input[type="text"] {
+		border:10px;
+		display: inline-block;
+        padding: 10px 25px;
+        border-radius: 25px;
+        background-color : #EEF5EE;
+        font-size:15px;
+		width: 400px;
+		height:30px;   
+}
+.placeholder_box input[type="password"] {
+		border:10px;
+		display: inline-block;
+        padding: 10px 25px;
+        border-radius: 25px;
+        background-color : #EEF5EE;
+        font-size:15px;
+		width: 400px;
+		height:30px;
+		border-color:grey;   
+}
+
+/*사용자 정보*/
+input[type="radio"],input[type="checkbox"]{
+    appearance: none;
+}
+
+label.userData:hover{
+    background-color : khaki;
+}
+
+input.userData:checked + label{
+    background-color : gold
+}
+
+label.userData{
+    display : inline-block;
+    padding : 5px 20px;
+    text-align : center;
+    font-weight : bold;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : #EEF5EE;
+}
+
+/*회원가입 버튼*/
+.signup{
+	border:none;
+	outline:none;
+	cursor:pointer;
+	background-color:green;
+	color:white;
+	font-size:15px;
+	font-weight:bold;
+	border-radius:23px;
+	width:160px;
+	height:35px;
+}
