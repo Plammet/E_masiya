@@ -1,0 +1,39 @@
+div.yellowBox{
+    text-align: left;
+    width : 1020px;
+    height : 10px;
+    padding : 10px 250px;
+    align-items : end;
+    overflow : hidden;
+    background-color : gold;
+    box-shadow : inset 0px 2px 6px 1px grey;
+}
+
+div.image{
+    float : left;
+    width : 250px;
+    height : 140px;
+    margin : 20px 30px 20px 50px;
+    background-color : lightgrey;
+    border : none;
+    border-radius : 10px;
+}
+
+div.yellowIcon{
+    display : inline-block;
+    padding : 5px 20px;
+    text-align : center;
+    font-weight : bold;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : gold;
+}
+
+div.menuInfo{
+    width : 490px;
+    height : 190px;
+    margin : 10px 10px;
+    background-color : whitesmoke;
+    border : 1px solid lightgrey;
+    border-radius : 5px;
+}

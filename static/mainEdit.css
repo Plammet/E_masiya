@@ -1,0 +1,117 @@
+* {
+   font-family : "Noto Sans KR", Arial, sans-serif;
+}
+
+nav {
+    overflow : hidden;
+    background-color : white;
+    white-space : nowrap;
+    width : 1500px;
+    height : 90px;
+    margin : 0px;
+    padding : 0px;
+}
+
+nav img#logo{
+    float : left;
+    margin : 25px 50px 0px 100px;
+}
+
+nav img#profile{
+    float : right;
+    margin :35px 0px 0px 0px;
+}
+
+
+nav li a{
+    font-size : 18px;
+    float : left;
+    display : block;
+    color : black;
+    text-align : center;
+    text-decoration: none;
+    padding : 40px 60px 40px 60px;
+    margin : 0px 0px 0px;
+}
+
+nav li a.rightmenu{
+    float : right;
+    padding : 40px 40px;
+}
+nav li a:hover {
+    background-color : gold;
+}
+
+div.yellowBox{
+    display : grid;
+    width : 1020px;
+    height : 350px;
+    padding : 10px 250px;
+    align-items : end;
+    overflow : hidden;
+    grid-template-columns : 500px auto;
+    grid-template-rows : 1fr 1fr;
+    background-color : gold;
+    box-shadow : inset 0px 2px 6px 1px grey;
+}
+
+div.randomBox {
+  float : left;
+  width : 390px;
+  height : 135px;
+  margin : 10px 10px;
+  background-color : white;
+  border : 3px solid darkgreen;
+  border-radius: 5px;
+}
+
+div.randomButton {
+  text-align : center;
+  float : left;
+  width : 140px;
+  height : 45px;
+  margin : 10px 10px;
+  background-color: gold;
+  border-radius : 15px;
+}
+
+div.greyBox {
+  text-align : center;
+  float : left;
+  width : 180px;
+  height : 85px;
+  margin : 10px 10px;
+  background-color: lightgrey;
+  border-radius : 15px;
+}
+
+div.best {
+  float : left;
+  width : 400px;
+  height : 190px;
+  margin : 10px 10px;
+  background-color : whitesmoke;
+  border : 1px solid lightgrey;
+  border-radius : 5px;
+}
+
+div.best .image{
+    float : left;
+    width : 160px;
+    height : 170px;
+    margin : 10px 20px 10px 10px;
+    background-color : lightgrey;
+    border : none;
+    border-radius : 10px;
+}
+/*
+div.menuInfo{
+    float : left;
+    width : 490px;
+    height : 190px;
+    margin : 10px 10px;
+    background-color : whitesmoke;
+    border : 1px solid lightgrey;
+    border-radius : 5px;
+}
+*/
