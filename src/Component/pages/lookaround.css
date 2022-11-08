@@ -1,0 +1,54 @@
+* {
+   font-family : "Noto Sans KR", Arial, sans-serif;
+}
+
+nav {
+    overflow : hidden;
+    background-color : white;
+    white-space : nowrap;
+    width : 1500px;
+    height : 90px;
+    margin : 0px;
+    padding : 0px;
+}
+
+nav img#logo{
+    float : left;
+    margin : 25px 50px 0px 100px;
+}
+
+nav img#profile{
+    float : right;
+    margin :35px 0px 0px 0px;
+}
+
+
+nav li a{
+    font-size : 18px;
+    float : left;
+    display : block;
+    color : black;
+    text-align : center;
+    text-decoration: none;
+    padding : 40px 60px 40px 60px;
+    margin : 0px 0px 0px;
+}
+
+nav li a.rightmenu{
+    float : right;
+    padding : 40px 40px;
+}
+nav li a:hover {
+    background-color : gold;
+}
+
+div.yellowBox{
+    text-align: left;
+    width : 1020px;
+    height : 60px;
+    padding : 10px 250px;
+    align-items : end;
+    overflow : hidden;
+    background-color : gold;
+    box-shadow : inset 0px 2px 6px 1px grey;
+}
