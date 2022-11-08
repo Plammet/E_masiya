@@ -52,18 +52,6 @@ div.logo{
     
 }
 
-/*비밀번호 찾기, 아이디 찾기, 회원가입 버튼*/
-button{
-	border:0px;
-	outline:none;
-	cursor:pointer;
-	background-color:white;
-	color:grey;
-	width:110px;
-	height:40px;
-	font-size:15px;
-}
-
 /*로그인 버튼*/
 .login{
 	border:0px;
