@@ -47,9 +47,11 @@ def go_post_result():
     parking = request.form['parking']
     category = request.form['category']
     link  = request.form['link']
-    image_file = request.files["menuImage"]
-    image_file.save("static/image/{}".format(image_file.src))
-    return render_template("post_result.html", link=link, parking=parking, category=category, name=name, phone=phone, address=address)
+    time = request.form['shop_time']
+    noop = request.form['shop_time_no']
+    special = request.form['shop_time_special']
+    breaktime = request.form['shop_time_break']
+    return render_template("post_result.html", time=time, noop=noop, special=special, breaktime=breaktime, link=link, parking=parking, category=category, name=name, phone=phone, address=address)
     
     
 if __name__ == "__main__":
