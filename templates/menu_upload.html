@@ -1,91 +1,110 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <link rel = "stylesheet" type = "text/css" href = "../modules/module.css">
-       <link rel = "stylesheet" type = "text/css" href = "menu_upload.css">
-       <link rel="preconnect" href="https://fonts.gstatic.com" />
-       <link
-           href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-           rel="stylesheet"
-       />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static',filename='module.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static',filename='menu_upload.css') }}"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <nav>
-            <a href = "../pages/main.html"/><img src = "../../Images/logo.png" id = "logo" style = "float : left"/></a>
-            <ul style = "list-style-type:none; margin:0px">
-                <li><a href="../pages/main.html"> Home </a></li>
-                <li><a href="../pages/shop_list.html"> Shop </a></li>
-                <li><a href="../pages/review_upload.html"> Review </a></li>
-                <li><a href="../pages/my_store.html"> MyStore </a></li>
+            <a href="/home"
+                ><img
+                    src="{{ url_for('static',filename='Images/logo.png') }}"
+                    id="logo"
+                    style="float: left;"
+            /></a>
+            <ul style="list-style-type: none; margin: 0px;">
+                <li><a href="/home"> Home </a></li>
+                <li><a href="/list"> Shop </a></li>
+                <li><a href="/review"> Review </a></li>
+                <li><a href="/mystore"> MyStore </a></li>
             </ul>
-        
-            <ul style = "list-style-type:none; margin:0px">
-                <li><a class = "rightmenu" href = "../pages/login.html"> Log In </a></li>
-                <span style  = "float:right; height : 40px; margin-top : 30px; border-right : solid 2px grey"></span>
-                <li><a class = "rightmenu" href = "../pages/signup.html"> Sign Up </a></li>
+
+            <ul style="list-style-type: none; margin: 0px;">
+                <li><a class="rightmenu" href="/login"> Log In </a></li>
+                <span
+                    style="
+                        float: right;
+                        height: 40px;
+                        margin-top: 30px;
+                        border-right: solid 2px grey;
+                    "
+                ></span>
+                <li><a class="rightmenu" href="/signup"> Sign Up </a></li>
             </ul>
-            <a href = "../pages/my_store.html"/><img src = "../../Images/default_profile.png" id = "profile" style = "float : right"/></a>
+            <a href="/mystore"
+                ><img
+                    src="{{ url_for('static',filename='Images/default_profile.png') }}"
+                    id="profile"
+                    style="float: right;"
+            /></a>
         </nav>
 
-        <hr id = "yellowLine" />
-        <br><br>
-        <div style = "text-align : center; color : darkgreen; font-size : 35px">
+        <hr id="yellowLine" />
+        <br /><br />
+        <div style="text-align: center; color: darkgreen; font-size: 35px;">
             <b>대표 메뉴 등록</b>
         </div>
-        <br><br>
-        <form style = "text-align : center">
-            <span style="font-size:18px;">메뉴 이름 &ensp;</span>
-            <input type="text" id="greenField" name="manuName"/><br><br>
+        <br /><br />
+        <form style="text-align: center;">
+            <span style="font-size: 18px;">메뉴 이름 &ensp;</span>
+            <input type="text" id="greenField" name="manuName" /><br /><br />
 
+            <span style="font-size: 18px;">&ensp;&ensp;&ensp;&ensp; 가격 &ensp; </span>
+            <input type="number" id="greenField" name="price" /><br /><br />
 
-            <span style="font-size:18px;">&ensp;&ensp;&ensp;&ensp; 가격 &ensp; </span>
-            <input type="number" id="greenField" name="price"/><br><br>
+            <span style="font-size: 18px;">맵기 &nbsp;</span>
 
+            <input type="radio" name="spicy" id="0" value="0" />
+            <label class="spicy" for="0">안매움</label>
 
+            <input type="radio" name="spicy" id="1" value="1" />
+            <label class="spicy" for="1">신라면</label>
 
-            <span style="font-size:18px;">맵기 &nbsp;</span>
-            
-            <input type="radio" name="spicy" id="0" value="0">
-            <label class="spicy" for="0">안매움</label>  
+            <input type="radio" name="spicy" id="2" value="2" />
+            <label class="spicy" for="2">불닭</label>
 
-            <input type="radio" name="spicy" id="1" value="1">
-            <label class="spicy" for="1">신라면</label>  
+            <input type="radio" name="spicy" id="3" value="3" />
+            <label class="spicy" for="3">죽음</label>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br /><br />
 
-            <input type="radio" name="spicy" id="2" value="2">
-            <label class="spicy" for="2">불닭</label>  
+            <span style="font-size: 18px; vertical-align: top;"
+                >&ensp;&ensp;&ensp;&ensp;사진&ensp;</span
+            >
+            <input type="file" id="menuImage" name="manuImage" accept="image/*" />
+            <label class="menuImage" for="menuImage"></label><br /><br />
 
-            <input type="radio" name="spicy" id="3" value="3">
-            <label class="spicy" for="3">죽음</label>  
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br><br>
-            
+            <span style="font-size: 18px;">&ensp;&ensp;&ensp;&ensp; 기타 &ensp; </span>
 
-
-            <span style="font-size:18px; vertical-align: top;">&ensp;&ensp;&ensp;&ensp;사진&ensp;</span>
-            <input type="file" id="menuImage" name="manuImage" accept="image/*"/>
-            <label class="menuImage" for="menuImage"></label><br><br>
-            
-
-
-            <span style="font-size:18px;">&ensp;&ensp;&ensp;&ensp; 기타 &ensp; </span>
-            
-            <input type="checkbox" name="etc" id="vegan" value="vegan">
+            <input type="checkbox" name="etc" id="vegan" value="vegan" />
             <label class="etc" for="vegan">비건메뉴있음</label>
-            
-            <input type="checkbox" name="etc" id="cheap" value="cheap">
-            <label class="etc" for="cheap">가성비</label>  
 
-            <input type="checkbox" name="etc" id="alone" value="alone">
-            <label class="etc" for="alone">혼밥가능</label>  
+            <input type="checkbox" name="etc" id="cheap" value="cheap" />
+            <label class="etc" for="cheap">가성비</label>
 
-            <input type="checkbox" name="etc" id="sunday" value="sunday">
-            <label class="etc" for="sunday">일요일영업</label>  
+            <input type="checkbox" name="etc" id="alone" value="alone" />
+            <label class="etc" for="alone">혼밥가능</label>
 
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br><br>
-            
-            <hr width="800px" color="black"/>
-            
-            <input type = "submit" value = "+메뉴 추가" id = "submit"/>
+            <input type="checkbox" name="etc" id="sunday" value="sunday" />
+            <label class="etc" for="sunday">일요일영업</label>
+
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br /><br />
+
+            <hr width="800px" color="black" />
+
+            <input type="submit" value="+메뉴 추가" id="submit" />
         </form>
-       
     </body>
 </html>

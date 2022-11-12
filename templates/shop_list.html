@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <link rel = "stylesheet" type = "text/css" href = "../modules/module.css">
+       <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static',filename='module.css') }}">
        <link rel="preconnect" href="https://fonts.gstatic.com" />
        <link
            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
@@ -9,22 +9,23 @@
        />
     </head>
     <body>
-        <nav>
-            <a href = "../pages/main.html"/><img src = "../../Images/logo.png" id = "logo" style = "float : left"/></a>
+      <nav>
+            <a href = "/home"><img src = "{{ url_for('static',filename='Images/logo.png')}}" id = "logo" style = "float : left"/></a>
             <ul style = "list-style-type:none; margin:0px">
-                <li><a href="../pages/main.html"> Home </a></li>
-                <li><a href="../pages/shop_list.html"> Shop </a></li>
-                <li><a href="../pages/review_upload.html"> Review </a></li>
-                <li><a href="../pages/my_store.html"> MyStore </a></li>
+                <li><a href="/home"> Home </a></li>
+                <li><a href="/list"> Shop </a></li>
+                <li><a href="/review"> Review </a></li>
+                <li><a href="/mystore"> MyStore </a></li>
             </ul>
-        
+
             <ul style = "list-style-type:none; margin:0px">
-                <li><a class = "rightmenu" href = "../pages/login.html"> Log In </a></li>
+                <li><a class = "rightmenu" href = "/login"> Log In </a></li>
                 <span style  = "float:right; height : 40px; margin-top : 30px; border-right : solid 2px grey"></span>
-                <li><a class = "rightmenu" href = "../pages/signup.html"> Sign Up </a></li>
+                <li><a class = "rightmenu" href = "/signup"> Sign Up </a></li>
             </ul>
-            <a href = "../pages/my_store.html"/><img src = "../../Images/default_profile.png" id = "profile" style = "float : right"/></a>
+            <a href = "/mystore"><img src = "{{ url_for('static',filename='Images/default_profile.png')}}" id = "profile" style = "float : right"/></a>
         </nav>
+
 
         <hr id = "greyLine" />
        

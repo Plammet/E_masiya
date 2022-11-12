@@ -1,107 +1,157 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <link rel = "stylesheet" type = "text/css" href = "../modules/module.css">
-       <link rel = "stylesheet" type = "text/css" href = "review_list.css">
-       <link rel="preconnect" href="https://fonts.gstatic.com" />
-       <link
-           href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-           rel="stylesheet"
-       />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static',filename='module.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static',filename='review_.css')}}"
+        />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <nav>
-            <a href = "../pages/main.html"/><img src = "../../Images/logo.png" id = "logo" style = "float : left"/></a>
-            <ul style = "list-style-type:none; margin:0px">
-                <li><a href="../pages/main.html"> Home </a></li>
-                <li><a href="../pages/shop_list.html"> Shop </a></li>
-                <li><a href="../pages/review_upload.html"> Review </a></li>
-                <li><a href="../pages/my_store.html"> MyStore </a></li>
+            <a href="/home"
+                ><img
+                    src="{{ url_for('static',filename='Images/logo.png')}}"
+                    id="logo"
+                    style="float: left;"
+            /></a>
+            <ul style="list-style-type: none; margin: 0px;">
+                <li><a href="/home"> Home </a></li>
+                <li><a href="/list"> Shop </a></li>
+                <li><a href="/review"> Review </a></li>
+                <li><a href="/mystore"> MyStore </a></li>
             </ul>
-        
-            <ul style = "list-style-type:none; margin:0px">
-                <li><a class = "rightmenu" href = "../pages/login.html"> Log In </a></li>
-                <span style  = "float:right; height : 40px; margin-top : 30px; border-right : solid 2px grey"></span>
-                <li><a class = "rightmenu" href = "../pages/signup.html"> Sign Up </a></li>
+
+            <ul style="list-style-type: none; margin: 0px;">
+                <li><a class="rightmenu" href="/login"> Log In </a></li>
+                <span
+                    style="
+                        float: right;
+                        height: 40px;
+                        margin-top: 30px;
+                        border-right: solid 2px grey;
+                    "
+                ></span>
+                <li><a class="rightmenu" href="/signup"> Sign Up </a></li>
             </ul>
-            <a href = "../pages/my_store.html"/><img src = "../../Images/default_profile.png" id = "profile" style = "float : right"/></a>
+            <a href="/mystore"
+                ><img
+                    src="{{ url_for('static',filename='Images/default_profile.png')}}"
+                    id="profile"
+                    style="float: right;"
+            /></a>
         </nav>
 
-        <hr id = "greyLine" />
-        
-        <img src = "../../Images/sample_shop_image.png" style="width:1520px;"/>
-        <div class = "shop_info_container">
-            <div class="shop_info_item" style="line-height : 2.0;">
-                <b style="color:dimgrey; vertical-align : middle">영업중 </b>&nbsp;
-                <span class = "type" style="vertical-align : middle">한식</span><br>
-                <span>  
-                    <img src = "../../Images/sample_stars_green.png" style="height : 25px; vertical-align : middle;"/>        <!--별점 샘플이미지-->
+        <hr id="greyLine" />
+
+        <img
+            src="{{ url_for('static',filename='sample_shop_image.png') }}"
+            style="width: 1520px;"
+        />
+        <div class="shop_info_container">
+            <div class="shop_info_item" style="line-height: 2;">
+                <b style="color: dimgrey; vertical-align: middle;">영업중 </b>&nbsp;
+                <span class="type" style="vertical-align: middle;">한식</span><br />
+                <span>
+                    <img
+                        src="{{ url_for('static',filename='sample_stars_green.png') }}"
+                        style="height: 25px; vertical-align: middle;"
+                    />
+                    <!--별점 샘플이미지-->
                 </span>
-                <span stlye="vertical-align : center">5.0</span><br>
+                <span stlye="vertical-align : center">5.0</span><br />
             </div>
             <div></div>
             <div class="shop_info_item">
-                <b style="font-size:50px">식당 이름</b>&nbsp;&nbsp;
-                <img src = "../../Images/thumbup.png" style="vertical-align:top"/>
-                <span style="position:relative; top:5px; left:-40px;"> 찜 56</span>
-                
+                <b style="font-size: 50px;">식당 이름</b>&nbsp;&nbsp;
+                <img
+                    src="{{ url_for('static',filename='thumbup.png') }}"
+                    style="vertical-align: top;"
+                />
+                <span style="position: relative; top: 5px; left: -40px;"> 찜 56</span>
             </div>
             <div class="shop_info_item">
-                http://www.홈페이지, 인스타그램 등<br>
+                http://www.홈페이지, 인스타그램 등<br />
                 서울특별시 서대문구 이화여대길 00 | 02-000-0000 | 주차 가능
             </div>
         </div>
 
-        <br>
+        <br />
 
-        <div style="text-align :center">
-            <div style="display:inline-block; width:1000px; text-align:left">
-                <b style = "font-size:30px; color:darkgreen">리뷰</b>&nbsp;
-                <a href = "../pages/main.html" style="text-decoration:none">돌아가기</a>
+        <div style="text-align: center;">
+            <div style="display: inline-block; width: 1000px; text-align: left;">
+                <b style="font-size: 30px; color: darkgreen;">리뷰</b>&nbsp;
+                <a href="/home" style="text-decoration: none;">돌아가기</a>
             </div>
 
-            <hr id="blackLine" style="height:4px; position:relative; top:10px;"/>
+            <hr id="blackLine" style="height: 4px; position: relative; top: 10px;" />
 
             <div class="review_container">
-                <div class="review_item" style="text-align : right">작성자</div>
-                <div class="review_item">userName<br><br>
+                <div class="review_item" style="text-align: right;">작성자</div>
+                <div class="review_item">
+                    userName<br /><br />
                     <div class="reviewTag">맵잘먹</div>
                     <div class="reviewTag">일식</div>
                     <div class="reviewTag">양식</div>
                 </div>
-    
 
-                <div class="review_item" style="text-align : right">매장 평가</div>
+                <div class="review_item" style="text-align: right;">매장 평가</div>
                 <div class="review_item">
                     <div class="reviewTag">30분~1시간</div>
                     <div class="reviewTag">가족식사</div>
-                    <div class="reviewTag">청결 <img src="../../Images/sample_stars_yellow.png" style="vertical-align:middle"></div>
+                    <div class="reviewTag">
+                        청결
+                        <img
+                            src="{{ url_for('static',filename='sample_stars_yellow.png') }}"
+                            style="vertical-align: middle;"
+                        />
+                    </div>
                 </div>
 
-                <div class="review_item" style="text-align : right">메뉴</div>
+                <div class="review_item" style="text-align: right;">메뉴</div>
                 <div class="review_item">
-                    <img src = "../../Images/sample_menu.png" style="float:left; height:100px; margin:10px 10px;"/>
-                    <div style="float:left; vertical-align: middle;">
-                        <br>
-                        <b style="font-size : 25px"> 메뉴이름 </b>
-                        <span> 10000원</span><br><br>
+                    <img
+                        src="{{ url_for('static',filename='sample_menu.png') }}"
+                        style="float: left; height: 100px; margin: 10px 10px;"
+                    />
+                    <div style="float: left; vertical-align: middle;">
+                        <br />
+                        <b style="font-size: 25px;"> 메뉴이름 </b>
+                        <span> 10000원</span><br /><br />
                         <span> 평균별점 5.00</span>
-                        <img src = "../../Images/sample_stars_yellow.png" style="vertical-align: middle"/>
+                        <img
+                            src="{{ url_for('static',filename='sample_stars_yellow.png') }}"
+                            style="vertical-align: middle;"
+                        />
                     </div>
                 </div>
 
                 <div class="review_item">
-                    <img src = "../../Images/sample_menu.png" style="float:left; width:250px; margin:10px 10px"/>
+                    <img
+                        src="{{ url_for('static',filename='sample_menu.png') }}"
+                        style="float: left; width: 250px; margin: 10px 10px;"
+                    />
                 </div>
-                <div class="review_item" style="text-indent:100px;">
+                <div class="review_item" style="text-indent: 100px;">
                     별점
-                    <img src="../../Images/sample_stars_yellow.png" style="vertical-align:middle"/>
-                    <img src="../../Images/heart.png" style="float:right"/>
-                    <div id = "reviewBox">리뷰 내용입니다.</div>
-
-                
+                    <img
+                        src="{{ url_for('static',filename='sample_stars_yellow.png') }}"
+                        style="vertical-align: middle;"
+                    />
+                    <img src="{{ url_for('static',filename='heart.png') }}" style="float: right;" />
+                    <div id="reviewBox">리뷰 내용입니다.</div>
                 </div>
-
             </div>
         </div>
     </body>

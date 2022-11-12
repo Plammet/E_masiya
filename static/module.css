@@ -20,15 +20,16 @@ nothing {
 }
 
 /* 상단 메뉴바 */
-nav {
+nav{
     overflow : hidden;
-    background-color : white; 
+    background-color : white;
     white-space : nowrap; 
     width : 1500px;
     height : 90px;
     margin : 0px;
     padding : 0px;
 }
+
 
 nav img#logo{
     float : left;
@@ -63,7 +64,7 @@ nav li a:hover {
 /* 노란 가로선 */
 #yellowLine {
     height : 15px;
-    width : 100%;
+    width : 100vw;
     background-color: gold;
     border : 0px;
     margin : 0px 0px;
@@ -73,7 +74,7 @@ nav li a:hover {
 /* 회색 가로선 */
 #greyLine {
     height : 1px;
-    width : 100%;
+    width : 100vw;
     background-color: grey;
     border : 0px;
     margin : 0px 0px;

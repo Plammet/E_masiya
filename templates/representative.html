@@ -1,70 +1,102 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="representativeEdit.css">
-    <link rel = "stylesheet" type = "text/css" href = "../modules/module.css">
-    <link rel="preconnect" type = "text/css" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"/>
-</head>
-<body>
-  <nav>
-      <a href = "../pages/main.html"/><img src = "../../Images/logo.png" id = "logo" style = "float : left"/></a>
-      <ul style = "list-style-type:none; margin:0px">
-          <li><a href="../pages/main.html"> Home </a></li>
-          <li><a href="../pages/shop_list.html"> Shop </a></li>
-          <li><a href="../pages/review_upload.html"> Review </a></li>
-          <li><a href="../pages/my_store.html"> MyStore </a></li>
-      </ul>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static',filename='representative.css') }}" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static',filename='module.css') }}"
+        />
+        <link rel="preconnect" type="text/css" href="https://fonts.gstatic.com" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+        />
+    </head>
+    <body>
+        <nav>
+            <a href="/home"
+                ><img
+                    src="{{ url_for('static',filename='Images/logo.png')}}"
+                    id="logo"
+                    style="float: left;"
+            /></a>
+            <ul style="list-style-type: none; margin: 0px;">
+                <li><a href="/home"> Home </a></li>
+                <li><a href="/list"> Shop </a></li>
+                <li><a href="/review"> Review </a></li>
+                <li><a href="/mystore"> MyStore </a></li>
+            </ul>
 
-      <ul style = "list-style-type:none; margin:0px">
-          <li><a class = "rightmenu" href = "../pages/login.html"> Log In </a></li>
-          <span style  = "float:right; height : 40px; margin-top : 30px; border-right : solid 2px grey"></span>
-          <li><a class = "rightmenu" href = "../pages/signup.html"> Sign Up </a></li>
-      </ul>
-      <a href = "../pages/my_store.html"/><img src = "../../Images/default_profile.png" id = "profile" style = "float : right"/></a>
-  </nav>
+            <ul style="list-style-type: none; margin: 0px;">
+                <li><a class="rightmenu" href="/login"> Log In </a></li>
+                <span
+                    style="
+                        float: right;
+                        height: 40px;
+                        margin-top: 30px;
+                        border-right: solid 2px grey;
+                    "
+                ></span>
+                <li><a class="rightmenu" href="/signup"> Sign Up </a></li>
+            </ul>
+            <a href="/mystore"
+                ><img
+                    src="{{ url_for('static',filename='Images/default_profile.png')}}"
+                    id="profile"
+                    style="float: right;"
+            /></a>
+        </nav>
 
-  <hr id = "greyLine" />
+        <hr id="greyLine" />
 
-  <div class = "yellowBox"></div>
-  <div style="text-align:center; background-color : lightyellow;">
-    <div style="display:inline-block; width:1040px; margin : auto; background-color : white;">
-      <br><b>대표 메뉴 조회</b><br><br>
-      <div style = "text-align : left;">
-          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-          소요시간
-          <div class="yellowIcon">30분~1시간</div>&nbsp;&nbsp;&nbsp;
-          분위기
-          <div class="yellowIcon">가족식사</div>&nbsp;&nbsp;&nbsp;
-          청결
-          <img src="../../Images/sample_stars_yellow.png"/>
-      </div>
-      <div class = "image"></div><br>
-      <div style = "clear : both">
-        <br>
-        <div class="menuInfo">
-            <div class="image"></div>
-            <br>
-            <b style="font-size : 25px">메뉴이름</b>
-            <b style="font-size:15px">8000원</b><br>
-            <img src="../../Images/sample_stars_yellow.png" style="margin:10px 0px;">
-            <div class="menuComment">해당 메뉴에 대한 한줄평입니다.</div>
-            <div class="menuComment">맛있고 든든해요~~</div>
-        </div>
-        <div class="menuInfo">
-            <div class="image"></div>
-            <br>
-            <b style="font-size : 25px">메뉴이름</b>
-            <b style="font-size:15px">8000원</b><br>
-            <img src="../../Images/sample_stars_yellow.png" style="margin:10px 0px;">
-            <div class="menuComment">해당 메뉴에 대한 한줄평입니다.</div>
-            <div class="menuComment">맛있고 든든해요~~</div>
-        </div>
-      </div>
-    </div>
-      <br><br>
+        <div class="yellowBox"></div>
+        <div style="text-align: center; background-color: lightyellow;">
+            <div
+                style="display: inline-block; width: 1040px; margin: auto; background-color: white;"
+            >
+                <br /><b>대표 메뉴 조회</b><br /><br />
+                <div style="text-align: left;">
+                    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; 소요시간
+                    <div class="yellowIcon">30분~1시간</div>
+                    &nbsp;&nbsp;&nbsp; 분위기
+                    <div class="yellowIcon">가족식사</div>
+                    &nbsp;&nbsp;&nbsp; 청결
+                    <img src="{{ url_for('static',filename='Images/sample_stars_yellow.png')}}" />
+                </div>
+                <div class="image"></div>
+                <br />
+                <div style="clear: both;">
+                    <br />
+                    <div class="menuInfo">
+                        <div class="image"></div>
+                        <br />
+                        <b style="font-size: 25px;">메뉴이름</b>
+                        <b style="font-size: 15px;">8000원</b><br />
+                        <img
+                            src="{{ url_for('static',filename='Images/sample_stars_yellow.png')}}"
+                            style="margin: 10px 0px;"
+                        />
+                        <div class="menuComment">해당 메뉴에 대한 한줄평입니다.</div>
+                        <div class="menuComment">맛있고 든든해요~~</div>
+                    </div>
+                    <div class="menuInfo">
+                        <div class="image"></div>
+                        <br />
+                        <b style="font-size: 25px;">메뉴이름</b>
+                        <b style="font-size: 15px;">8000원</b><br />
+                        <img
+                            src="{{ url_for('static',filename='Images/sample_stars_yellow.png')}}"
+                            style="margin: 10px 0px;"
+                        />
+                        <div class="menuComment">해당 메뉴에 대한 한줄평입니다.</div>
+                        <div class="menuComment">맛있고 든든해요~~</div>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
 
-      <!--
+            <!--
       <div>
         <div class = "best" style="float:left">
             <b style="font-size:20px; float : left;">식당 이름</b>
@@ -169,5 +201,6 @@
       </span>
       <span style = "vertical-align : middle">찜 56</span>
     </div> -->
-</body>
+        </div>
+    </body>
 </html>

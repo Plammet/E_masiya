@@ -5,22 +5,23 @@
 
 
 <!--상단 메뉴바-->
-    <nav>
-        <a href = "../pages/main.html"/><img src = "../../Images/logo.png" id = "logo" style = "float : left"/></a>
-        <ul style = "list-style-type:none; margin:0px">
-            <li><a href="../pages/main.html"> Home </a></li>
-            <li><a href="../pages/shop_list.html"> Shop </a></li>
-            <li><a href="../pages/review_upload.html"> Review </a></li>
-            <li><a href="../pages/my_store.html"> MyStore </a></li>
-        </ul>
+<nav>
+    <a href = "/home"><img src = "{{ url_for('static',filename='Images/logo.png')}}" id = "logo" style = "float : left"/></a>
+    <ul style = "list-style-type:none; margin:0px">
+        <li><a href="/home"> Home </a></li>
+        <li><a href="/list"> Shop </a></li>
+        <li><a href="/review"> Review </a></li>
+        <li><a href="/mystore"> MyStore </a></li>
+    </ul>
 
-        <ul style = "list-style-type:none; margin:0px">
-            <li><a class = "rightmenu" href = "../pages/login.html"> Log In </a></li>
-            <span style  = "float:right; height : 40px; margin-top : 30px; border-right : solid 2px grey"></span>
-            <li><a class = "rightmenu" href = "../pages/signup.html"> Sign Up </a></li>
-        </ul>
-        <a href = "../pages/my_store.html"/><img src = "../../Images/default_profile.png" id = "profile" style = "float : right"/></a>
-    </nav>
+    <ul style = "list-style-type:none; margin:0px">
+        <li><a class = "rightmenu" href = "/login"> Log In </a></li>
+        <span style  = "float:right; height : 40px; margin-top : 30px; border-right : solid 2px grey"></span>
+        <li><a class = "rightmenu" href = "/signup"> Sign Up </a></li>
+    </ul>
+    <a href = "/mystore"><img src = "{{ url_for('static',filename='Images/default_profile.png') }}" id = "profile" style = "float : right"/></a>
+</nav>
+
 
 
 <!-- 노란 가로선 -->
@@ -42,14 +43,14 @@
             <b style="color:dimgrey; vertical-align : middle">영업중 </b>&nbsp;
             <span class = "type" style="vertical-align : middle">한식</span><br>
             <span>  
-                <img src = "../../Images/sample_stars_green.png" style="height : 25px; vertical-align : middle;"/>        <!--별점 샘플이미지-->
+                <img src = "{{ url_for('static',filename='Images/sample_stars_green.png') }}" style="height : 25px; vertical-align : middle;"/>        <!--별점 샘플이미지-->
             </span>
             <span stlye="vertical-align : center">5.0</span><br>
         </div>
         <div></div>
         <div class="shop_info_item">
             <b style="font-size:50px">식당 이름</b>&nbsp;&nbsp;
-            <img src = "../../Images/thumbup.png" style="vertical-align:top"/>
+            <img src = "{{ url_for('static',filename='Images/thumbup.png') }}" style="vertical-align:top"/>
             <span style="position:relative; top:5px; left:-40px;"> 찜 56</span>
             
         </div>

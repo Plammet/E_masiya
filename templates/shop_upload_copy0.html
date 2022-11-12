@@ -63,7 +63,11 @@
 
             <hr id="blackLine" style="height: 4px; position: relative; top: 10px;" />
 
-            <form action="/post_result" method="post" enctype="multipart/form-data">
+            <form
+                action="{{url_for('go_post_result')}}"
+                method="post"
+                enctype="multipart/form-data"
+            >
                 <div class="review_container">
                     <div class="review_item" style="text-align: right;">작성자</div>
                     <div class="review_item">userName</div>
@@ -90,9 +94,103 @@
                     <div class="review_item" style="text-align: right;">영업시간</div>
                     <div class="review_item">
                         <div style="line-height: 45px;">
-                            영업 시간 <input type="text" id="greenField" name="shop_time" /><br />
-                            특별한 점
-                            <input type="textarea" id="greenField" name="shop_time_other" /><br />
+                            월
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="mon_time_start"
+                            />&nbsp; -
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="mon_time_end"
+                            /><br />
+
+                            화
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="tues_time_start"
+                            />&nbsp; -
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="tues_time_start"
+                            /><br />
+
+                            수
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="wed_time_start"
+                            />&nbsp; -
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="wed_time_end"
+                            /><br />
+
+                            목
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="thurs_time_start"
+                            />&nbsp; -
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="thurs_time_end"
+                            /><br />
+
+                            금
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="fri_time_start"
+                            />&nbsp; -
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="fri_time_start"
+                            /><br />
+
+                            토
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="sat_time_start"
+                            />&nbsp; -
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="sat_time_end"
+                            /><br />
+
+                            일
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="sun_time_start"
+                            />&nbsp; -
+                            <input
+                                type="time"
+                                id="greenField"
+                                style="width: 150px;"
+                                name="sun_time_end"
+                            /><br />
                         </div>
                     </div>
 
@@ -109,7 +207,7 @@
                                 class="reviewTag"
                                 name="parking"
                                 id="yes"
-                                value="yes"
+                                value="1"
                             />
                             <label class="reviewTag" for="yes">가능</label>
                             <input
@@ -117,7 +215,7 @@
                                 class="reviewTag"
                                 name="parking"
                                 id="no"
-                                value="no"
+                                value="0"
                             />
                             <label class="reviewTag" for="no">불가능</label>
                         </div>
@@ -203,11 +301,7 @@
                         <br />
 
                         <div style="line-height: 45px;">
-                            &nbsp;&nbsp;&nbsp;<input
-                                type="text"
-                                id="greenField"
-                                name="link"
-                            /><br />
+                            &nbsp;&nbsp;&nbsp;<input type="url" id="greenField" name="link" /><br />
                         </div>
                     </div>
 
