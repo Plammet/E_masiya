@@ -51,6 +51,8 @@ def go_post_result():
     noop = request.form['shop_time_no']
     special = request.form['shop_time_special']
     breaktime = request.form['shop_time_break']
+    
+    print(name,address,phone,parking,category,link,time,noop,special,breaktime)
     return render_template("post_result.html", time=time, noop=noop, special=special, breaktime=breaktime, link=link, parking=parking, category=category, name=name, phone=phone, address=address)
     
     
