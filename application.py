@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request
+from database import DBhandler
 import sys
+
 application = Flask(__name__)
 
+DB = DBhandler()
 
 @application.route("/")
 def home():
@@ -41,26 +44,34 @@ def go_menu_upload():
     print(restaurant_name)
     return render_template("menu_upload.html", restaurant_name=restaurant_name)
 
+@application.route("/review_upload")
+def go_review_upload():
+    return render_template("review_upload.html")
+
+@application.route("/shop_list")
+def view_shoplist():
+    return render_template("lookaround.html")
+
 @application.route("/post_result", methods=['POST', 'GET'])
 def go_post_result():
+
     name = request.form['shop_name']
     address = request.form['shop_addr']
     phone = request.form['shop_phone']
     parking = request.form['parking']
     category = request.form['category']
     link  = request.form['link']
-    time = request.form['shop_time']
+    open_time = request.form['open_time']
+    close_time = request.form['close_time']
     noop = request.form['shop_time_no']
-    special = request.form['shop_time_special']
     breaktime = request.form['shop_time_break']
+    global idx
+    image_file= request.files['filename']
+    image_file.save("static/Images/{}".format(image_file.filename))
+    #교수님께 여쭤보니, .format 이 맞다고 하셔서.. ㅠㅠ
+    print(name,address,phone,parking,category,link,open_time, close_time, noop, breaktime)
+    return render_template("post_result.html", image_path="static/Images/"+image_file.filename, noop=noop, open_time = open_time, close_time = close_time, breaktime=breaktime, link=link, parking=parking, category=category, name=name, phone=phone, address=address)
     
-    print(name,address,phone,parking,category,link,time,noop,special,breaktime)
-    return render_template("post_result.html", time=time, noop=noop, special=special, breaktime=breaktime, link=link, parking=parking, category=category, name=name, phone=phone, address=address)
-    
-    
-@application.route("/register_menu")
-def reg_menu():
-    return render_template("menu_upload.html")
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
