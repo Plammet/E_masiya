@@ -35,5 +35,20 @@
 맛집의 사이트 링크는 무엇인가요?<br>
     link: 
     {{link}}
+    
+    <br><br><hr>
+    
+    <form method="post" action="/menu_upload" >
+        
+        <input type="hidden" name="restaurant_name" value="{{name}}">
+        <div>
+            <p>
+                대표 메뉴 등록을 합시다! 다음 버튼을 눌러보세요!
+            </p>
+            <button type="submit" name="menu">
+                메뉴 등록
+            </button><br><br>
+        </div>
+    </form>
       
     </body>

@@ -35,9 +35,11 @@ def go_login():
 def go_shop_upload():
     return render_template("shop_upload.html")
 
-@application.route("/menu_upload")
+@application.route("/menu_upload", methods=['POST', 'GET'])
 def go_menu_upload():
-    return render_template("menu_upload.html")
+    restaurant_name = request.form['restaurant_name']
+    print(restaurant_name)
+    return render_template("menu_upload.html", restaurant_name=restaurant_name)
 
 @application.route("/post_result", methods=['POST', 'GET'])
 def go_post_result():
@@ -56,6 +58,10 @@ def go_post_result():
     return render_template("post_result.html", time=time, noop=noop, special=special, breaktime=breaktime, link=link, parking=parking, category=category, name=name, phone=phone, address=address)
     
     
+@application.route("/register_menu")
+def reg_menu():
+    return render_template("menu_upload.html")
+
 if __name__ == "__main__":
-    application.run(host='0.0.0.0')
+    application.run(host='0.0.0.0', debug=True)
     
