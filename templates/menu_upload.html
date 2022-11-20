@@ -16,9 +16,9 @@
             식당 이름 : {{restaurant_name}}
         </h4>
         <br>
-        <form style="text-align: center;">
+        <form action="/post_menu_upload" method="post" enctype="multipart/form-data" style="text-align: center;">
             <span style="font-size: 18px;">메뉴 이름 &ensp;</span>
-            <input type="text" id="greenField" name="manuName" /><br /><br />
+            <input type="text" id="greenField" name="menuName" /><br /><br />
 
             <span style="font-size: 18px;">&ensp;&ensp;&ensp;&ensp; 가격 &ensp; </span>
             <input type="number" id="greenField" name="price" /><br /><br />
@@ -41,7 +41,7 @@
             <span style="font-size: 18px; vertical-align: top;"
                 >&ensp;&ensp;&ensp;&ensp;사진&ensp;</span
             >
-            <input type="file" id="menuImage" name="manuImage" accept="image/*" />
+            <input type="file" id="menuImage" name="filename" accept="image/*" />
             <label class="menuImage" for="menuImage"></label><br /><br />
 
             <span style="font-size: 18px;">&ensp;&ensp;&ensp;&ensp; 기타 &ensp; </span>
