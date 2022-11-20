@@ -1,31 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-       <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static',filename='module.css') }}">
-       <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static',filename='review_upload.css') }}">
-       <link rel="preconnect" href="https://fonts.gstatic.com" />
-       <link
-           href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-           rel="stylesheet"
-       />
-    </head>
-    <body>
-        <nav>
-            <a href = "/home"><img src = "{{ url_for('static',filename='Images/logo.png')}}" id = "logo" style = "float : left"/></a>
-            <ul style = "list-style-type:none; margin:0px">
-                <li><a href="/home"> Home </a></li>
-                <li><a href="/list"> Shop </a></li>
-                <li><a href="/review"> Review </a></li>
-                <li><a href="/mystore"> MyStore </a></li>
-            </ul>
-
-            <ul style = "list-style-type:none; margin:0px">
-                <li><a class = "rightmenu" href = "/login"> Log In </a></li>
-                <span style  = "float:right; height : 40px; margin-top : 30px; border-right : solid 2px grey"></span>
-                <li><a class = "rightmenu" href = "/signup"> Sign Up </a></li>
-            </ul>
-            <a href = "/mystore"><img src = "{{ url_for('static',filename='Images/default_profile.png')}}" id = "profile" style = "float : right"/></a>
-        </nav>
+       
+{% extends "index.html" %}
+{% block section %}
+        <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static',filename='review_upload.css') }}">
         
         <hr id = "greyLine" />
         
@@ -60,7 +36,7 @@
 
             <hr id="blackLine" style="height:4px; position:relative; top:10px;"/>
 
-            <form>
+            <form action="/post_review_upload" method="post" enctype="multipart/form-data">
             <div class="review_container">
                 <div class="review_item" style="text-align : right">작성자</div>
                 <div class="review_item">userName</div>
@@ -69,15 +45,15 @@
                 <div class="review_item" style="text-align : right; line-height : 40px">소요시간<br>청결<br>분위기</div>
                 <div class="review_item">
                     <div>
-                        <input type="radio" class="reviewTag" name="time" id="5min" value="5min">
+                        <input type="radio" class="reviewTag" name="time_r" id="5min" value="5min">
                         <label class="reviewTag" for="5min">5분 미만</label>
-                        <input type="radio" class="reviewTag" name="time" id="15min" value="15min">
+                        <input type="radio" class="reviewTag" name="time_r" id="15min" value="15min">
                         <label class="reviewTag" for="15min">5분~15분</label>  
-                        <input type="radio" class="reviewTag" name="time" id="30min" value="30min">
+                        <input type="radio" class="reviewTag" name="time_r" id="30min" value="30min">
                         <label class="reviewTag" for="30min">15분~30분</label>  
-                        <input type="radio" class="reviewTag" name="time" id="1hour" value="1hour">
+                        <input type="radio" class="reviewTag" name="time_r" id="1hour" value="1hour">
                         <label class="reviewTag" for="1hour">30분~1시간</label>  
-                        <input type="radio" class="reviewTag" name="time" id="more" value="more">
+                        <input type="radio" class="reviewTag" name="time_r" id="more" value="more">
                         <label class="reviewTag" for="more">1시간 이상</label><br>  
                     </div>
 
@@ -111,7 +87,7 @@
 
                 <div class="review_item" style="text-align : right">메뉴</div>
                 <div class="review_item">
-                   <input type="text" id="greenField">
+                   <input type="text" id="greenField" name="menuName">
                    &nbsp;
                    <button style="border:0px; background-color:transparent">추가</button>
                 </div>
@@ -166,7 +142,7 @@
                     <b style="font-size:20px; float:left">이미지</b>
 
 
-                    <input type="file" id="menu1-image" name="manuImage" accept="image/*"/>
+                    <input type="file" id="menu1-image" name="filename" accept="image/*"/>
                     <label for="menu1-image">
                         <div class="thumbnail"></div>
                         <span style="color:red; position:relative; top:140px;">이미지 업로드</span>
@@ -177,19 +153,14 @@
                     <b style="font-size:20px; float:left">리뷰 내용</b><br><br>
                     
                     <div>
-                        <textarea></textarea>
+                        <textarea name="reviewText" cols="10" rows="50"></textarea>
                     </div>
                 </div>
 
             </div>
-
+            <br>
+            <input type="submit" value="리뷰 등록" id="submit" /><br><br>
             </form>
 
-
         </div>
-        
-
-
-
-    </body>
-</html>
+{% endblock section %}

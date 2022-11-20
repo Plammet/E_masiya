@@ -13,7 +13,7 @@
         </div>
         <br /><br />
         <h4 style="text-align: center ">
-            식당 이름 : {{restaurant_name}}
+            식당 이름 :  {{name}}
         </h4>
         <br>
         <form action="/post_menu_upload" method="post" enctype="multipart/form-data" style="text-align: center;">
@@ -61,6 +61,7 @@
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br /><br />
 
             <hr width="800px" color="black" />
+            <input type="hidden" name="name" value="{{name}}">
 
             <input type="submit" value="+메뉴 추가" id="submit" />
         </form>

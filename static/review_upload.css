@@ -88,5 +88,15 @@ textarea{
     -webkit-text-fill-color: gold;
   }
    
+#submit{
+    font-size : 18px;
+    font-weight : bold;
+    background-color: gold;
+    border : none;
+    border-radius: 20px;
+    height : 40px;
+    width : 150px;
+}
+   
 
    

@@ -1,53 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
+{% extends "index.html" %}
+
+{% block section %}
         <link rel="stylesheet" href="{{ url_for('static',filename='bookmarked.css') }}" />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="{{ url_for('static',filename='module.css') }}"
-        />
-        <link rel="preconnect" type="text/css" href="https://fonts.gstatic.com" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-        />
-    </head>
-    <body>
-        <nav>
-            <a href="/home"
-                ><img
-                    src="{{ url_for('static',filename='Images/logo.png') }}"
-                    id="logo"
-                    style="float: left;"
-            /></a>
-            <ul style="list-style-type: none; margin: 0px;">
-                <li><a href="/home"> Home </a></li>
-                <li><a href="/list"> Shop </a></li>
-                <li><a href="/review"> Review </a></li>
-                <li><a href="/mystore"> MyStore </a></li>
-            </ul>
-
-            <ul style="list-style-type: none; margin: 0px;">
-                <li><a class="rightmenu" href="/login"> Log In </a></li>
-                <span
-                    style="
-                        float: right;
-                        height: 40px;
-                        margin-top: 30px;
-                        border-right: solid 2px grey;
-                    "
-                ></span>
-                <li><a class="rightmenu" href="/signup"> Sign Up </a></li>
-            </ul>
-            <a href="/mystore"
-                ><img
-                    src="{{ url_for('static',filename='Images/default_profile.png') }}"
-                    id="profile"
-                    style="float: right;"
-            /></a>
-        </nav>
-
         <hr id="greyLine" />
 
         <div class="yellowBox"></div>
@@ -139,20 +93,4 @@
                 </div>
             </div>
         </div>
-        <!--<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    BEST 맛집! more<br><br>
-    <hr id = "blackLine">
-
-    <div class = "best">
-      <div class = "image"></div>
-      <br>
-      <b style = "font-size: 30px">가게 이름</b>
-      <div class = "type" style = "vertical-align : middle">한식</div><br>
-      <span>
-        <img src = "../../Images/thumbup.png" style = "height : 25px; vertical-align : middle;">
-      </span>
-      <span style = "vertical-align : middle">찜 56</span>
-    </div> -->
-    </body>
-</html>
+{% endblock section %}
