@@ -14,7 +14,22 @@
 </p>
   <br><br><hr>
 <p>
-    식당 분위기: {{mood}}
+    식당 분위기: 
+    {% if mood=="road" %}
+    길거리음식입니다.
+    {% endif %}
+     {% if mood=="alone" %}
+    혼밥에 적합합니다. 
+    {% endif %}
+     {% if mood=="dating" %}
+    데이트에 적합합니다!
+    {% endif %}
+     {% if mood=="family" %}
+        가족식사에 적합합니다.
+    {% endif %}
+     {% if mood=="study" %}
+    카공에 적합합니다.
+    {% endif %}
 </p>
   <br><br><hr>
 <p>
@@ -32,7 +47,19 @@
 </p>
   <br><br><hr>
 <p>
-    맵기 정도 : {{spicy}}
+    맵기 정도 : 
+    {% if spicy=="0" %}
+    안 맵습니다.
+    {% endif %}
+      {% if spicy=="1" %}
+     신라면 정도의 맵기입니다.
+    {% endif %}
+     {% if spicy=="2" %}
+    불닭 정도의 맵기입니다.    
+    {% endif %}
+     {% if spicy=="3" %}
+    죽음 정도의 맵기입니다.
+    {% endif %}
 </p>
   <br><br><hr>
 <p>

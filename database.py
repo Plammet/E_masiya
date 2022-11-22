@@ -10,7 +10,7 @@ class DBhandler:
         self.db = firebase.database()
         
    # 리뷰 등록
-    def insert_review(self, time_r, rating, mood, menuName, menu1_rating, spicy, img_path_r):
+    def insert_review(self, time_r, rating, mood, menuName, menu1_rating, spicy, reviewText, img_path_r):
         review_info ={
             "time": time_r, 
             "rating": rating, 
@@ -18,23 +18,29 @@ class DBhandler:
             "menuName": menuName,
             "menu1_rating": menu1_rating,
             "spicy": spicy,
+            "reviewText": reviewText,
             "img_path": img_path_r
         }
         self.db.child("review").child(menuName).set(review_info)
-        print(time_r, rating, mood, menuName, menu1_rating, spicy, img_path_r)
+        print(time_r, rating, mood, menuName, menu1_rating, spicy, reviewText, img_path_r)
         return True
     
     # 대표 메뉴 등록
-    def insert_menu(self, menuName, price, spicy, img_path_m):
+    def insert_menu(self, name, menuName, price, spicy, etc, img_path_m):
         menu_info ={
+            "name": name,
             "menuName": menuName,
             "price": price,
             "spicy": spicy,
+            "etc": etc,
             "img_path": img_path_m
         }
-        self.db.child("menu").child(menuName).set(menu_info)
-        print(menuName, price, spicy, img_path_m)
-        return True
+        if self.menu_duplicate_check(name, menuName):
+            self.db.child("menu").child(menuName).set(menu_info)
+            print(name, menuName, price, spicy, etc, img_path_m)
+            return True
+        else:
+            return False
         
         
     # 맛집 등록
@@ -64,5 +70,12 @@ class DBhandler:
         restaurants = self.db.child("restaurant").get()
         for res in restaurants.each():
             if res.key() == name:
+                return False
+        return True
+    
+    def menu_duplicate_check(self, name, menuName):
+        menus = self.db.child("menu").get()
+        for menu in menus.each():
+            if menu.key() == menuName:
                 return False
         return True

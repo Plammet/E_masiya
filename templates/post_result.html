@@ -23,12 +23,46 @@
         <br><br><hr>
 
 주차가 가능한가요? <br>
-    answer: {{parking}}
-
+    <br>
+    {% if parking=="yes" %}
+    주차가능!
+    {% endif %}
+    {% if parking =="no" %}
+    주차 불가능!
+    {% endif %}
     <br><hr>
     맛집의 카테고리는 무엇인가요? <br>
-    category : 
-    {{category}}
+   {% if category =="korean" %}
+    한식입니다.
+    {% endif %}
+    
+    {% if category =="japanese" %}
+    일식입니다.
+    {% endif %}
+    
+    {% if category =="west" %}
+    양식입니다.
+    {% endif %}
+    
+    {% if category =="chinese" %}
+    중식입니다.
+    {% endif %}
+    
+    {% if category =="bunsik" %}
+    분식입니다
+    {% endif %}
+    
+    {% if category =="fastfood" %}
+    패스트푸드입니다.
+    {% endif %}
+    
+    {% if category =="cafe" %}
+    디저트/카페입니다.
+    {% endif %}
+    
+    {% if category =="etc" %}
+    기타입니다.
+    {% endif %}
     
 <br><hr>
 맛집의 사이트 링크는 무엇인가요?<br>
