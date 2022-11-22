@@ -75,7 +75,7 @@ def go_post_review_upload():
     
     timenow = str(int(time()))
     image_file_r = request.files['filename']
-    image_file_r.save("static/Images/{}".format(timenow + image_file_r.filename))
+    image_file_r.save("static/Images/{}".format(image_file_r.filename))
     
     if DB.insert_review(time_r, rating, mood, menuName, menu1_rating, spicy, reviewText, image_file_r.filename):
         
@@ -83,7 +83,7 @@ def go_post_review_upload():
         # 일단은 이렇게 두고, 나중에 reviewList 페이지가 완성되면 reviewList 페이지로 이동하도록 변경하면 좋을것같아요 #
         ###################################################################################################
         
-        return render_template("post_review_upload.html", image_path_r="static/Images/"+timenow+image_file_r.filename,time_r=time_r, rating=rating, mood=mood, menuName=menuName, menu1_rating=menu1_rating, spicy=spicy, reviewText=reviewText)
+        return render_template("post_review_upload.html", image_path_r="static/Images/"+image_file_r.filename,time_r=time_r, rating=rating, mood=mood, menuName=menuName, menu1_rating=menu1_rating, spicy=spicy, reviewText=reviewText)
 
 # 메뉴 등록
 @application.route("/post_menu_upload", methods=['POST', 'GET'])
@@ -97,14 +97,14 @@ def go_post_menu_upload():
     
     timenow = str(int(time()))
     image_file_m = request.files['filename']
-    image_file_m.save("static/Images/{}".format(timenow + image_file_m.filename))
+    image_file_m.save("static/Images/{}".format(image_file_m.filename))
     if DB.insert_menu(name, menuName, price, spicy, etc, image_file_m.filename):
         
         ##################################################################################################### 
         # 일단은 이렇게 두고, 나중에 shop_detail 페이지가 완성되면 shop_detail 페이지로 이동하도록 변경하면 좋을것같아요 #
         #####################################################################################################
         
-        return render_template("post_menu_upload.html", image_path_m="static/Images/"+timenow + image_file_m.filename, name=name, menuName=menuName, price=price, spicy=spicy, etc=etc)
+        return render_template("post_menu_upload.html", image_path_m="static/Images/"+image_file_m.filename, name=name, menuName=menuName, price=price, spicy=spicy, etc=etc)
     else:
         return "Menu name already exist!"
 
@@ -128,7 +128,7 @@ def go_post_result():
     image_file.save("static/Images/{}".format(image_file.filename))
     
     if DB.insert_restaurant(name, address, phone, parking, category, link, open_time, close_time, noop, breaktime, image_file.filename):
-        return render_template("post_result.html", image_path="static/Images/"+ name + image_file.filename, name = name, address = address, phone = phone, parking = parking, category = category, link = link, open_time = open_time, close_time = close_time, noop = noop, breaktime = breaktime)
+        return render_template("post_result.html", image_path="static/Images/"+image_file.filename, name = name, address = address, phone = phone, parking = parking, category = category, link = link, open_time = open_time, close_time = close_time, noop = noop, breaktime = breaktime)
     else:
         return "Restaurant name already exist!"
     
