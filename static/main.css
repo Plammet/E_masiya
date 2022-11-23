@@ -2,18 +2,21 @@
    font-family : "Noto Sans KR", Arial, sans-serif;
 }
 
+
+
+
 div.yellowBox{
+     align-items : center;
     display : grid;
     width : 1020px;
     height : 350px;
     padding : 10px 250px;
-    align-items : end;
     overflow : hidden;
-    grid-template-columns : 500px auto;
-    grid-template-rows : 1fr 1fr;
     background-color : gold;
     box-shadow : inset 0px 2px 6px 1px grey;
+
 }
+
 
 div.randomBox {
   float : left;
@@ -64,6 +67,9 @@ div.best .image{
     border : none;
     border-radius : 10px;
 }
+
+
+
 /*
 div.menuInfo{
     float : left;
@@ -73,5 +79,15 @@ div.menuInfo{
     background-color : whitesmoke;
     border : 1px solid lightgrey;
     border-radius : 5px;
+}
+
+ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+
+div.app{
+    background-color:gold;
 }
 */

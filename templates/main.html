@@ -3,27 +3,58 @@
 {% block section %}
         <link rel="stylesheet" href= "{{ url_for('static',filename='main.css') }}">
         <hr id="greyLine" />
-        <div class="yellowBox">
-            <div class="shop_info_item">
-                <b style="font-size: 80px;">이화 맛집이야!</b>&nbsp;&nbsp;
+        <div class="yellowBox" style="grid-template-columns: 1fr 1fr; align-items: center;">
+            <div class="shop_info_item" >
+                <b style="font-size: 80px;" >이화 맛집이야!</b>&nbsp;&nbsp;
                 <b style="font-size: 24px;">이화여자대학교 벗들의 맛집 추천 커뮤니티</b>
-            </div>
-            <div class="shop_info_item">
-                <a href="/shop_upload">맛집 등록하러 가기</a>
-                <br />
-                <a href="/review_upload">리뷰 작성하러 가기</a>
-                <br />
-                <a href="/shop_list">맛집 리스트</a>
-            </div>
-
-            <div class="randomBox">
-                <b>뭐 먹을까?</b><br />
+                
+                
+                 <div class="randomBox" >
+                <b text-align="center"> 오늘은 무슨 메뉴를 먹을까?</b><br />
                 <div class="randomButton">
                     RANDOM!
                 </div>
-                <div class="greyBox">?</div>
+                <div class="greyBox">눌러서 <br>메뉴 추천 받으세요!</div>
             </div>
+                
         </div>
+
+            
+                <div class="one" >
+                    
+            
+                <section class="section_shop_info"  >
+                <ul class="sidelist" style="background-color:gold; list-style-type: none; margin:0;" >
+                    <li><a href="/shop_upload" style= "text-decoration: none; color:black; font-weight: 700;">
+                        <img
+                        src="{{ url_for('static',filename='Images/layingFork.png')}}"
+                        style="height: 65px;   "
+                    />
+                    <span style="font-size:35px" "vertical-align:top" "color:black" "text-align : ;">맛집 등록하러 가기</span></a></li><br>
+                    
+                     <li><a href="/shop_list" style= "text-decoration: none; color:black; text-align:center; font-weight: 700;">
+                        <img
+                        src="{{ url_for('static',filename='Images/layingFork.png')}}"
+                        style="height: 65px; "
+                    />
+                    <span  style="font-size:35px" "vertical-align:left" "color:black" "background-color:gold" >맛집 리스트</span></a></li><br>
+             
+    
+                     <li ><a href="/review_upload" style= "text-decoration: none; color:black; text-align:center; font-weight: 700;">
+                        <img
+                        src="{{ url_for('static',filename='Images/layingFork.png')}}"
+                        style="height: 65px; "
+                    />
+                    <span style="font-size:35px" "vertical-align:left" "color:black" "background-color:gold" >리뷰 작성하러가기</span></a></li><br>
+                    
+     
+                </ul>
+                 </section>
+              
+</div>
+                
+</div>
+
         <div style="clear: both;">
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp; BEST 맛집! more<br /><br />
@@ -72,5 +103,5 @@
                 </span>
                 <span style="vertical-align: middle;"> 찜 56</span>
             </div>
-        </div>
+    
 {% endblock section %}
