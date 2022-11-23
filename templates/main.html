@@ -3,7 +3,7 @@
 {% block section %}
         <link rel="stylesheet" href= "{{ url_for('static',filename='main.css') }}">
         <hr id="greyLine" />
-        <div class="yellowBox" style="grid-template-columns: 1fr 1fr; align-items: center;">
+        <div class="yellowBox" style="grid-template-columns: 1fr 1fr; grid-template-rows:1fr; align-items: center; height : 350px;">
             <div class="shop_info_item" >
                 <b style="font-size: 80px;" >이화 맛집이야!</b>&nbsp;&nbsp;
                 <b style="font-size: 24px;">이화여자대학교 벗들의 맛집 추천 커뮤니티</b>
@@ -24,28 +24,28 @@
                     
             
                 <section class="section_shop_info"  >
-                <ul class="sidelist" style="background-color:gold; list-style-type: none; margin:0;" >
-                    <li><a href="/shop_upload" style= "text-decoration: none; color:black; font-weight: 700;">
+                <ul class="sidelist" style="background-color:gold; list-style-type: none; margin:0; " >
+                    <li><a class="option" href="/shop_upload" style= "text-decoration: none; color:black; font-weight: 900;" hover="text-size:120%;">
                         <img
                         src="{{ url_for('static',filename='Images/layingFork.png')}}"
-                        style="height: 65px;   "
+                        style="height: 65px; vertical-align:bottom;  "
                     />
-                    <span style="font-size:35px" "vertical-align:top" "color:black" "text-align : ;">맛집 등록하러 가기</span></a></li><br>
+                    <span style="font-size:35px" "color:black;" >&nbsp;&nbsp;맛집 등록하러 가기</span></a></li><br>
                     
-                     <li><a href="/shop_list" style= "text-decoration: none; color:black; text-align:center; font-weight: 700;">
+                     <li><a class="option" href="/shop_list" style= "text-decoration: none; color:black; text-align:center; font-weight: 900;">
                         <img
                         src="{{ url_for('static',filename='Images/layingFork.png')}}"
-                        style="height: 65px; "
+                        style="height: 65px; vertical-align:bottom;  "
                     />
-                    <span  style="font-size:35px" "vertical-align:left" "color:black" "background-color:gold" >맛집 리스트</span></a></li><br>
+                    <span  style="font-size:35px" >&nbsp;&nbsp;맛집 리스트</span></a></li><br>
              
     
-                     <li ><a href="/review_upload" style= "text-decoration: none; color:black; text-align:center; font-weight: 700;">
+                     <li ><a class="option" href="/review_upload" style= "text-decoration: none; color:black; text-align:center; font-weight: 900;">
                         <img
                         src="{{ url_for('static',filename='Images/layingFork.png')}}"
-                        style="height: 65px; "
+                        style="height: 65px; vertical-align:bottom; "
                     />
-                    <span style="font-size:35px" "vertical-align:left" "color:black" "background-color:gold" >리뷰 작성하러가기</span></a></li><br>
+                    <span style="font-size:35px" >&nbsp;&nbsp;리뷰 작성하러가기</span></a></li><br>
                     
      
                 </ul>
