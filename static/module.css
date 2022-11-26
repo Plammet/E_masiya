@@ -102,6 +102,10 @@ nav li a:hover {
 
 #greenField:focus {outline : none;}
 
+#fork{
+    font-size : 30px;
+    
+}
 /* 가게 정보 요약 배너 */
 div.shop_info_container{
     display : grid;
@@ -132,9 +136,28 @@ span.type{
     float : left;
     width : 150px;
     height : 150px;
+    text-align : center;
     background-color : lightgrey;
     border-radius : 20px;
     margin : 20px;
 
+}
+
+.rating{
+    font-size : 25px;
+    position: relative;
+}
+
+.starFilled{
+    color : gold;
+    position : absolute;
+    z-index : 1;
+    overflow : hidden;
+}
+
+.starUnfilled{
+    color : lightgrey;
+    z-index : 0;
+    
 }
 

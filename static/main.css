@@ -6,46 +6,54 @@
 
 
 div.yellowBox{
-    align-items : center;
+     align-items : center;
     display : grid;
-    width : 1020px;
+    width : 1430px;
     height : 350px;
-    padding : 10px 250px;
+    padding : 10px;
     overflow : hidden;
     background-color : gold;
     box-shadow : inset 0px 2px 6px 1px grey;
-
 }
 
 
 div.randomBox {
-  float : left;
-  width : 390px;
-  height : 135px;
-  margin : 10px 10px;
-  background-color : white;
-  border : 3px solid darkgreen;
-  border-radius: 5px;
+    display : inline-block;
+    padding : 10px 10px;
+    margin : 20px 20px;
+    background-color : white;
+    border : 3px solid darkgreen;
+    border-radius: 10px;
+
 }
 
-div.randomButton {
-  text-align : center;
-  float : left;
-  width : 140px;
-  height : 45px;
-  margin : 10px 10px;
-  background-color: gold;
-  border-radius : 15px;
+.randomButton {
+    color : darkgreen;
+    font-weight : bold;
+    padding : 10px 30px;
+    background-color: gold;
+    border-radius : 20px;
+}
+
+.type_gold {
+    color : black;
+    font-weight : bold;
+    font-size : 13px;
+    padding : 3px 15px;
+    background-color : gold;
+    border-radius : 15px;
 }
 
 div.greyBox {
-  text-align : center;
-  float : left;
-  width : 180px;
-  height : 85px;
-  margin : 10px 10px;
-  background-color: lightgrey;
-  border-radius : 15px;
+    text-align : center;
+    float : left;
+    padding : 25px 20px;
+    font-weight : bold;
+    margin : 10px 10px;
+    font-size : 15px;
+    background-color: lightgrey;
+    border-radius : 15px;
+    color : black;
 }
 
 div.best {
@@ -59,6 +67,8 @@ div.best {
 }
 
 div.best .image{
+    display : flex;
+    justify-content : center;
     float : left;
     width : 160px;
     height : 170px;
@@ -68,9 +78,19 @@ div.best .image{
     border-radius : 10px;
 }
 
-a.option:hover{
-    color:grey;
-    font-size:130%;
+.image image{
+    flex : none;
+    height : 170px;
+}
+
+div.one .sidelist :hover{
+    size:115%;
+    color:lightgoldenrodyellow;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+div.one .sidelist .option :hover{
+    color: lightgoldenrodyellow;
+    text-shadow:  -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
 

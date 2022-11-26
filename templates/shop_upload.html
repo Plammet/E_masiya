@@ -90,7 +90,7 @@
                                 class="reviewTag"
                                 name="category"
                                 id="korean"
-                                value="korean"
+                                value="한식"
                                    checked
                             />
                             <label class="reviewTag" for="korean">한식</label>
@@ -99,7 +99,7 @@
                                 class="reviewTag"
                                 name="category"
                                 id="japanese"
-                                value="japanese"
+                                value="일식"
                             />
                             <label class="reviewTag" for="japanese">일식</label>
                             <input
@@ -107,7 +107,7 @@
                                 class="reviewTag"
                                 name="category"
                                 id="west"
-                                value="west"
+                                value="양식"
                             />
                             <label class="reviewTag" for="west">양식</label>
                             <input
@@ -115,7 +115,7 @@
                                 class="reviewTag"
                                 name="category"
                                 id="chinese"
-                                value="chinese"
+                                value="중식"
                             />
                             <label class="reviewTag" for="chinese">중식</label>
                             <input
@@ -123,7 +123,7 @@
                                 class="reviewTag"
                                 name="category"
                                 id="asian"
-                                value="asian"
+                                value="아시안"
                             />
                             <label class="reviewTag" for="asian">아시안</label>
                             <div style="height: 10px;"></div>
@@ -132,7 +132,7 @@
                                 class="reviewTag"
                                 name="category"
                                 id="bunsik"
-                                value="bunsik"
+                                value="분식"
                             />
                             <label class="reviewTag" for="bunsik">분식</label>
                             <input
@@ -140,7 +140,7 @@
                                 class="reviewTag"
                                 name="category"
                                 id="fastfood"
-                                value="fastfood"
+                                value="패스트푸드"
                             />
                             <label class="reviewTag" for="fastfood">패스트푸드</label>
                             <input
@@ -148,7 +148,7 @@
                                 class="reviewTag"
                                 name="category"
                                 id="cafe"
-                                value="cafe"
+                                value="디저트/카페"
                             />
                             <label class="reviewTag" for="cafe">디저트/카페</label>
                             <input
@@ -156,7 +156,7 @@
                                 class="reviewTag"
                                 name="category"
                                 id="etc"
-                                value="etc"
+                                value="기타"
                             />
                             <label class="reviewTag" for="etc">기타</label>
                         </div>
@@ -174,12 +174,10 @@
 
                     <div class="review_item" style="text-align: right;">이미지</div>
                     <div class="review_item">
-                        <input type="file" id="image" name="filename" accept="image/*" />
+                        <input type="file" id="image" name="filename" accept="image/*"
+                               onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"/>
                         <label for="image">
-                            <div class="thumbnail"></div>
-                            <span style="color: red; position: relative; top: 140px;"
-                                >이미지 업로드
-                            </span>
+                            <div class="thumbnail"><img id = 'preview' style="height:150px"/></div>
                         </label>
                     </div>
 

@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 from database import DBhandler
 from time import time
+import random
 import sys
 
 application = Flask(__name__)
@@ -9,20 +10,20 @@ DB = DBhandler()
 
 @application.route("/")
 def home():
-    return render_template("main.html")
+    data=DB.get_all_data()
+    
+    randomRes = random.choice(list(data.keys()))
+    
+    return render_template("main.html", data=data, randomRes=randomRes)
 
-@application.route("/home")
+
+@application.route("/home", methods=['POST', 'GET'])
 def go_home():
-    return render_template("main.html")
+    return redirect(url_for('home'))
 
 @application.route("/list")
 def go_list():
     return render_template("lookaround.html")
-
-
-@application.route("/review")
-def view_review():
-    return render_template("review_upload.html")
 
 #찜한 맛집 조회 화면
 @application.route("/mystore")
@@ -45,46 +46,83 @@ def go_shop_upload():
     return render_template("shop_upload.html")
 
 #메뉴 업로드 화면
-@application.route("/menu_upload", methods=['POST', 'GET'])
-def go_menu_upload():
-    name = request.form['name']
+@application.route("/menu_upload/<name>/", methods=['POST', 'GET'])
+def go_menu_upload(name):
     print(name)
     return render_template("menu_upload.html", name=name)
 
-#리뷰 업로드 화면
-@application.route("/review_upload", methods=['POST', 'GET'])
-def go_review_upload():
-    return render_template("review_upload.html")
+#메뉴 조회 화면
+@application.route("/menus/<name>/")
+def go_menu(name):
+    data=DB.get_shop_byname(str(name))
+    return render_template("menu_list.html", data=data)
 
-#맛집 리스트
+#리뷰 업로드 화면(식당)
+@application.route("/review_upload/<name>/")
+def go_review_upload(name):
+    data=DB.get_shop_byname(str(name))
+    return render_template("review_upload.html", data=data)
+
+#리뷰 업로드 화면(식당, 메뉴)
+@application.route("/review_upload/<name>/<menuName>/")
+def go_review_upload_with_menu(name, menuName):
+    data=DB.get_shop_byname(str(name))
+    return render_template("review_upload.html", data=data, menuName=menuName)
+
+
+
+
+#맛집 리스트(지도)
 @application.route("/shop_list")
 def view_shoplist():
     return render_template("lookaround.html")
 
+#######맛집 세부 화면 --> 동적 라우팅############
+@application.route("/shop_detail/<name>/")
+def view_shop_detail(name):
+    
+    data=DB.get_shop_byname(str(name))
+    avg_rate=DB.get_avgrate_byname(str(name))
+    tot_count=len(data)
+        
+    return render_template("shop_detail.html",data=data,avg_rate=avg_rate,total=tot_count)
+
+######맛집 세부 화면 - 리뷰 리스트 조회 화면 --> 동적 라우팅 : 식당 -> 메뉴 -> 리뷰#####
+@application.route("/review_list/<name>/<menuName>/")
+def view_review(name,menuName):
+    
+    data=DB.get_shop_byname(str(name))
+    
+    return render_template("review_list.html", data=data, menuName=menuName)
+
+
 # 리뷰 등록
 @application.route("/post_review_upload", methods=['POST', 'GET'])
 def go_post_review_upload():
+
+    user=request.form['user']
+    restaurant=request.form['restaurant']
     time_r=request.form['time_r']
-    rating=request.form['rating']
-    mood=request.form['mood']
+    clean_rating=request.form['rating']
     menuName=request.form['menuName']
     menu1_rating=request.form['menu1-rating']
     spicy=request.form['spicy']
     reviewText=request.form['reviewText']
+   
     global idx
     
     timenow = str(int(time()))
     image_file_r = request.files['filename']
-    image_file_r.save("static/Images/{}".format(image_file_r.filename))
+    imageName = restaurant + timenow + image_file_r.filename
+    image_file_r.save("static/Images/{}".format(imageName))
     
-    if DB.insert_review(time_r, rating, mood, menuName, menu1_rating, spicy, reviewText, image_file_r.filename):
-        
+    if DB.insert_review(restaurant, user, time_r, clean_rating, menuName, menu1_rating, spicy, reviewText, imageName):
+        DB.update_rate(restaurant, menuName, menu1_rating, clean_rating)
         ################################################################################################### 
         # 일단은 이렇게 두고, 나중에 reviewList 페이지가 완성되면 reviewList 페이지로 이동하도록 변경하면 좋을것같아요 #
         ###################################################################################################
+        return redirect(url_for('view_review', name=restaurant, menuName = menuName))
         
-        return render_template("post_review_upload.html", image_path_r="static/Images/"+image_file_r.filename,time_r=time_r, rating=rating, mood=mood, menuName=menuName, menu1_rating=menu1_rating, spicy=spicy, reviewText=reviewText)
-
 # 메뉴 등록
 @application.route("/post_menu_upload", methods=['POST', 'GET'])
 def go_post_menu_upload():
@@ -92,19 +130,13 @@ def go_post_menu_upload():
     menuName=request.form['menuName']
     price=request.form['price']
     spicy=request.form['spicy']
-    etc=request.form['etc']
     global idx
     
     timenow = str(int(time()))
     image_file_m = request.files['filename']
     image_file_m.save("static/Images/{}".format(image_file_m.filename))
-    if DB.insert_menu(name, menuName, price, spicy, etc, image_file_m.filename):
-        
-        ##################################################################################################### 
-        # 일단은 이렇게 두고, 나중에 shop_detail 페이지가 완성되면 shop_detail 페이지로 이동하도록 변경하면 좋을것같아요 #
-        #####################################################################################################
-        
-        return render_template("post_menu_upload.html", image_path_m="static/Images/"+image_file_m.filename, name=name, menuName=menuName, price=price, spicy=spicy, etc=etc)
+    if DB.insert_menu(name, menuName, price, spicy, image_file_m.filename):
+        return redirect(url_for('view_shop_detail', name = name))
     else:
         return "Menu name already exist!"
 
@@ -128,7 +160,9 @@ def go_post_result():
     image_file.save("static/Images/{}".format(image_file.filename))
     
     if DB.insert_restaurant(name, address, phone, parking, category, link, open_time, close_time, noop, breaktime, image_file.filename):
-        return render_template("post_result.html", image_path="static/Images/"+image_file.filename, name = name, address = address, phone = phone, parking = parking, category = category, link = link, open_time = open_time, close_time = close_time, noop = noop, breaktime = breaktime)
+        return render_template("post_result.html", image_path="static/Images/"+image_file.filename, name = name, 
+                               address = address, phone = phone, parking = parking, category = category, link = link, 
+                               open_time = open_time, close_time = close_time, noop = noop, breaktime = breaktime)
     else:
         return "Restaurant name already exist!"
     

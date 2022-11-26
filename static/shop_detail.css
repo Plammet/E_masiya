@@ -9,12 +9,22 @@ div.yellowIcon{
 }
 
 div.mainImage{
+    display : flex;
+    justify-content : center;
+    overflow : hidden;
+    text-align : center;
+    vertical-align : middle;
     float : left;
     width : 200px;
     height : 200px;
     background-color : lightgrey;
     border-radius : 20px;
     margin : 20px;
+}
+
+div.mainImage image{
+    height : 200px;
+    flex : none;
 }
 
 div.comment{
@@ -72,15 +82,21 @@ div.menuInfo{
 }
 
 div.menuInfo .image{
+    display : flex;
+    overflow : hidden;
+    justify-content : center;
     float : left;
     width : 160px;
-    height : 170px;
+    height : 160px;
     margin : 10px 20px 10px 10px;
     background-color : lightgrey;
     border : none;
     border-radius : 10px;
 }
 
+div.menuInfo .image img{
+    flex : none;
+}
 
 div.reviews{
     display : inline-block;

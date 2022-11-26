@@ -6,16 +6,6 @@
         <hr id = "greyLine" />
         
         <div class = "shop_info_container">
-            <div class="shop_info_item">
-                http://www.홈페이지, 인스타그램 등<br>
-                서울특별시 서대문구 이화여대길 00 | 02-000-0000 | 주차 가능
-            </div>
-        </div>
-
-        <br>
-
-        <div style="text-align :center">
-            <div style="display:inline-block; width:1000px; text-align:left">
             <div class="shop_info_item" style="line-height : 2.0;">
                 <b style="color:dimgrey; vertical-align : middle">영업중 </b>&nbsp;
                 <span class = "type" style="vertical-align : middle">한식</span><br>
@@ -26,34 +16,47 @@
             </div>
             <div></div>
             <div class="shop_info_item">
-                <b style="font-size:50px">식당이름</b>&nbsp;&nbsp;
+                <b style="font-size:50px">{{data.name}}</b>&nbsp;&nbsp;
                 <img src = "{{ url_for('static',filename='Images/thumbup.png')}}" style="vertical-align:top"/>
                 <span style="position:relative; top:5px; left:-40px;"> 찜 56</span>
-                
             </div>
-                <b style = "font-size:30px; color:darkgreen">리뷰 작성</b>&nbsp;
+            
+            <div class="shop_info_item">
+                {{data.link}}<br>
+                {{data.address}} | {{data.phone}} | 주차 가능
             </div>
+        </div>
+
+        <br>
+
+        <div style="text-align :center">
+            <div style="display:inline-block; width:1000px; text-align:left">
+            <b style = "font-size:30px; color:darkgreen">리뷰 작성</b>&nbsp;
 
             <hr id="blackLine" style="height:4px; position:relative; top:10px;"/>
 
             <form action="/post_review_upload" method="post" enctype="multipart/form-data">
             <div class="review_container">
                 <div class="review_item" style="text-align : right">작성자</div>
-                <div class="review_item">userName</div>
-    
+                <input type="text" class="review_item" name = "user" value="userName"
+                       style="border : none; border-bottom : 1px solid black" readonly>
+                
+                <div class="review_item" style="text-align : right">식당이름</div>
+                <input type="text" class="review_item" name = "restaurant" value="{{ data.name }}"
+                       style="border : none; border-bottom : 1px solid black" readonly>
 
-                <div class="review_item" style="text-align : right; line-height : 40px">소요시간<br>청결<br>분위기</div>
+                <div class="review_item" style="text-align : right; line-height : 40px">소요시간<br>청결<br></div>
                 <div class="review_item">
                     <div>
-                        <input type="radio" class="reviewTag" name="time_r" id="5min" value="5min">
+                        <input type="radio" class="reviewTag" name="time_r" id="5min" value="5분 미만">
                         <label class="reviewTag" for="5min">5분 미만</label>
-                        <input type="radio" class="reviewTag" name="time_r" id="15min" value="15min">
+                        <input type="radio" class="reviewTag" name="time_r" id="15min" value="5분~15분">
                         <label class="reviewTag" for="15min">5분~15분</label>  
-                        <input type="radio" class="reviewTag" name="time_r" id="30min" value="30min">
+                        <input type="radio" class="reviewTag" name="time_r" id="30min" value="15분~30분">
                         <label class="reviewTag" for="30min">15분~30분</label>  
-                        <input type="radio" class="reviewTag" name="time_r" id="1hour" value="1hour">
+                        <input type="radio" class="reviewTag" name="time_r" id="1hour" value="30분~1시간">
                         <label class="reviewTag" for="1hour">30분~1시간</label>  
-                        <input type="radio" class="reviewTag" name="time_r" id="more" value="more">
+                        <input type="radio" class="reviewTag" name="time_r" id="more" value="1시간 이상">
                         <label class="reviewTag" for="more">1시간 이상</label><br>  
                     </div>
 
@@ -69,43 +72,34 @@
                         <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
                         <label for="1-star" class="star">★</label>
                     </div>
-
-                    <div>
-                        <input type="checkbox" class="reviewTag" name="mood" id="road" value="road">
-                        <label class="reviewTag" for="road">길거리음식</label>
-                        <input type="checkbox" class="reviewTag" name="mood" id="alone" value="alone">
-                        <label class="reviewTag" for="alone">혼밥가능</label>
-                        <input type="checkbox" class="reviewTag" name="mood" id="dating" value="dating">
-                        <label class="reviewTag" for="dating">데이트</label>
-                        <input type="checkbox" class="reviewTag" name="mood" id="family" value="family">
-                        <label class="reviewTag" for="family">가족식사</label>
-                        <input type="checkbox" class="reviewTag" name="mood" id="study" value="study">
-                        <label class="reviewTag" for="study">카공가능</label>
-                    </div>
                     
                 </div>
 
                 <div class="review_item" style="text-align : right">메뉴</div>
+                
+                <!-- 해당 메뉴가 기본적으로 선택되지만, 혹시 다른메뉴로 리뷰쓰고싶으면 변경할 수 있게 했어요 -->
+                <!-- 그리고 기존처럼 메뉴선택안하고 식당에서 바로 리뷰쓰는 기능도 살려는 놨는데 들어오는 버튼이 없어서 고민좀 해봐야할것같아요-->
+                
                 <div class="review_item">
-                   <input type="text" id="greenField" name="menuName">
+                    <select id = greenField name="menuName">
+                        {% if menuName is none %}
+                        <option value={{menuName}}>{{ menuName }}</option>
+                        {% endif %}
+                        
+                        {% for food in data.menu %}
+                        {% if food != menuName %}
+                        <option value={{food}}> {{ food }} </option>
+                        {% endif %}
+                        {% endfor%}
+                        
+                    </select>
                    &nbsp;
-                   <button style="border:0px; background-color:transparent">추가</button>
+                   <!-- <button style="border:0px; background-color:transparent">추가</button> -->
                 </div>
                 
                 <div class="review_item"></div>
                 <div class="review_item">
-                    <div>
-                        <div class="thumbnail"></div>
-                        <div style="float:left; vertical-align: middle;">
-                            <br>
-                            <b style="font-size : 25px"> 메뉴이름 </b>
-                            <b style="color:red">삭제</b><br><br>
-                            <span> 10000원</span><br><br>
-                        </div>
-
-                        <hr id="blackLine" style="width:780px">
-                    </div>
-                    
+ 
                     <b style="font-size:20px">별점을 남겨주세요</b>&nbsp;&nbsp;
                     <div class="star-rating space-x-4 mx-auto" style="display:inline-flex">
                         <input type="radio" id="menu1-5-stars" name="menu1-rating" value="5" v-model="ratings"/>
@@ -140,26 +134,24 @@
                     <hr id="blackLine" style="width:780px">
 
                     <b style="font-size:20px; float:left">이미지</b>
-
-
-                    <input type="file" id="menu1-image" name="filename" accept="image/*"/>
+    
+                    
+                    <input type="file" id="menu1-image" name="filename" accept="image/*"
+                               onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"/>
                     <label for="menu1-image">
-                        <div class="thumbnail"></div>
-                        <span style="color:red; position:relative; top:140px;">이미지 업로드</span>
+                        <div class="thumbnail"><img id = 'preview' style="height:150px"/></div>
                     </label>
 
                     <hr id="blackLine" style="width:780px">
 
                     <b style="font-size:20px; float:left">리뷰 내용</b><br><br>
-                    
-                    <div>
-                        <textarea name="reviewText" cols="10" rows="50"></textarea>
-                    </div>
+                    <textarea name="reviewText" style="width:700px; height:200px;"></textarea>
                 </div>
-
-            </div>
-            <br>
-            <input type="submit" value="리뷰 등록" id="submit" /><br><br>
+                <br>
+                </div>
+                <div style="text-align : center">
+                    <input type="submit" value="리뷰 등록" id="submit" /><br><br>
+                </div>
             </form>
 
         </div>

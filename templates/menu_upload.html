@@ -38,27 +38,11 @@
             <label class="spicy" for="3">죽음</label>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br /><br />
 
-            <span style="font-size: 18px; vertical-align: top;"
-                >&ensp;&ensp;&ensp;&ensp;사진&ensp;</span
-            >
-            <input type="file" id="menuImage" name="filename" accept="image/*" />
-            <label class="menuImage" for="menuImage"></label><br /><br />
-
-            <span style="font-size: 18px;">&ensp;&ensp;&ensp;&ensp; 기타 &ensp; </span>
-
-            <input type="checkbox" name="etc" id="vegan" value="vegan" />
-            <label class="etc" for="vegan">비건메뉴있음</label>
-
-            <input type="checkbox" name="etc" id="cheap" value="cheap" />
-            <label class="etc" for="cheap">가성비</label>
-
-            <input type="checkbox" name="etc" id="alone" value="alone" />
-            <label class="etc" for="alone">혼밥가능</label>
-
-            <input type="checkbox" name="etc" id="sunday" value="sunday" />
-            <label class="etc" for="sunday">일요일영업</label>
-
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br /><br />
+            <span style="font-size: 18px; vertical-align: top;">&ensp;&ensp;&ensp;&ensp;사진&ensp;</span>
+            <input type="file" id="menuImage" name="filename" accept="image/*"
+                   onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"/>
+            <label class="menuImage" for="menuImage"><img id = 'preview' style="height:250px"/></label><br /><br />
+            
 
             <hr width="800px" color="black" />
             <input type="hidden" name="name" value="{{name}}">
