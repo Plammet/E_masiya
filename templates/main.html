@@ -42,7 +42,7 @@
                     />
                     <span style="font-size:30px" "color:black;" >&nbsp;&nbsp;맛집 등록하러 가기</span></a></li><br>
 
-                     <li><a class="option" href="/shop_list" style= "text-decoration: none; color:black; font-weight: 900;">
+                     <li><a class="option" href="/list" style= "text-decoration: none; color:black; font-weight: 900;">
                         <img class="option_img"
                         src="{{ url_for('static',filename='Images/layingFork.png')}}"
                         style="height: 40px; vertical-align:bottom;  "
@@ -65,12 +65,12 @@
                 
 </div>
         <br>
-        <div style="width : 1300px; margin : auto;">
+        <div style="width : 1350px; margin : auto;">
             <br />
             <span style="font-size : 30px;"><b> BEST 맛집! </b></span>
             <span style="font-size : 25px; color:grey; float : right;"><b> more </b></span>
             <hr id="blackLine" style="width : 100%; background-color : grey;" />
- 
+     
             {% for best in data | sort(reverse = true, attribute="review_count") %}
             {% if loop.index == 1 or loop.index == 2 or loop.index == 3 %}
             <a href="/shop_detail/{{ best }} " style="text-decoration : none; color : black">
@@ -79,8 +79,8 @@
                     <img src="{{ url_for('static', filename='Images/' + data[best].img_path )}}"/>
                 </div>
                 <br />
-                <span class="type_gold">한식</span><br>
-                <div style="font-size: 25px; font-weight : bold">{{ best[0 : 10] }} </b><div>
+                <span class="type_gold">{{ data[best].category }} </span><br>
+                <div style="font-size: 25px; font-weight : bold">{{ best[0 : 10] }} </div>
                 <div style = "font-size : 13px; font-weight : normal">
                     {{ data[best].open_time }} ~ {{ data[best].close_time }}<br>
                     <br><br>
@@ -95,7 +95,6 @@
             </a>
             {% endif %}
             {% endfor %}
-            
         </div>
     
 {% endblock section %}

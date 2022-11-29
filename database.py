@@ -131,7 +131,9 @@ class DBhandler:
         
         for res in restaurants.each():
             value = res.val()
-            
+                
+            if value['name']==None:
+                return None
             if value['name']==name:
                 target_value=value
         return target_value
@@ -176,4 +178,11 @@ class DBhandler:
         data=self.db.child("restaurant").get()
             
         return data.val()
+    
+    # 맛집 등록 테이블에서 데이터 가져오기
+    def get_restaurants(self):
+        restaurants = self.db.child("restaurant").get().val()
+        return restaurants
+    
+
         

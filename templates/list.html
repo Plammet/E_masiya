@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block section %}
+        <link rel = "stylesheet" type = "text/css" href = "list.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+            rel="stylesheet"
+        />
+      <div class = "shop_info_container">
+          <a href="/shop_upload" style = "text-decoration: none; color: inherit; text-align : left"><b>내 식당 등록하기</b></a>
+          <b style="font-size:48px">이<span style = "font-size : 40px">화</span> 맛<span style = "font-size : 40px">집</span>이야</b>
+      </div>
+      <div>
+          
+      {% if total > 0 %}
+      <p>
+          <b>맛집 리스트 -- 현재까지 {{total}}개 등록됨</b>
+      </p>
+      {% for data in datas %}
+      <a href="/shop_detail/{{ data[1].name }}">
+      <div class = "Container">
+        <p>맛집 이름: {{data[1].name}}</p>
+          <div class="image">
+              <img src="{{ url_for('static', filename='Images/' + data[1].img_path )}}" style="height : 200px;"/>
+          </div>
+      </div>
+      </a>
+      {% endfor %}
+      <!--페이지네이션을 위한 코드 시작-->
+      <div class = "page-wrap">
+        <div class = "page-nation">
+          <ul style = "list-style : none;">
+            <li>
+              {% for i in range(page_count)%}
+                <a href = "{{url_for('list_restaurants', page = i)}}" color = "black">{{i+1}}</a>
+              {% endfor %}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {% else %}
+      <p>
+        등록된 맛집이 없습니다.
+      </p>
+      {% endif %}
+{% endblock section %}

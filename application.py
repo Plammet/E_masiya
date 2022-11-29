@@ -1,6 +1,7 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, flash, session
 from database import DBhandler
 from time import time
+import hashlib
 import random
 import sys
 
@@ -21,10 +22,6 @@ def home():
 def go_home():
     return redirect(url_for('home'))
 
-@application.route("/list")
-def go_list():
-    return render_template("lookaround.html")
-
 #찜한 맛집 조회 화면
 @application.route("/mystore")
 def view_mystore():
@@ -34,6 +31,12 @@ def view_mystore():
 @application.route("/signup")
 def go_signup():
     return render_template("signup.html")
+
+@application.route("/signup_post", methods=['POST'])
+def register_user():
+    data = request.form
+    pw = request.form['pw']
+    
 
 #로그인 화면
 @application.route("/login")
@@ -61,7 +64,7 @@ def go_menu(name):
 @application.route("/review_upload/<name>/")
 def go_review_upload(name):
     data=DB.get_shop_byname(str(name))
-    return render_template("review_upload.html", data=data)
+    return render_template("review_upload.html", data=data, menuName="")
 
 #리뷰 업로드 화면(식당, 메뉴)
 @application.route("/review_upload/<name>/<menuName>/")
@@ -69,12 +72,9 @@ def go_review_upload_with_menu(name, menuName):
     data=DB.get_shop_byname(str(name))
     return render_template("review_upload.html", data=data, menuName=menuName)
 
-
-
-
 #맛집 리스트(지도)
-@application.route("/shop_list")
-def view_shoplist():
+@application.route("/shop_map")
+def view_shoplist():    
     return render_template("lookaround.html")
 
 #######맛집 세부 화면 --> 동적 라우팅############
@@ -166,7 +166,29 @@ def go_post_result():
     else:
         return "Restaurant name already exist!"
     
+# 맛집 리스트 가져오기
+# 맛집 리스트 화면 페이징
+@application.route("/list")
+def list_restaurants():
+    page = request.args.get("page", 0, type = int)
+    limit = 3
+    
+    start_idx = limit*page
+    end_idx = limit*(page+1)
+    data = DB.get_restaurants()
+    tot_count = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    
+    return render_template(
+        "list.html",
+        datas = data.items(),
+        total = tot_count,
+        limit = limit,
+        page = page,
+        page_count = int((tot_count/limit)+1)
+    )
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
+    
     

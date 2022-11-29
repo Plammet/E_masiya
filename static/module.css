@@ -30,7 +30,6 @@ nav{
     padding : 0px;
 }
 
-
 nav img#logo{
     float : left;
     margin : 25px 50px 0px 100px;
@@ -64,7 +63,7 @@ nav li a:hover {
 /* 노란 가로선 */
 #yellowLine {
     height : 15px;
-    width : 100vw;
+    width : 1500px;
     background-color: gold;
     border : 0px;
     margin : 0px 0px;
@@ -74,7 +73,7 @@ nav li a:hover {
 /* 회색 가로선 */
 #greyLine {
     height : 1px;
-    width : 100vw;
+    width : 1500px;
     background-color: grey;
     border : 0px;
     margin : 0px 0px;
@@ -142,6 +141,15 @@ span.type{
     margin : 20px;
 
 }
+
+
+@media (min-width:1500px){
+    nav,#greyLine,#yellowLine {
+        width : 100vw;
+    }
+    
+}
+
 
 .rating{
     font-size : 25px;

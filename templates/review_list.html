@@ -54,6 +54,7 @@
 
             <!--여기부터 리뷰 박스-->
             <div class="review_container">
+                <!--
                 <div class="review_item" style="text-align: right;">작성자</div>
                 <div class="review_item">
                     userName<br /><br />
@@ -74,10 +75,11 @@
                         />
                     </div>
                 </div>
+-->
                 <div class="review_item" style="text-align: right;">메뉴</div>
                 <div class="review_item">
                     <img
-                        src="{{ url_for('static',filename='Images/sample_menu.png') }}"
+                        src="{{ url_for('static',filename='Images/' + data.menu[menuName].img_path ) }}"
                         style="float: left; height: 100px; margin: 10px 10px;"
                     />
                     <div style="float: left; vertical-align: middle;">
@@ -85,15 +87,21 @@
                         <b style="font-size: 25px;"> {{data.menu[menuName].menuName}} </b>
                         <span> {{data.menu[menuName].price}} 원</span><br /><br />
                         <span> 평균별점 {{data.menu[menuName].rate}}</span>
-                        <img
-                            src="{{ url_for('static',filename='Images/sample_stars_yellow.png') }}"
-                            style="vertical-align: middle;"
-                        />
+                         <div class = "rating" style="display : inline-block;" >
+                            <div class = "starFilled" style= "width:{{ data.menu[menuName].rate }}em">
+                                ★★★★★ 
+                            </div>
+
+                            <div class = "starUnfilled">
+                                ★★★★★ 
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
                 {%if data.menu[menuName].review_count>0%}
                 {%for r in data.menu[menuName].review | reverse%} 
-                    <div class="review_item">
+                    <div class="review_item" style="display:flex; align-items : center;">
                         <img
                             src="{{ url_for('static',filename='Images/' + data.menu[menuName].review[r].img_path ) }}"
                             style="float: left; width: 250px; margin: 10px 10px;"
@@ -101,11 +109,17 @@
                     </div>
                     <div class="review_item" style="text-indent: 100px;">
                         별점
-                        <img
-                            src="{{ url_for('static',filename='Images/sample_stars_yellow.png') }}"
-                            style="vertical-align: middle;"
-                        />
-                        <div id="reviewBox" >{{data.menu[menuName].review[r].reviewText}}</div>
+                       <div class = "rating" style="display : inline-block; text-indent:0px;" >
+                            <div class = "starFilled" style= "width:{{ data.menu[menuName].review[r].menu1_rating }}em">
+                                ★★★★★ 
+                            </div>
+
+                            <div class = "starUnfilled">
+                                ★★★★★ 
+                            </div>
+                        </div>
+
+                        <div id="reviewBox" style="margin-bottom : 20px;" >{{data.menu[menuName].review[r].reviewText}}</div>
                     </div>
                 {%endfor%}
                 {%else%}

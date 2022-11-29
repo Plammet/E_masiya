@@ -78,19 +78,22 @@
                 <div class="review_item" style="text-align : right">메뉴</div>
                 
                 <!-- 해당 메뉴가 기본적으로 선택되지만, 혹시 다른메뉴로 리뷰쓰고싶으면 변경할 수 있게 했어요 -->
+                    <!-- ㄴ왜인지는 모르겠지만 메뉴 선택란에 메뉴가 반대로 뜨고 1개만 떠서 말씀하신대로 작동하도록 수정했어요!-->
                 <!-- 그리고 기존처럼 메뉴선택안하고 식당에서 바로 리뷰쓰는 기능도 살려는 놨는데 들어오는 버튼이 없어서 고민좀 해봐야할것같아요-->
                 
                 <div class="review_item">
-                    <select id = greenField name="menuName">
-                        {% if menuName is none %}
-                        <option value={{menuName}}>{{ menuName }}</option>
-                        {% endif %}
+                    <select id = greenField name="menuName" required>
+                        
+                        <!--지금 리뷰 화면 말고 shop_dail에서 리뷰쓰는 걸 해보고 싶어서 하고 있었어용,,,-->
+                        <!-- 혹시나 보실까 해서용.. 일단 남은 것은 맛집 리스트 페이징 한 것과 맛집 세부사항 연결하는 것입니당-->                 
                         
                         {% for food in data.menu %}
-                        {% if food != menuName %}
-                        <option value={{food}}> {{ food }} </option>
+                        {% if menuName != "" and food == data.menu[menuName].menuName %}
+                        <option value={{food}} selected> {{ food }} </option>
+                        {% else %} <option value={{food}}> {{ food }} </option>
+                        
                         {% endif %}
-                        {% endfor%}
+                        {% endfor %}
                         
                     </select>
                    &nbsp;
@@ -118,16 +121,16 @@
 
                     <span style="line-height:40px">맵기</span>
 
-                    <input type="radio" class="reviewTag" name="spicy" id="0" value="0">
+                    <input type="radio" class="reviewTag" name="spicy" id="0" value="안매움">
                     <label class="reviewTag" for="0">안매움</label>  
 
-                    <input type="radio" class="reviewTag" name="spicy" id="1" value="1">
+                    <input type="radio" class="reviewTag" name="spicy" id="1" value="신라면">
                     <label class="reviewTag" for="1">신라면</label>  
 
-                    <input type="radio" class="reviewTag" name="spicy" id="2" value="2">
+                    <input type="radio" class="reviewTag" name="spicy" id="2" value="불닭">
                     <label class="reviewTag" for="2">불닭</label>  
 
-                    <input type="radio" class="reviewTag" name="spicy" id="3" value="3">
+                    <input type="radio" class="reviewTag" name="spicy" id="3" value="죽음">
                     <label class="reviewTag" for="3">죽음</label>  
                     <br>
 
@@ -136,7 +139,7 @@
                     <b style="font-size:20px; float:left">이미지</b>
     
                     
-                    <input type="file" id="menu1-image" name="filename" accept="image/*"
+                    <input type="file" id="menu1-image" name="filename" accept="image/*" required
                                onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"/>
                     <label for="menu1-image">
                         <div class="thumbnail"><img id = 'preview' style="height:150px"/></div>
@@ -145,7 +148,7 @@
                     <hr id="blackLine" style="width:780px">
 
                     <b style="font-size:20px; float:left">리뷰 내용</b><br><br>
-                    <textarea name="reviewText" style="width:700px; height:200px;"></textarea>
+                    <textarea name="reviewText" style="width:700px; height:200px;" required></textarea>
                 </div>
                 <br>
                 </div>
