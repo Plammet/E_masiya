@@ -32,10 +32,11 @@ def view_mystore():
 def go_signup():
     return render_template("signup.html")
 
-@application.route("/signup_post", methods=['POST'])
-def register_user():
-    data = request.form
-    pw = request.form['pw']
+#회원가입
+#@application.route("/signup_post", methods=['POST'])
+#def register_user():
+ #   data = request.form
+  #  pw = request.form['pw']
     
 
 #로그인 화면
