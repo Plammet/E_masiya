@@ -4,7 +4,7 @@ div.review_container{
     overflow : hidden;
     justify-content:center;
     grid-template-columns : 200px 800px;
-    grid-template-rows : 60px 160px 75px auto;
+    grid-template-rows : 60px 60px 120px 75px auto;
 }
 
 div.review_item{
@@ -55,6 +55,7 @@ input[type="file"]{
 }
 
 textarea{
+    padding:20px;
     width:780px;
     height:200px;
     border-radius:20px;

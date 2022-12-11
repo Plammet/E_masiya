@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% block section %}
+
         <link
             rel="stylesheet"
             type="text/css"
@@ -9,95 +10,115 @@
         <hr id="greyLine" />
 
         <img
-            src="{{ url_for('static',filename='sample_shop_image.png ) }}"
-            style="width: 1520px;"
+            src="{{ url_for('static',filename='Images/sample_shop_image.png' ) }}"
+            class="top_image" 
         />
+
+
         <div class="shop_info_container">
             <div class="shop_info_item" style="line-height: 2;">
-                <b style="color: dimgrey; vertical-align: middle;">영업중 </b>&nbsp;
-                <span class="type" style="vertical-align: middle;">한식</span><br />
+                <b style="color: dimgrey; vertical-align: middle;"> {{data.address}}   </b>&nbsp;
+                <span class="type" style="vertical-align: middle;"> {{data.category}} </span><br />
                 <span>
-                    <img
-                        src="{{ url_for('static',filename='sample_stars_green.png ) }}"
-                        style="height: 25px; vertical-align: middle;"
-                    />
-                    <!--별점 샘플이미지-->
+                    <span class = "rating" style = "font-size : 25px;">
+                            <div class = "starFilled" style= "color : darkgreen; width: {{avg_rate}}em">
+                                ★★★★★
+                            </div>
+
+                            <div class = "starUnfilled">
+                                ★★★★★
+                                <span style="color: black">{{avg_rate}}</span>
+                            </div>
+                    </span>
                 </span>
-                <span stlye="vertical-align : center">5.0</span><br />
             </div>
             <div></div>
             <div class="shop_info_item">
-                <b style="font-size: 50px;">식당 이름</b>&nbsp;&nbsp;
-                <img
-                    src="{{ url_for('static',filename='thumbup.png ) }}"
-                    style="vertical-align: top;"
-                />
-                <span style="position: relative; top: 5px; left: -40px;"> 찜 56</span>
+                <b style="font-size: 50px;"> {{data.name}} </b>&nbsp;&nbsp;
+                <div style="display : inline-block; position : relative; font-size:30px; color:red; right:5px; bottom:20px">
+                {% if bookmarked == 0 %}
+                    <a style="text-decoration : none; color: white" href="/bookmark/{{data.name}}"> ♥ </a>
+                {% else %}
+                    <a style="text-decoration : none; color: red" href="/bookmark_delete/{{data.name}}"> ♥ </a>
+                {% endif %}
+                    
+                </div>
+                
+                <span style="position: relative; top: 5px; left: -40px;"> 찜 {{ data.bookmarked }} </span>
             </div>
             <div class="shop_info_item">
-                http://www.홈페이지, 인스타그램 등<br />
-                서울특별시 서대문구 이화여대길 00 | 02-000-0000 | 주차 가능
+                {{data.link}}<br />
+                {{data.address}} | {{data.phone}} |
+                {%if data[parking] =="yes"%} 주차 가능 {%endif%}
+                {%if data[parking] =="no"%} 주차 불가능 {%endif%}
             </div>
         </div>
 
         <br />
 
+        <!-- 메뉴 -->
         <div style="text-align: center; vertical-align: middle;">
             <div style="width: 1040px; margin: auto; text-align: left;">
                 <div>
-                    &nbsp; &nbsp; 소요시간
-                    <div class="yellowIcon">30분~1시간</div>
-                    &nbsp;&nbsp;&nbsp; 분위기
-                    <div class="yellowIcon">가족식사</div>
-                    &nbsp;&nbsp;&nbsp; 청결
-                    <img src="{{ url_for('static',filename='sample_stars_yellow.png ) }}" />
-                </div>
-
-                <br />
-
-                <div>
-                    <div class="mainImage"></div>
-
-                    <div style="float: left;">
-                        <br />
-                        대표메뉴<br />
-                        <b style="font-size: 30px;">메뉴이름</b>
-                        &nbsp; &nbsp;
-                        <b style="font-size: 20px;">10000원</b><br />
-
-                        <img
-                            src="{{ url_for('static',filename='sample_stars_yellow.png ) }}"
-                            style="height: 30px; margin: 5px 0px;"
-                        /><br />
-
-                        <div class="comment">리뷰앞부분이 조금 보이는 한줄평...</div>
-                        <br />
-                        <div class="comment">맛있고 분위기도 좋아요 다음에...</div>
+                    <!-- 대표메뉴 : rate 가 가장 높은 메뉴로 선정-->
+                    
+                    {% for mainMenu in data.menu | sort(reverse = true, attribute="rate") %}
+                    {% if loop.first %} 
+                    <div class="mainImage">
+                        <img src="{{ url_for('static',filename='Images/' + data.menu[mainMenu].img_path ) }}" />
                     </div>
 
+                    <div style="float: left;">
+                        
+                        <br />
+                        대표메뉴<br />
+                        <b style="font-size: 30px;"> {{ data.menu[mainMenu].menuName }}</b>
+                        &nbsp; &nbsp;
+                        <b style="font-size: 20px;"> {{ data.menu[mainMenu].price }} 원</b><br />
+                        <div class = "rating">
+                            <div class = "starFilled" style= "width:{{data.menu[mainMenu].rate}}em">
+                                ★★★★★ 
+                            </div>
+
+                            <div class = "starUnfilled">
+                                ★★★★★
+                                <span style = "color : black; font-size : 15px;">{{ '%0.2f' | format(data.menu[mainMenu].rate)}}</span>
+                            </div>
+                        </div>
+                        <div style="height : 10px;"></div>
+                        
+                        {% for comment in data.menu[mainMenu].review | sort(case_sensitive=true, reverse=true) %}
+                        {% if loop.index==1 or loop.index==2 %}
+                        <div class="comment">{{ data.menu[mainMenu].review[comment].reviewText[0 : 20] }}</div><br>
+                        {% endif %}
+
+                        
+                        {% if loop.index==3 %}
+                    </div>
                     <div style="float: left; margin-left: 20px;">
                         <div style="height: 13px;"></div>
                         <b style="font-size: 20px;">벗들의 한줄평</b><br />
-                        <div class="comment">맛있고 분위기도 좋아요 다음에...</div>
-                        <br />
-                        <div class="comment">맛있고 분위기도 좋아요 다음에...</div>
-                        <br />
-                        <div class="comment">맛있고 분위기도 좋아요 다음에...</div>
-                        <br />
-                        <div class="comment">맛있고 분위기도 좋아요 다음에...</div>
-                        <br />
+                        <div class="comment">{{ data.menu[mainMenu].review[comment].reviewText[0 : 20] }}</div><br>
+                        {% endif %}
+                        
+                        {% if loop.index==4 or loop.index==5 or loop.index==6 %}
+                        <div class="comment">{{ data.menu[mainMenu].review[comment].reviewText[0 : 20] }}</div><br>
+                        {% endif %}
+                        {% endfor %}
                     </div>
+                    {% endif %}
+                    {% endfor %}
 
                     <br />
                     <div class="times">
-                        영업시간<br />
-                        월 00시 ~ 00시<br />
-                        화 00시 ~ 00시<br />
-                        수 00시 ~ 00시<br />
-                        목 00시 ~ 00시<br />
-                        금 00시 ~ 00시<br />
-                        토 00시 ~ 00시<br />
-                        일 00시 ~ 00시<br />
+                        영업시간<br>
+                        {{ data.open_time }} ~ {{ data.close_time }} <br><br>
+                        
+                        브레이크<br>
+                        {{ data.breaktime }}<br><br>
+                        
+                        휴무<br>
+                        {{ data.noop }}
                     </div>
                 </div>
 
@@ -106,132 +127,54 @@
                     <br />
                     &nbsp;&nbsp;
                     <b style="font-size: 30px;">메뉴</b>&nbsp;
-                    <a href="/menu_upload" style="text-decoration: none;">추가하기</a>
+                    <a href="/menus/{{ data.name }}" style="text-decoration:none;">자세히</a>
+                    <a href="/menu_upload/{{ data.name }}"
+                       style="text-decoration:none; float:right; position:relative; top:20px; right:20px; ">추가하기</a>
                     <hr id="blackLine" />
-
+                    
+                    
+                    {% for d in data.menu %}
+                    <a href="/review_list/{{ data.name }}/{{data.menu[d].menuName}}" style="text-decoration: none; color : black">
                     <div class="menuInfo">
-                        <div class="image"></div>
+                        <div class="image". style="overflow:hidden; text-align:center">
+                            <img src="{{ url_for('static',filename='Images/' + data.menu[d].img_path ) }}"
+                                 style = "height:180px"
+                            />
+                        </div>
+                       
                         <br />
-                        <b style="font-size: 25px;">메뉴이름</b>
-                        <b style="font-size: 15px;">8000원</b><br />
-                        <img
-                            src="{{ url_for('static',filename='sample_stars_yellow.png ) }}"
-                            style="margin: 10px 0px;"
-                        />
-                        <div class="menuComment">해당 메뉴에 대한 한줄평입니다.</div>
-                        <div class="menuComment">맛있고 든든해요~~</div>
-                    </div>
+                        <b style="font-size: 25px;">{{ data.menu[d].menuName }}</b>&nbsp;
+                        <b style="font-size: 15px;">{{ data.menu[d].price }}원</b><br />
+                        
+                        <div class = "rating">
+                            <div class = "starFilled" style= "left : 190px; width:{{data.menu[d].rate}}em">
+                                ★★★★★ 
+                            </div>
 
-                    <div class="menuInfo">
-                        <div class="image"></div>
-                        <br />
-                        <b style="font-size: 25px;">메뉴이름</b>
-                        <b style="font-size: 15px;">8000원</b><br />
-                        <img
-                            src="{{ url_for('static',filename='sample_stars_yellow.png ) }}"
-                            style="margin: 10px 0px;"
-                        />
-                        <div class="menuComment">해당 메뉴에 대한 한줄평입니다.</div>
-                        <div class="menuComment">맛있고 든든해요~~</div>
-                    </div>
-
-                    <div class="menuInfo">
-                        <div class="image"></div>
-                        <br />
-                        <b style="font-size: 25px;">메뉴이름</b>
-                        <b style="font-size: 15px;">8000원</b><br />
-                        <img
-                            src="{{ url_for('static',filename='sample_stars_yellow.png ) }}"
-                            style="margin: 10px 0px;"
-                        />
-                        <div class="menuComment">해당 메뉴에 대한 한줄평입니다.</div>
-                        <div class="menuComment">맛있고 든든해요~~</div>
-                    </div>
-
-                    <div class="menuInfo">
-                        <div class="image"></div>
-                        <br />
-                        <b style="font-size: 25px;">메뉴이름</b>
-                        <b style="font-size: 15px;">8000원</b><br />
-                        <img
-                            src="{{ url_for('static',filename='sample_stars_yellow.png ) }}"
-                            style="margin: 10px 0px;"
-                        />
-                        <div class="menuComment">해당 메뉴에 대한 한줄평입니다.</div>
-                        <div class="menuComment">맛있고 든든해요~~</div>
-                    </div>
-                </div>
+                            <div class = "starUnfilled">
+                                ★★★★★
+                                <span style = "color : black; font-size : 15px;">{{ '%0.2f' | format(data.menu[d].rate)}}</span>
+                            </div>
+                        </div>
+    
+                        {% for show in data.menu[d].review | reverse %}
+                            {% if loop.index==1 or loop.index==2 %}
+                                <div class="menuComment">{{ data.menu[d].review[show].reviewText[0 : 25] }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    </div> 
+                    {% endfor %}
+                    </a>
 
                 <br /><br />
-
-                <div style="clear: both;">
-                    <br />
-                    &nbsp;&nbsp;
-                    <b style="font-size: 30px;">리뷰</b>
-                    <hr id="blackLine" />
-
-                    <div style="text-align: center;">
-                        <div class="reviews">
-                            <div class="image"></div>
-
-                            <br />
-                            username<br />
-                            <b style="font-size: 25px;">메뉴이름</b>&nbsp; 안매움 | 5분 이내 |
-                            혼밥가능 <br />
-
-                            <img
-                                src="{{ url_for('static',filename='sample_stars_yellow.png ) }}"
-                                style="margin: 10px 0px; height: 30px;"
-                            /><br />
-
-                            <div class="text">
-                                리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다.
-                                리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다.
-                                리뷰 내용입니다. 리뷰 내용입니다.
-                            </div>
-                        </div>
-
-                        <div class="reviews">
-                            <div class="image"></div>
-
-                            <br />
-                            username<br />
-                            <b style="font-size: 25px;">메뉴이름</b>&nbsp; 안매움 | 5분 이내 |
-                            혼밥가능 <br />
-
-                            <img
-                                src="{{ url_for('static',filename='sample_stars_yellow.png ) }}"
-                                style="margin: 10px 0px; height: 30px;"
-                            /><br />
-
-                            <div class="text">
-                                리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다.
-                                리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다.
-                                리뷰 내용입니다. 리뷰 내용입니다.
-                            </div>
-                        </div>
-
-                        <div class="reviews">
-                            <div class="image"></div>
-
-                            <br />
-                            username<br />
-                            <b style="font-size: 25px;">메뉴이름</b>&nbsp; 안매움 | 5분 이내 |
-                            혼밥가능 <br />
-
-                            <img
-                                src="{{ url_for('static',filename='sample_stars_yellow.png ) }}"
-                                style="margin: 10px 0px; height: 30px;"
-                            /><br />
-
-                            <div class="text">
-                                리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다.
-                                리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다.
-                                리뷰 내용입니다. 리뷰 내용입니다.
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                <br>
+                <a href="/review_upload/{{data.name}}/" style="text-decoration: none; color : black">
+                <div style="text-align : center">
+                    <div class="yellowIcon" style="margin : auto; float:none">리뷰작성하기</div>
+                </div>
+                </a>
+
             </div>
         </div>
 {% endblock section %}

@@ -1,13 +1,3 @@
-div.yellowBox{
-    text-align: left;
-    width : 1020px;
-    height : 10px;
-    padding : 10px 250px;
-    align-items : end;
-    overflow : hidden;
-    background-color : gold;
-    box-shadow : inset 0px 2px 6px 1px grey;
-}
 
 div.image{
     float : left;
@@ -36,4 +26,8 @@ div.menuInfo{
     background-color : whitesmoke;
     border : 1px solid lightgrey;
     border-radius : 5px;
+}
+
+.backgroundBox{
+    min-height: 85vh;
 }

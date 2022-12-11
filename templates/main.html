@@ -3,74 +3,97 @@
 {% block section %}
         <link rel="stylesheet" href= "{{ url_for('static',filename='main.css') }}">
         <hr id="greyLine" />
-        <div class="yellowBox">
-            <div class="shop_info_item">
-                <b style="font-size: 80px;">이화 맛집이야!</b>&nbsp;&nbsp;
+        <div class="yellowBox"
+             style="grid-template-columns: 1fr 1fr; grid-template-rows:1fr; height : 350px; padding-left : 100px;">
+
+            <div class="shop_info_item" style="text-align : center" >
+                <b style="font-size: 80px;" >이</b>
+                <b style="font-size: 50px;" >화</b>
+                <b style="font-size: 80px;" >맛</b>
+                <b style="font-size: 50px;" >집</b>
+                <b style="font-size: 80px;" >이야!</b><br>
                 <b style="font-size: 24px;">이화여자대학교 벗들의 맛집 추천 커뮤니티</b>
-            </div>
-            <div class="shop_info_item">
-                <a href="/shop_upload">맛집 등록하러 가기</a>
-                <br />
-                <a href="/review_upload">리뷰 작성하러 가기</a>
-                <br />
-                <a href="/shop_list">맛집 리스트</a>
-            </div>
-
-            <div class="randomBox">
-                <b>뭐 먹을까?</b><br />
-                <div class="randomButton">
-                    RANDOM!
+                
+                <br>
+                 <div class="randomBox" >
+                    <div style="float : left; margin-top : 10px; font-size : 18px;">
+                        <b>뭐 먹을까?</b>
+                            <a href="/home" style= "text-decoration: none;">
+                                <div class="randomButton">
+                                    RANDOM!
+                                </div>
+                            </a>
+                    </div>
+                    <a href = "/shop_detail/{{ randomRes }}">
+                    <div class="greyBox">{{ randomRes[0:10] }}</div>
+                    </a>
                 </div>
-                <div class="greyBox">?</div>
             </div>
+
+            
+            <div style="text-align : left">
+                <section>
+                <br>
+                <ul class="sidelist" style="background-color:gold; list-style-type: none; margin:0; position: static" >
+                    <li><a class="option" href="/shop_upload" style= "text-decoration: none; color:black; font-weight: 900;">
+                        <img class="option_img"
+                        src="{{ url_for('static',filename='Images/layingFork.png')}}"
+                        style="height: 40px; vertical-align:bottom;  "
+                    />
+                    <span style="font-size:30px" "color:black;" >&nbsp;&nbsp;맛집 등록하러 가기</span></a></li><br>
+
+                     <li><a class="option" href="/list" style= "text-decoration: none; color:black; font-weight: 900;">
+                        <img class="option_img"
+                        src="{{ url_for('static',filename='Images/layingFork.png')}}"
+                        style="height: 40px; vertical-align:bottom;  "
+                    />
+                    <span style="font-size:30px" >&nbsp;&nbsp;맛집 리스트</span></a></li><br>
+
+
+                     <li ><a class="option" href="/shop_map" style= "text-decoration: none; color:black; font-weight: 900;">
+                        <img class="option_img"
+                        src="{{ url_for('static',filename='Images/layingFork.png')}}"
+                        style="height: 40px; vertical-align:bottom; "
+                    />
+                    <span style="font-size:30px" >&nbsp;&nbsp;주변 지도 보기</span></a></li><br>
+
+
+                </ul>
+                </section>
+
         </div>
-        <div style="clear: both;">
+                
+</div>
+        <br>
+        <div style="width : 1350px; margin : auto;">
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp; BEST 맛집! more<br /><br />
-            <hr id="blackLine" />
-
-            <div class="best">
-                <div class="image"></div>
+            <span style="font-size : 30px;"><b> BEST 맛집! </b></span>
+            <a href="/list"><span style="font-size : 25px; color:grey; float : right;"><b> more </b></span></a>
+            <hr id="blackLine" style="width : 100%; background-color : grey;" />
+     
+            {% for best in data %}
+            <a href="/shop_detail/{{ best }} " style="text-decoration : none; color : black">
+            <div class="best" style="overflow : hidden; padding : 0px 10px; " >
+                <div class="image" style="overflow : hidden;">
+                    <img src="{{ url_for('static', filename='Images/' + data[best].img_path )}}"/>
+                </div>
                 <br />
-                <b style="font-size: 30px;">가게 이름</b>
-                <div class="type" style="vertical-align: middle;">한식</div>
-                <br />
-                <span>
-                    <img
-                        src="{{ url_for('static',filename='Images/thumbup.png')}}"
-                        style="height: 25px; vertical-align: middle;"
-                    />
-                </span>
-                <span style="vertical-align: middle;">찜 56</span>
+                <span class="type_gold">{{ data[best].category }} </span><br>
+                <div style="font-size: 25px; font-weight : bold">{{ best[0 : 10] }} </div>
+                <div style = "font-size : 13px; font-weight : normal">
+                    {{ data[best].open_time }} ~ {{ data[best].close_time }}<br>
+                    <br><br>
+                    <span style="display : block; overflow : hidden; text-overflow : ellipsis; white-space : nowrap;">
+                        {% for m in data[best].menu %}
+                        {{ m }} &nbsp | &nbsp 
+                        {% endfor %}
+                    </span>
+                    
+                </div>
             </div>
-
-            <div class="best">
-                <div class="image"></div>
-                <br />
-                <b style="font-size: 30px;">가게 이름</b>
-                <div class="type" style="vertical-align: middle;">한식</div>
-                <br />
-                <span>
-                    <img
-                        src="{{ url_for('static',filename='Images/thumbup.png')}}"
-                        style="height: 25px; vertical-align: middle;"
-                    />
-                </span>
-                <span style="vertical-align: middle;">찜 56</span>
-            </div>
-            <div class="best">
-                <div class="image"></div>
-                <br />
-                <b style="font-size: 30px;">가게 이름</b>
-                <div class="type" style="vertical-align: middle;">한식</div>
-                <br />
-                <span>
-                    <img
-                        src="{{ url_for('static',filename='Images/thumbup.png')}}"
-                        style="height: 25px; vertical-align: middle;"
-                    />
-                </span>
-                <span style="vertical-align: middle;"> 찜 56</span>
-            </div>
+            </a>
+            
+            {% endfor %}
         </div>
+    
 {% endblock section %}

@@ -4,7 +4,7 @@ div.review_container{
     overflow : hidden;
     justify-content:center;
     grid-template-columns : 200px 800px;
-    grid-template-rows : 120px 75px 150px auto;
+    grid-template-rows : 150px auto;
 }
 
 div.review_item{
@@ -34,5 +34,16 @@ div#reviewBox{
     border-radius : 20px;
     text-indent : 0px;
     padding : 10px 10px;
+    margin-botton : 20px;
 
+}
+
+.top-image{
+    width : 1520px;
+}
+
+@media(min-width:1520px){
+    .top-image{
+        width : 100vw;
+    }
 }

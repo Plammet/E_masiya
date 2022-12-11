@@ -1,5 +1,13 @@
 {% extends "index.html" %}
+
 {% block section %}
+{% with mesg = get_flashed_messages() %}
+{% if mesg != [] %}
+<script>alert("{{mesg[0]}}")</script>
+{% endif %}
+{% endwith %}
+
+
         <link
             rel="stylesheet"
             type="text/css"
@@ -13,73 +21,28 @@
         <b class="signuptitle">회원가입</b>
         <br />
 
+<form method = "post" action="/signup_post">
         <!--id, pw 입력-->
         <div class="placeholder_box">
             <label for="placeholder">아이디</label>
-            <input type="text" id="placeholder" name="placeholdername" />
+            <input type="text" id="placeholder" name="id" />
         </div>
         <br />
 
         <div class="placeholder_box">
             <label for="placeholder">비밀번호</label>
-            <input type="password" id="placeholder" name="placeholdername" />
+            <input type="password" id="placeholder" name="pw" />
         </div>
         <br />
 
         <div class="placeholder_box">
             <label for="placeholder">비밀번호 재입력</label>
-            <input type="password" id="placeholder" name="placeholdername" />
+            <input type="password" id="placeholder" name="pwcheck" />
         </div>
         <br />
-
-        <!--맵기-->
-        <div>
-            <span style="font-weight: bold; font-size: 20px;">맵기</span>
-
-            <input type="radio" class="userData" name="spicy" id="0" value="0" />
-            <label class="userData" for="0">안매움</label>
-
-            <input type="radio" class="userData" name="spicy" id="1" value="1" />
-            <label class="userData" for="1">신라면</label>
-
-            <input type="radio" class="userData" name="spicy" id="2" value="2" />
-            <label class="userData" for="2">불닭</label>
-
-            <input type="radio" class="userData" name="spicy" id="3" value="3" />
-            <label class="userData" for="3">죽음</label>
-        </div>
-        <br />
-        <!--선호 음식-->
-        <div>
-            <span style="font-weight: bold; font-size: 20px;">음식 취향</span>
-            <input type="checkbox" class="userData" name="like" id="japan" value="japan" />
-            <label class="userData" for="japan">일식</label>
-
-            <input type="checkbox" class="userData" name="like" id="asian" value="asian" />
-            <label class="userData" for="asian">아시안</label>
-
-            <input type="checkbox" class="userData" name="like" id="west" value="west" />
-            <label class="userData" for="west">양식</label>
-            <input type="checkbox" class="userData" name="like" id="china" value="china" />
-            <label class="userData" for="china">중식</label>
-
-            <input type="checkbox" class="userData" name="like" id="vegan" value="vegan" />
-            <label class="userData" for="vegan">비건</label>
-
-            <input type="checkbox" class="userData" name="like" id="snack" value="snack" />
-            <label class="userData" for="snack">분식</label>
-
-            <input type="checkbox" class="userData" name="like" id="fast" value="fast" />
-            <label class="userData" for="alone">패스트푸드</label>
-
-            <input type="checkbox" class="userData" name="like" id="dessert" value="dessert" />
-            <label class="userData" for="dating">디저트</label>
-
-            <input type="checkbox" class="userData" name="like" id="dessert" value="dessert" />
-            <label class="userData" for="dessert">기타</label>
-        </div>
-
+    
         <!--회원가입 버튼-->
-        <br /><br /><br />
+        <br /><br />
         <button class="signup">회원가입</button>
+</form>
 {% endblock section %}

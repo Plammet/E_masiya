@@ -1,0 +1,66 @@
+.shop_info_container{
+
+    display : grid;
+    width : 1020px;
+    height : auto;
+    margin-top : 100px;
+    padding : 10px 250px;
+    align-items : end;
+    grid-template-columns : 400px 400px;
+    background-color : #00462A;
+    box-shadow : inset 0px 2px 6px 1px grey;
+}
+.page-nation li{
+    list-style : none;
+}
+
+.page-wrap{
+    text-align : center;
+    font-size : 0;
+}
+
+.page_nation{
+    display:flex;
+    justify-content : center;
+    align-items : center;
+    margin-top: 20px;
+}
+
+.page_nation a {
+    display : block;
+    margin : 0px 3px;
+    float : left;
+    border : 1px solid #e6e6e6;
+    width:28px;
+    height:28px;
+    text-align:center;
+    background-color : #fff;
+    font-size:13px;
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+div.yellowIcon{
+    display : inline-block;
+    padding : 0px 20px;
+    text-align : center;
+    font-weight : bold;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : gold;
+}
+
+div.menuInfo{
+    display : inline-block;
+    overflow: hidden;
+    width: 220px;
+    padding : 3px 15px;
+    margin : 2px 5px;
+    text-align : left;
+    font-size : 12px;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : white;
+    border : 1px solid grey;
+}

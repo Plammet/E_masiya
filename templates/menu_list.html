@@ -1,52 +1,58 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="{{ url_for('static',filename='module.css') }}"
-        />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <nav>
-            <a href="/home"
-                ><img
-                    src="{{ url_for('static',filename='Images/logo.png') }}"
-                    id="logo"
-                    style="float: left;"
-            /></a>
-            <ul style="list-style-type: none; margin: 0px;">
-                <li><a href="/home"> Home </a></li>
-                <li><a href="/list"> Shop </a></li>
-                <li><a href="/review"> Review </a></li>
-                <li><a href="/mystore"> MyStore </a></li>
-            </ul>
+{% extends "index.html" %}
 
-            <ul style="list-style-type: none; margin: 0px;">
-                <li><a class="rightmenu" href="/login"> Log In </a></li>
-                <span
-                    style="
-                        float: right;
-                        height: 40px;
-                        margin-top: 30px;
-                        border-right: solid 2px grey;
-                    "
-                ></span>
-                <li><a class="rightmenu" href="/signup"> Sign Up </a></li>
-            </ul>
-            <a href="/mystore"
-                ><img
-                    src="{{ url_for('static',filename='Images/default_profile.png') }}"
-                    id="profile"
-                    style="float: right;"
-            /></a>
-        </nav>
+{% block section %}
 
-        <hr id="yellowLine" />
-    </body>
-</html>
+        <link rel="stylesheet" href="{{ url_for('static',filename='representative.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='shop_detail.css') }}" />
+
+        <hr id="greyLine" />
+
+        <div id="yellowLine"></div>
+        <div class="backgroundBox" style="text-align:center; background-color: lightyellow;">
+            <div class="backgroundBox" style="display:inline-block; width: 1040px; margin: auto; background-color: white; align-item : center;">
+                <br>
+                <div style="font-size:30px;"><b> 메뉴 조회 </b></div>
+                {% for d in data.menu %}
+                    <a href="/review_list/{{ data.name }}/{{data.menu[d].menuName}}" style="text-decoration: none; color : black">
+                    <div class="menuInfo" style="float : none; text-align : left; width : 700px; margin:20px auto">
+                        <div class="image". style="overflow:hidden; text-align:center">
+                            <img src="{{ url_for('static',filename='Images/' + data.menu[d].img_path ) }}"
+                                 style = "height:180px"
+                            />
+                        </div>
+                        <div style="float:left; margin-right : 20px;">
+                            <br><br>
+                            <b style="font-size: 25px;">{{ data.menu[d].menuName }}</b><br>
+                            <b style="font-size: 15px;">{{ data.menu[d].price }}원</b><br />
+                        
+                            <div class = "rating">
+                                <div class = "starFilled" style= " width:{{data.menu[d].rate}}em">
+                                    ★★★★★ 
+                                </div>
+
+                                <div class = "starUnfilled">
+                                    ★★★★★
+                                    <span style = "color : black; font-size : 15px;">{{ '%0.2f' | format(data.menu[d].rate)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="float:left">
+                            <br>
+                            {% for show in data.menu[d].review | reverse %}
+                            {% if loop.index>=1 and 4>=loop.index %}
+                                <div class="menuComment">{{ data.menu[d].review[show].reviewText[0 : 25] }}</div><br>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        
+                    </div> 
+                    {% endfor %}
+                    </a>
+
+                <br /><br />
+
+                </div>
+            </div>
+            
+        </div>
+{% endblock section %}

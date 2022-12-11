@@ -1,6 +1,12 @@
 {% extends "index.html" %}
-
 {% block section %}
+
+{% with mesg = get_flashed_messages() %}
+{% if mesg != [] %}
+<script>alert("{{mesg[0]}}")</script>
+{% endif %}
+{% endwith %}
+
         <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static',filename='login.css')}}">
         <hr id = "greyLine" />
 
@@ -15,20 +21,22 @@
 		<br><br>
 
 
-		<form style = "text-align : center">
+
+
+		<form style = "text-align : center" action="/post_login" method="post">
 			<!--id,pw 입력-->
            <div class="placeholder_box">
    		   <label for="placeholder">아이디</label>
-    	   <input type="text" id="placeholder" name="placeholdername" />
+    	   <input type="text" id="placeholder" name="id" />
 		   </div>
 
 		   <div class="placeholder_box">
    		   <label for="placeholder">비밀번호</label>
-    	   <input type="password" id="placeholder" name="placeholdername" />
+    	   <input type="password" id="placeholder" name="pw" />
 		   </div>
 			<br><br>
 			<!-- 로그인 버튼 -->
 			<button class="login">로그인</button>
-
         </form>
+
 {% endblock section %}

@@ -43,9 +43,6 @@
 }
 
 /*사용자 정보*/
-input[type="radio"],input[type="checkbox"]{
-    appearance: none;
-}
 
 label.userData:hover{
     background-color : khaki;

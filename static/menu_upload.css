@@ -34,7 +34,9 @@
 
     label.menuImage{
         display: inline-block;
-        padding: 130px 300px;
+        width : 550px;
+        height : 250px;
+        padding : 25px 25px;
         border-radius: 20px;
         background-color : #EEF5EE;
     }

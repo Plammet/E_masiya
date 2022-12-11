@@ -1,27 +1,23 @@
 div.yellowBox{
     text-align: left;
-    width : 1020px;
-    height : 10px;
+    height : 60px;
     padding : 10px 250px;
+    margin: auto;
     align-items : end;
     overflow : hidden;
     background-color : gold;
     box-shadow : inset 0px 2px 6px 1px grey;
 }
 
-div.image{
-    float : left;
-    width : 250px;
-    height : 140px;
-    margin : 20px 30px 20px 50px;
-    background-color : lightgrey;
-    border : none;
-    border-radius : 10px;
+@media(min-width:1400px){
+    div.yellowBox{
+        width:72vw;
+    }
 }
 
 div.yellowIcon{
     display : inline-block;
-    padding : 5px 20px;
+    padding : 0px 20px;
     text-align : center;
     font-weight : bold;
     vertical-align: middle;
@@ -38,6 +34,20 @@ div.comment{
     margin : 5px 5px;
     text-align : center;
     font-weight : bold;
+    vertical-align: middle;
+    border-radius : 20px;
+    background-color : white;
+    border : 1px solid grey;
+}
+
+div.menuInfo{
+    display : inline-block;
+    overflow: hidden;
+    width: 220px;
+    padding : 3px 15px;
+    margin : 2px 5px;
+    text-align : left;
+    font-size : 12px;
     vertical-align: middle;
     border-radius : 20px;
     background-color : white;

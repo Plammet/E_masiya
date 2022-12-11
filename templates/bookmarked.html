@@ -1,15 +1,24 @@
 {% extends "index.html" %}
 
 {% block section %}
+
         <link rel="stylesheet" href="{{ url_for('static',filename='bookmarked.css') }}" />
         <hr id="greyLine" />
 
-        <div class="yellowBox"></div>
-        <div style="text-align: center; background-color: lightyellow;">
+        <div class="yellowBox">
+            <b style="font-size:35px;">찜한 맛집&nbsp;
+                <span style = "font-size : 18px">♥찜♥ 을 한눈에 확인하세요</span></b>
+        </div>
+        <div style="text-align: center; background-color: lightyellow; height:800px">
             <div
-                style="display: inline-block; width: 1040px; margin: auto; background-color: white;"
-            >
-                <b style="font-size: 30px; color: darkgreen;"><br />찜한 맛집<br /></b>&nbsp;
+                style="display: inline-block; width: 1040px; margin: auto; 
+                       background-color: white; height:750px">
+                <b style="font-size: 38px; color: black;"><br/>사용자</b>
+
+                <b style="font-size: 30px; color: darkgreen;">의 찜한 맛집<br /></b>&nbsp;
+                
+                <hr id="blackLine" />
+
                 <div>
                     <div class="image"></div>
                     <br />
@@ -30,8 +39,6 @@
                         </div>
                         <br />
 
-                        <div class="comment">리뷰앞부분이 조금 보이는 한줄평...</div>
-                        <br />
                         <div class="comment">리뷰앞부분이 조금 보이는 한줄평...</div>
                         <br />
                         <div class="comment">리뷰앞부분이 조금 보이는 한줄평...</div>
@@ -57,8 +64,6 @@
                         </div>
                         <br />
 
-                        <div class="comment">리뷰앞부분이 조금 보이는 한줄평...</div>
-                        <br />
                         <div class="comment">리뷰앞부분이 조금 보이는 한줄평...</div>
                         <br />
                         <div class="comment">리뷰앞부분이 조금 보이는 한줄평...</div>
@@ -87,10 +92,10 @@
                         <br />
                         <div class="comment">리뷰앞부분이 조금 보이는 한줄평...</div>
                         <br />
-                        <div class="comment">리뷰앞부분이 조금 보이는 한줄평...</div>
-                        <br />
+    
                     </div>
                 </div>
             </div>
         </div>
+
 {% endblock section %}

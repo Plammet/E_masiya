@@ -87,7 +87,7 @@
     
     
     
-    <form method="post" action="/menu_upload" >
+    <form method="post" enctype="multipart/form-data" action="/menu_upload/{{ name }}/" >
         
         <input type="hidden" name="name" value="{{name}}">
         <div>
