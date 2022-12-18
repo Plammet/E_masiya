@@ -15,6 +15,7 @@
 ### 개발 환경
 - goormide
 - Flask
+- firebase
 - HTML , CSS, JS
 
 ---
@@ -53,5 +54,3 @@
 ### 기여할 수 있는 방법(Contributing)
 - pullrequest를 보내주세요.
 - (https://github.com/Plammet/E_masiya) 를 포크하세요.
-
-
