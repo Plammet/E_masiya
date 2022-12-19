@@ -9,6 +9,7 @@ class DBhandler:
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
         
+    # 회원가입
     def insert_user(self, ID, pw):
         user_info = {
             "id": ID,
@@ -20,6 +21,7 @@ class DBhandler:
         else:
             return False
         
+    # id 중복검사
     def user_duplicate_check(self, id_string):
         users = self.db.child("user").get()
         
@@ -112,7 +114,12 @@ class DBhandler:
     # 유저가 찜한 맛집 데이터 가져오기
     def get_bookmarked_by_userID(self, user):
         u = self.get_users_byID(user).val()
-        return dict(u['bookmarked'])
+        result={}
+        
+        if "bookmarked" in u:
+            result = dict(u['bookmarked'])
+        
+        return result
             
         
     # 맛집 찜하기 기능

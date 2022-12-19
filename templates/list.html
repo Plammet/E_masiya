@@ -53,8 +53,8 @@
         <div>
             {% for data in datas %}
                 <br>
-                <a href="shop_detail/{{data[1].name}}" style="text-decoration: none; color : black">
                 <div>
+                    <a href="shop_detail/{{data[1].name}}" style="text-decoration: none; color : black">
                     <div class="image" style = "float : left; width : 300px; height : 160px; margin : 20px 30px 60px 50px;">
                         <a href="/shop_detail/{{ data[1].name }}" style = "text-decoration : none; color : black;">
                         <img
@@ -94,23 +94,24 @@
                             {% endif %}
                             {% endfor %}
                     </div>
+                    </a>
                         &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp;&nbsp;<br>
                     <div style="display:inline-block; float:right; margin-right:50px;">
                         <br><br>
                         <div style="font-size:40px; color:red; right:5px; bottom:20px">
                         {% if data[0] in bookmarked %}
-                            <a style="text-decoration : none; color: red" href="/bookmark_delete/{{data[0]}}"> ♥ </a>
+                                <a style="text-decoration : none; color: red" href="/bookmark_delete/list/{{data[0]}}"> ♥ </a>
                         {% else %}
-                            <a style="text-decoration : none; color: red" href="/bookmark/{{data[0]}}"> ♡ </a>
+                                <a style="text-decoration : none; color: red" href="/bookmark/list/{{data[0]}}"> ♡ </a>
                         {% endif %}
                         </div>
                         <div>
                             찜 {{ data[1].bookmarked }}
                         </div>
-                    </div>
-                </div>
-               </a>         
+                    </div>    
+            </div>
+      
             </div>
                 <hr id="blackLine" />
             {% endfor %}

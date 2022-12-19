@@ -5,25 +5,42 @@
         
         <hr id = "greyLine" />
         
-        <div class = "shop_info_container">
-            <div class="shop_info_item" style="line-height : 2.0;">
-                <b style="color:dimgrey; vertical-align : middle">영업중 </b>&nbsp;
-                <span class = "type" style="vertical-align : middle">한식</span><br>
-                <span>  
-                    <img src = "{{ url_for('static',filename='Images/sample_stars_green.png')}}" style="height : 25px; vertical-align : middle;"/>        <!--별점 샘플이미지-->
+        <div class="shop_info_container">
+            <div class="shop_info_item" style="line-height: 2;">
+                <b style="color: dimgrey; vertical-align: middle;"> {{data.address}}   </b>&nbsp;
+                <span class="type" style="vertical-align: middle;"> {{data.category}} </span><br />
+                <span>
+                    <span class = "rating" style = "font-size : 25px;">
+                            <div class = "starFilled" style= "color : darkgreen; width: {{avg_rate}}em">
+                                ★★★★★
+                            </div>
+
+                            <div class = "starUnfilled">
+                                ★★★★★
+                                <span style="color: black">{{avg_rate}}</span>
+                            </div>
+                    </span>
                 </span>
-                <span stlye="vertical-align : center">5.0</span><br>
             </div>
             <div></div>
             <div class="shop_info_item">
-                <b style="font-size:50px">{{data.name}}</b>&nbsp;&nbsp;
-                <img src = "{{ url_for('static',filename='Images/thumbup.png')}}" style="vertical-align:top"/>
-                <span style="position:relative; top:5px; left:-40px;"> 찜 56</span>
+                <b style="font-size: 50px;"> {{data.name}} </b>&nbsp;&nbsp;
+                <div style="display : inline-block; position : relative; font-size:30px; color:red; right:5px; bottom:20px">
+                {% if bookmarked == 0 %}
+                    <a style="text-decoration : none; color: white" href="/bookmark/detail/{{data.name}}"> ♥ </a>
+                {% else %}
+                    <a style="text-decoration : none; color: red" href="/bookmark_delete/detail/{{data.name}}"> ♥ </a>
+                {% endif %}
+                    
+                </div>
+                
+                <span style="position: relative; top: 5px; left: -40px;"> 찜 {{ data.bookmarked }} </span>
             </div>
-            
             <div class="shop_info_item">
-                {{data.link}}<br>
-                {{data.address}} | {{data.phone}} | 주차 가능
+                {{data.link}}<br />
+                {{data.address}} | {{data.phone}} |
+                {%if data[parking] =="yes"%} 주차 가능 {%endif%}
+                {%if data[parking] =="no"%} 주차 불가능 {%endif%}
             </div>
         </div>
 

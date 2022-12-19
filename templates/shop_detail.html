@@ -37,9 +37,9 @@
                 <b style="font-size: 50px;"> {{data.name}} </b>&nbsp;&nbsp;
                 <div style="display : inline-block; position : relative; font-size:30px; color:red; right:5px; bottom:20px">
                 {% if bookmarked == 0 %}
-                    <a style="text-decoration : none; color: white" href="/bookmark/{{data.name}}"> ♥ </a>
+                    <a style="text-decoration : none; color: white" href="/bookmark/detail/{{data.name}}"> ♥ </a>
                 {% else %}
-                    <a style="text-decoration : none; color: red" href="/bookmark_delete/{{data.name}}"> ♥ </a>
+                    <a style="text-decoration : none; color: red" href="/bookmark_delete/detail/{{data.name}}"> ♥ </a>
                 {% endif %}
                     
                 </div>
@@ -165,13 +165,13 @@
                     </div> 
                     {% endfor %}
                     </a>
-
-                <br /><br />
                 </div>
                 <br>
                 <a href="/review_upload/{{data.name}}/" style="text-decoration: none; color : black">
-                <div style="text-align : center">
+                <div style="text-align : center; clear:both">
+                    <br>
                     <div class="yellowIcon" style="margin : auto; float:none">리뷰작성하기</div>
+                    <br><br>
                 </div>
                 </a>
 

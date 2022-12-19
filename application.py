@@ -39,10 +39,6 @@ def view_mystore():
         
         data=DB.get_all_data()
         
-        # data 는 식당 DB 전체이고 bookmarked는 사용자가 찜한 맛집 !!이름만!! 들어있어요
-        # 찜했으면 -> bookmarked[식당이름]==1   안했으면 -> bookmarked에 안들어있음
-        # bookmarked 전체 for문돌려서 식당이름으로 data에서 세부정보 찾는 방식으로 하면 좋을것같아요!
-        
         return render_template(
             "bookmark.html",
             data = data,
@@ -176,25 +172,36 @@ def view_shop_detail(name):
         
     return render_template("shop_detail.html",data=data, avg_rate=avg_rate, bookmarked = if_bookmarked)
 
+
 # 맛집 찜하기 기능
-@application.route("/bookmark/<name>")
-def bookmark(name):
+@application.route("/bookmark/<nextPage>/<name>")
+def bookmark(nextPage, name):
     if 'id' in session:
         user = session['id']
         DB.bookmark(user, name)
-        return redirect(url_for('view_shop_detail', name=name))
+        
+        if nextPage == 'detail':
+            return redirect(url_for('view_shop_detail', name=name))
+    
+        else:
+            return redirect(url_for('list_restaurants'))
     
     else:
         flash("로그인이 필요한 기능입니다")
         return redirect(url_for('go_login'))
 
 # 찜 해제하기 기능
-@application.route("/bookmark_delete/<name>")
-def bookmark_delete(name):
+@application.route("/bookmark_delete/<nextPage>/<name>")
+def bookmark_delete(nextPage, name):
     if 'id' in session:
         user = session['id']
         DB.bookmark_delete(user, name)
-        return redirect(url_for('view_shop_detail', name=name))
+        
+        if nextPage == 'detail':
+            return redirect(url_for('view_shop_detail', name=name))
+    
+        else:
+            return redirect(url_for('list_restaurants'))
     
     else:
         flash("오류가 발생했습니다. 식당 정보 화면으로 돌아갑니다.")
@@ -309,6 +316,7 @@ def list_restaurants():
     bookmarked = {}
     if 'id' in session:
         user = session['id']
+        
         bookmarked = DB.get_bookmarked_by_userID(user)
     
     return render_template(
