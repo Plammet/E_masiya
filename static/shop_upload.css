@@ -4,7 +4,7 @@ div.review_container{
     overflow : hidden;
     justify-content:center;
     grid-template-columns : 200px 800px;
-    grid-template-rows : 60px 170px 170px auto;
+    grid-template-rows : 170px 170px auto;
 }
 
 div.review_item{

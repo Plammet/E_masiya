@@ -11,6 +11,8 @@
         <img class="top-image"
             src="{{ url_for('static',filename='Images/sample_shop_image.png') }}"
         />
+        
+        
         <div class="shop_info_container">
             <div class="shop_info_item" style="line-height: 2;">
                 <b style="color: dimgrey; vertical-align: middle;"> {{data.address}}   </b>&nbsp;
@@ -30,7 +32,9 @@
             </div>
             <div></div>
             <div class="shop_info_item">
-                <b style="font-size: 50px;"> {{data.name}} </b>&nbsp;&nbsp;
+                <a href="/shop_detail/{{ data.name }} " style="text-decoration : none; color : black">
+                    <b style="font-size: 50px;"> {{data.name}} </b>&nbsp;&nbsp;
+                </a>
                 <div style="display : inline-block; position : relative; font-size:30px; color:red; right:5px; bottom:20px">
                 {% if bookmarked == 0 %}
                     <a style="text-decoration : none; color: white" href="/bookmark/detail/{{data.name}}"> ♥ </a>
@@ -54,7 +58,7 @@
         <div style="text-align: center;">
             <div style="display: inline-block; width: 1000px; text-align: left;">
                 <b style="font-size: 30px; color: darkgreen;">{{data.menu[menuName].menuName}} </b>&nbsp;
-                <a href="/review_upload/{{ data.name }}/{{data.menu[menuName].menuName}}" style="text-decoration: none;">추가하기</a>
+                <a href="/review_upload/{{ data.name }}/{{data.menu[menuName].menuName}}" style="text-decoration: none; color:grey;">추가하기</a>
             </div>
          
             <hr id="blackLine" style="height: 4px; position: relative; top: 10px;" />
@@ -71,7 +75,7 @@
                         <br />
                         <b style="font-size: 25px;"> {{data.menu[menuName].menuName}} </b>
                         <span> {{data.menu[menuName].price}} 원</span><br /><br />
-                        <span> 평균별점 {{data.menu[menuName].rate}}</span>
+                        <span> 평균별점 {{ '%0.2f' | format( data.menu[menuName].rate | float) }}</span>
                          <div class = "rating" style="display : inline-block;" >
                             <div class = "starFilled" style= "width:{{ data.menu[menuName].rate }}em">
                                 ★★★★★ 

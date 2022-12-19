@@ -17,10 +17,9 @@ DB = DBhandler()
 def home():
     all_data=DB.get_all_data()
     item = dict(sorted(all_data.items(), key=lambda x:x[1]['bookmarked'], reverse = True))
+    randomRes = random.choice(list(item.keys()))
     
     data = dict(itertools.islice(item.items(), 0, 3))
-    
-    randomRes = random.choice(list(data.keys()))
     
     return render_template("main.html", data=data, randomRes=randomRes)
 
@@ -48,25 +47,6 @@ def view_mystore():
     else:
         flash("로그인이 필요한 기능입니다.")
         return redirect(url_for('go_login'))
-
-    # return render_template("bookmarked.html") 
-    
-    #@application.route("/mystore")
-    #def view_mystore():
-    #    page = request.args.get("page", 0, type = int) //여기서 page변수가 바뀔듯..
-    #    limit=3
-    #
-    #if  (bookmark > 0)
-    #    data = DB.get_bookmark_restaurants()
-    #bookmark_count = len(data)    
-    #
-    # //if 페이지 수 표시할거면 추가, 아니면 표시 x
-    #return render_template("bookmarked.html", 
-    #datas = data.items(),
-    #total = bookmark_count, 
-    #limit=limit)
-    #
-    
     
     
 #회원가입 화면
@@ -118,7 +98,8 @@ def login_user():
 @application.route("/logout")
 def logout_user():
     session.clear()
-    return redirect(url_for('list_restaurants'))
+    return redirect(url_for('list_restaurants')) #로그아웃 후 이동할 페이지
+
 
 #맛집 등록 화면
 @application.route("/shop_upload")
@@ -221,7 +202,6 @@ def view_review(name,menuName):
 @application.route("/post_review_upload", methods=['POST', 'GET'])
 def go_post_review_upload():
 
-    user=request.form['user']
     restaurant=request.form['restaurant']
     time_r=request.form['time_r']
     clean_rating=request.form['rating']
@@ -237,7 +217,7 @@ def go_post_review_upload():
     imageName = restaurant + timenow + image_file_r.filename
     image_file_r.save("static/Images/{}".format(imageName))
     
-    if DB.insert_review(restaurant, user, time_r, clean_rating, menuName, menu1_rating, spicy, reviewText, imageName):
+    if DB.insert_review(restaurant, time_r, clean_rating, menuName, menu1_rating, spicy, reviewText, imageName):
         DB.update_rate(restaurant, menuName, menu1_rating, clean_rating)
         ################################################################################################### 
         # 일단은 이렇게 두고, 나중에 reviewList 페이지가 완성되면 reviewList 페이지로 이동하도록 변경하면 좋을것같아요 #

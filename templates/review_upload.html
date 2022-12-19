@@ -33,7 +33,6 @@
                 {% endif %}
                     
                 </div>
-                
                 <span style="position: relative; top: 5px; left: -40px;"> 찜 {{ data.bookmarked }} </span>
             </div>
             <div class="shop_info_item">
@@ -43,7 +42,6 @@
                 {%if data[parking] =="no"%} 주차 불가능 {%endif%}
             </div>
         </div>
-
         <br>
 
         <div style="text-align :center">
@@ -54,10 +52,6 @@
 
             <form action="/post_review_upload" method="post" enctype="multipart/form-data">
             <div class="review_container">
-                <div class="review_item" style="text-align : right">작성자</div>
-                <input type="text" class="review_item" name = "user" value="userName"
-                       style="border : none; border-bottom : 1px solid black" readonly>
-                
                 <div class="review_item" style="text-align : right">식당이름</div>
                 <input type="text" class="review_item" name = "restaurant" value="{{ data.name }}"
                        style="border : none; border-bottom : 1px solid black" readonly>

@@ -7,12 +7,12 @@
              style="grid-template-columns: 1fr 1fr; grid-template-rows:1fr; height : 350px; padding-left : 100px;">
 
             <div class="shop_info_item" style="text-align : center" >
-                <b style="font-size: 80px;" >이</b>
-                <b style="font-size: 50px;" >화</b>
-                <b style="font-size: 80px;" >맛</b>
-                <b style="font-size: 50px;" >집</b>
-                <b style="font-size: 80px;" >이야!</b><br>
-                <b style="font-size: 24px;">이화여자대학교 벗들의 맛집 추천 커뮤니티</b>
+                <b style="color: white; font-size: 75px; text-shadow: 6px 6px 0px darkgreen;" >이</b>
+                <b style="font-size: 23px; letter-spacing:-7px; color: darkgreen;" >화</b>
+                <b style="color: white; text-shadow: 6px 6px 0px darkgreen; font-size: 75px;" >맛</b>
+                <b style="font-size: 23px; letter-spacing:-7px; color :darkgreen;" >집</b>
+                <b style="color: white; text-shadow: 6px 6px 0px darkgreen; font-size: 75px;" >이야!</b><br>
+                <b style="font-size: 18px; letter-spacing: -0.5px; color: black;">이화여자대학교 벗들의 맛집 추천 커뮤니티</b>
                 
                 <br>
                  <div class="randomBox" >
@@ -25,7 +25,7 @@
                             </a>
                     </div>
                     <a href = "/shop_detail/{{ randomRes }}">
-                    <div class="greyBox">{{ randomRes[0:10] }}</div>
+                    <div class="OtherBox">{{ randomRes[0:10] }}</div>
                     </a>
                 </div>
             </div>
@@ -34,28 +34,28 @@
             <div style="text-align : left">
                 <section>
                 <br>
-                <ul class="sidelist" style="background-color:gold; list-style-type: none; margin:0; position: static" >
-                    <li><a class="option" href="/shop_upload" style= "text-decoration: none; color:black; font-weight: 900;">
+                <ul style="list-style-type: none; margin:0; position: static" >
+                    <li><a class="option" href="/shop_upload" style= "text-decoration: none; font-weight: 900;">
+                        <img class="option_img"
+                        src="{{ url_for('static',filename='Images/layingFork.png')}}"
+                        style="height: 40px; vertical-align:bottom;"
+                    />
+                    <span class="sidelist" style="font-size:30px;" >&nbsp;&nbsp;맛집 등록하러 가기</span></a></li><br>
+
+                     <li><a class="option" href="/list" style= "text-decoration: none; font-weight: 900;">
                         <img class="option_img"
                         src="{{ url_for('static',filename='Images/layingFork.png')}}"
                         style="height: 40px; vertical-align:bottom;  "
                     />
-                    <span style="font-size:30px" "color:black;" >&nbsp;&nbsp;맛집 등록하러 가기</span></a></li><br>
-
-                     <li><a class="option" href="/list" style= "text-decoration: none; color:black; font-weight: 900;">
-                        <img class="option_img"
-                        src="{{ url_for('static',filename='Images/layingFork.png')}}"
-                        style="height: 40px; vertical-align:bottom;  "
-                    />
-                    <span style="font-size:30px" >&nbsp;&nbsp;맛집 리스트</span></a></li><br>
+                    <span class="sidelist" style="font-size:30px;" >&nbsp;&nbsp;맛집 리스트</span></a></li><br>
 
 
-                     <li ><a class="option" href="/shop_map" style= "text-decoration: none; color:black; font-weight: 900;">
+                     <li ><a class="option" href="/shop_map" style= "text-decoration: none; font-weight: 900;">
                         <img class="option_img"
                         src="{{ url_for('static',filename='Images/layingFork.png')}}"
                         style="height: 40px; vertical-align:bottom; "
                     />
-                    <span style="font-size:30px" >&nbsp;&nbsp;주변 지도 보기</span></a></li><br>
+                    <span class="sidelist" style="font-size:30px;" >&nbsp;&nbsp;주변 지도 보기</span></a></li><br>
 
 
                 </ul>
@@ -67,10 +67,14 @@
         <br>
         <div style="width : 1350px; margin : auto;">
             <br />
-            <span style="font-size : 30px;"><b> BEST 맛집! </b></span>
+            <span style="font-size : 30px;"> &nbsp;&nbsp;
+                <img src="{{ url_for('static',filename='Images/layingFork.png')}}"
+                        style="height: 22px "/><b> BEST 맛집! </b>
+            <img src="{{ url_for('static',filename='Images/layingFork.png')}}"
+                        style="height: 22px; transform:rotateY(180deg)"/></span>
             <a href="/list"><span style="font-size : 25px; color:grey; float : right;"><b> more </b></span></a>
             <hr id="blackLine" style="width : 100%; background-color : grey;" />
-     
+             <div>
             {% for best in data %}
             <a href="/shop_detail/{{ best }} " style="text-decoration : none; color : black">
             <div class="best" style="overflow : hidden; padding : 0px 10px; " >
@@ -85,15 +89,25 @@
                     <br><br>
                     <span style="display : block; overflow : hidden; text-overflow : ellipsis; white-space : nowrap;">
                         {% for m in data[best].menu %}
-                        {{ m }} &nbsp | &nbsp 
+                        {{ m }} &nbsp; | &nbsp;
                         {% endfor %}
                     </span>
                     
                 </div>
             </div>
             </a>
-            
+       
             {% endfor %}
-        </div>
-    
+            </div>
+        </div><br><br><br><br><br><br><br><br><br><br><br>
+<!--<footer>
+<div class="wrapper">
+    <p>
+        <small>E화료하조<br>이맛이야 2022</small>
+    </p>
+    </div></footer> 
+    -->
+
+
+
 {% endblock section %}

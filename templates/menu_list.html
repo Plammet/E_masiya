@@ -4,14 +4,19 @@
 
         <link rel="stylesheet" href="{{ url_for('static',filename='representative.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static',filename='shop_detail.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='menu_list.css') }}" />
 
         <hr id="greyLine" />
 
-        <div id="yellowLine"></div>
+
+        <div class="yellowBox">
+            <b style="font-size:40px; font-weight:bold; ">&nbsp;&nbsp;&nbsp;메뉴 조회 &nbsp;
+            <span style = "font-size : 20px">{{data.name}}</span></b>
+        </div>
         <div class="backgroundBox" style="text-align:center; background-color: lightyellow;">
             <div class="backgroundBox" style="display:inline-block; width: 1040px; margin: auto; background-color: white; align-item : center;">
                 <br>
-                <div style="font-size:30px;"><b> 메뉴 조회 </b></div>
+                <!--<div style="font-size:30px;"><b> 메뉴 조회 </b></div> -->
                 {% for d in data.menu %}
                     <a href="/review_list/{{ data.name }}/{{data.menu[d].menuName}}" style="text-decoration: none; color : black">
                     <div class="menuInfo" style="float : none; text-align : left; width : 700px; margin:20px auto">

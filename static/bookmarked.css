@@ -53,3 +53,17 @@ div.menuInfo{
     background-color : white;
     border : 1px solid grey;
 }
+
+.Image{
+    display : flex;
+    justify-content : center;
+    overflow : hidden;
+    text-align : center;
+    vertical-align : middle;
+    float : left;
+    width : 200px;
+    height : 200px;
+    background-color : lightgrey;
+    border-radius : 20px;
+    margin : 20px 80px 20px 150px;
+}

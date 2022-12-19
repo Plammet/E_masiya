@@ -1,29 +1,39 @@
 {% extends "index.html" %} 
 {% block section %}
 
-
-<!-- 카테고리 기능 추가 -->
 <script>
     $(document).ready(function () {
-        // alert('{{category}}');
         $('#category option: contains("{{category}})")').prop('selected', true);
     });
 </script>
 <link rel="stylesheet" href="{{ url_for('static',filename='list.css') }}" />
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
-<div style="padding:20px 0px; background-color:gold; margin:auto; text-align:left; text-indent:250px;">
-    <b style="font-size: 40px;">
-        식당 리스트
-    </b>
+<div class="yellowBox">
+        <b style="font-size:35px; letter-spacing:-2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;맛집 리스트 &nbsp;
+    <span style = "color: darkgreen; font-size : 25px; letter-spacing:0px;">{{category}} </span></b>
 </div>
 <div
-     style = "text-align : center; background-color : lightyellow;">
+     style = "text-align : center; background-color : lightyellow; height:100%;">
     <div
          style="display: inline-block; width: 1040px; margin: auto; background-color: white;">
         <br>
         
-    <select id="category" name="category" onchange="location=this.value" style = "text-align : left;">
+     <div>
+    {% if category != 'all' and total > 0 %}
+        <div style = "font-size: 30px; text-align: center;">
+            <b>&nbsp;&nbsp;&nbsp;{{total}}개의 {{category}}맛집이 등록되어 있습니다</b> 
+        </div>
+    {% endif %}
+        
+    {% if category == 'all' %}
+        <div style = "font-size: 30px; text-align: center;">
+            <b>모든 맛집</b> 
+        </div>
+    {% endif %}
+        
+    </div>
+    <select id="category" name="category" onchange="location=this.value" style = "text-align : left; float: left; margin-left:20px;">
         <option value="{{url_for('list_restaurants',page=i,category='all')}}">카테고리 선택</option>
         <option value="{{url_for('list_restaurants',page=i,category='all')}}">all</option>
         <option value="{{url_for('list_restaurants',page=i,category='한식')}}">한식</option>
@@ -36,34 +46,24 @@
         <option value="{{url_for('list_restaurants',page=i,category='디저트/카페')}}">디저트/카페</option>
         <option value="{{url_for('list_restaurants',page=i,category='기타')}}">기타</option>
     </select>
+    <br>
         
-    <div>
-        {% if category != 'all' and total > 0 %}
-        <p>
-            <div style = "font-size: 30px; text-align: center;">
-                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{category}}</b><br>
-                <b style = "font-size : 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{total}}개의 맛집이 등록되어 있어요!</b>
-            </div>
-        </p>
-        {% endif %}
-    </div>
-                
     <div>
         {% if total > 0 %}
         <div>
             {% for data in datas %}
                 <br>
+                <hr id="blackLine"/>
                 <div>
-                    <a href="shop_detail/{{data[1].name}}" style="text-decoration: none; color : black">
-                    <div class="image" style = "float : left; width : 300px; height : 160px; margin : 20px 30px 60px 50px;">
-                        <a href="/shop_detail/{{ data[1].name }}" style = "text-decoration : none; color : black;">
+                    <a href="shop_detail/{{data[1].name}}" style="text-decoration: none; color : black;">
+                    <div class="Image" style = "float : left;">
                         <img
                             src="{{ url_for('static', filename='Images/' + data[1].img_path)}}"
                             style="height: 200px;"
                         />
                     </div>
                     <br/>
-                    <div class="list" style="float: left;">
+                    <div class="list" style="float:left;">
                         <div class = "information" style="vertical-align:baseline">
                             <b style="font-size: 30px; float: left; line-height:35px;">{{data[1].name}}</b>
                             &nbsp;&nbsp;
@@ -87,10 +87,11 @@
                                     <span class = "starUnfilled">
                                         ★★★★★
                                     </span>
-                                    <span style="font-size:15px;">{{ data[1].menu[m].rate}}</span>
+
+                                    <span style="font-size:15px;">{{ '%0.2f' | format( data[1].menu[m].rate | float) }} </span>
                                 </div>
                                 </div>
-                                </br>
+                                <br/>
                             {% endif %}
                             {% endfor %}
                     </div>
@@ -100,7 +101,7 @@
                     <div style="display:inline-block; float:right; margin-right:50px;">
                         <br><br>
                         <div style="font-size:40px; color:red; right:5px; bottom:20px">
-                        {% if data[0] in bookmarked %}
+                        {% if data[1].name in bookmarked %}
                                 <a style="text-decoration : none; color: red" href="/bookmark_delete/list/{{data[0]}}"> ♥ </a>
                         {% else %}
                                 <a style="text-decoration : none; color: red" href="/bookmark/list/{{data[0]}}"> ♡ </a>
@@ -110,22 +111,25 @@
                             찜 {{ data[1].bookmarked }}
                         </div>
                     </div>    
+                </div>
+                <br>
             </div>
-      
-            </div>
-                <hr id="blackLine" />
+            
             {% endfor %}
+        <br>
         </div>
+ 
     </div>
-<br>
+
     <!--페이지네이션을 위한 코드 시작-->
-    <div class="page-wrap">
+    <div class="page-wrap;" >
         <div class="page-nation">
-            <ul style="list-style: none; float : center; display : inline;">
+            <br><br>
+            <ul style="list-style: none; float : center; display : inline; text-align:center; ">
                 <li style = "float : center;">
                     {% for i in range(page_count)%}
                     <a href="{{url_for('list_restaurants', page = i)}}" color="black"
-                       style = "float : center; padding : 4px; margin-right:3px; width:15px; color:#000; font:bold 12px tahoma; border:1px solid #eee; text-align:center; text-decoration:none;">
+                       style = "float : center; padding : 4px; margin:5px; color:black; background-color:white; font-size:20px; border:1px solid #eee; text-align:center; text-decoration:none;">
                         {{i+1}}</a>
                     {% endfor %}
                 </li>

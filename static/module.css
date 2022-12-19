@@ -30,6 +30,13 @@ nav{
     padding : 0px;
 }
 
+
+@media (min-width:1500px){
+    nav{
+        width:auto
+    } 
+}
+
 nav img#logo{
     float : left;
     margin : 25px 50px 0px 100px;

@@ -71,7 +71,7 @@ class DBhandler:
         return True
     
    # 리뷰 등록
-    def insert_review(self, restaurant, user, time_r, rating, menuName, menu1_rating, spicy, reviewText, img_path_r):
+    def insert_review(self, restaurant, time_r, rating, menuName, menu1_rating, spicy, reviewText, img_path_r):
         review_info ={
             "time": time_r, 
             "menu1_rating": menu1_rating,
@@ -198,7 +198,7 @@ class DBhandler:
                 return False
         return True 
     
-    ########맛집 이름으로 restaurant 테이블에서 정보 가져오기
+    #맛집 이름으로 restaurant 테이블에서 정보 가져오기
     def get_shop_byname(self,name):
         restaurants = self.db.child("restaurant").get()
         target_value=""
@@ -213,7 +213,7 @@ class DBhandler:
         return target_value
     
     
-    ###별점 평균 계산
+    #별점 평균 계산
     def get_avgrate_byname(self,name):
         menus=self.db.child("restaurant").child(name).child("menu").get()
         if menus.val() is None:
@@ -235,7 +235,7 @@ class DBhandler:
         else:
             return round(rate/count, 2)
     
-    ######식당이름으로 review 접근하기 --> 메뉴 이름으로 메뉴마다의 리뷰를 보게 하는 것이 더 좋을 것 같다...?
+    #식당이름으로 review 접근하기 --> 메뉴 이름으로 메뉴마다의 리뷰를 보게 하는 것이 더 좋을 것 같다...?
     def get_review_byname(self,name,menuName):
         menus=self.db.child("restaurant").child(name).child("menu").get()
         target_value=""
@@ -271,7 +271,7 @@ class DBhandler:
         return False
     
     
-    #카테고리 기능 추가
+    #카테고리 기능
     def get_restaurants_bycategory(self,cate):
         restaurants=self.db.child("restaurant").get();
         target_value=[]

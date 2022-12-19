@@ -1,14 +1,83 @@
-<!DOCTYPE html>
+{% extends "index.html" %}
+
+{% block section %}
 
 <body>
-    이맛이야
-    <br><br>
+     <link rel="stylesheet" href="{{ url_for('static',filename='post_result.css') }}" />
+   
+        <div class="yellowBox">
+            <b style="font-size:35px;">맛집 등록&nbsp;
+            <span style = "font-size : 16px">맛집 등록 성공!</span></b>
+    </div>
+
+        <img
+            src="{{ url_for('static',filename='Images/sample_shop_image.png' ) }}"
+            class="top_image" 
+        />
     
-    안녕하세요. 등록해주셔서 감사합니다. 
+    <div class="post_result_box" style="border-radius: 2em; background-color: lightYellow; height:350px" >
+        
     
-    <br><br><hr>
+               <div>
+                    
+                    <div style = "float : left; margin : 20px 30px 60px 50px;">
+            
+                            <img src="{{image_path}}" alt="Image uploaded"  width="300px">
+                        
+                   </div>
+                    <br/>
+                   <div class="post_result_table">
+                    <div class="post_result_row">
+                        <div class="cell">
+                        <div class = "information" style="vertical-align:baseline">
+                            <b class="yellowBox" style="font-size: 30px; float: left; line-height:35px;">{{name}}</b>
+                            &nbsp;&nbsp;
+                            <div class="yellowIcon" style=line-height:35px>
+                                {{category}}
+                            </div>
+                            <br><br>
+                            <b style="font-size: 16px; float: left;">{{address}}</b><br>
+                            <span style="font-size: 16px; float: left;">{{open_time}} ~ {{close_time}}</span><br>
+                            <span style="font-size: 16px; float: left;">휴무일 : {{noop}}</span><br>
+                            <span style="font-size: 16px; float: left;">브레이크타임 : {{breaktime}}</span><br>
+                            <span style="font-size: 16px; float: left;">{{link}}</span><br>
+                            <span style="font-size: 16px; float: left;">
+                            {% if parking=="yes" %}  주차가능합니다.        {% endif %}
+                            {% if parking =="no" %}  주차 불가능합니다.     {% endif %}
+                            </span><br>                        
+                        </div>
+                        <br>
+                            
+                    </div>
+        <div class="cell">
+            <br><br>
+            <div style=" background-color: lemonChiffon; border-radius: 2em;   padding: 20px 50px; ">
+            <form method="post" enctype="multipart/form-data" action="/menu_upload/{{ name }}/" >
+                     <input type="hidden" name="name" value="{{name}}">
+            <p style="font-weight: bold; font-size:20px;">
+                맛집의 대표 메뉴를 등록해주세요!
+            </p>
+             <button class="post_menu_button" type="submit" name="menu">
+                메뉴 등록
+            </button><br><br>
+                    </form>      
+            </div>
+                </div>
+    
+                   </div>
+        </div>
     
     
+    </div>
+    </div>
+    </body>
+
+
+{% endblock section %}
+
+<!--
+    
+    성공적으로 등록되셨습니다. 
 맛집의 이름은 {{name}}<br><br>
     
 맛집의 전화번호는 {{phone}}이다.<br><br>
@@ -85,19 +154,4 @@
     
     
     
-    
-    
-    <form method="post" enctype="multipart/form-data" action="/menu_upload/{{ name }}/" >
-        
-        <input type="hidden" name="name" value="{{name}}">
-        <div>
-            <p>
-                대표 메뉴 등록을 합시다! 다음 버튼을 눌러보세요!
-            </p>
-            <button type="submit" name="menu">
-                메뉴 등록
-            </button><br><br>
-        </div>
-    </form>
-      
-    </body>
+    -->

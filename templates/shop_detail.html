@@ -48,7 +48,7 @@
             </div>
             <div class="shop_info_item">
                 {{data.link}}<br />
-                {{data.address}} | {{data.phone}} |
+                | {{data.phone}} |
                 {%if data[parking] =="yes"%} 주차 가능 {%endif%}
                 {%if data[parking] =="no"%} 주차 불가능 {%endif%}
             </div>
@@ -68,7 +68,7 @@
                         <img src="{{ url_for('static',filename='Images/' + data.menu[mainMenu].img_path ) }}" />
                     </div>
 
-                    <div style="float: left;">
+                    <div style="float: left; padding:40px 0px;">
                         
                         <br />
                         대표메뉴<br />
@@ -86,23 +86,15 @@
                             </div>
                         </div>
                         <div style="height : 10px;"></div>
-                        
-                        {% for comment in data.menu[mainMenu].review | sort(case_sensitive=true, reverse=true) %}
-                        {% if loop.index==1 or loop.index==2 %}
-                        <div class="comment">{{ data.menu[mainMenu].review[comment].reviewText[0 : 20] }}</div><br>
-                        {% endif %}
-
-                        
-                        {% if loop.index==3 %}
                     </div>
-                    <div style="float: left; margin-left: 20px;">
+                    <div style="float: left; margin-left: 50px;">
                         <div style="height: 13px;"></div>
                         <b style="font-size: 20px;">벗들의 한줄평</b><br />
-                        <div class="comment">{{ data.menu[mainMenu].review[comment].reviewText[0 : 20] }}</div><br>
-                        {% endif %}
+                        {% for comment in data.menu[mainMenu].review | sort(case_sensitive=true, reverse=true) %}  
                         
-                        {% if loop.index==4 or loop.index==5 or loop.index==6 %}
-                        <div class="comment">{{ data.menu[mainMenu].review[comment].reviewText[0 : 20] }}</div><br>
+                        <!-- 부등호를 html 태그로 인식해서 좀 이상한데 작동은 잘 되는것같아요 -->
+                        {% if loop.index<5 %}
+                            <div class="comment">{{ data.menu[mainMenu].review[comment].reviewText[0 : 20] }}</div><br>
                         {% endif %}
                         {% endfor %}
                     </div>
@@ -127,9 +119,9 @@
                     <br />
                     &nbsp;&nbsp;
                     <b style="font-size: 30px;">메뉴</b>&nbsp;
-                    <a href="/menus/{{ data.name }}" style="text-decoration:none;">자세히</a>
+                    <a href="/menus/{{ data.name }}" style="text-decoration:none; color:dimgrey;">자세히</a>
                     <a href="/menu_upload/{{ data.name }}"
-                       style="text-decoration:none; float:right; position:relative; top:20px; right:20px; ">추가하기</a>
+                       style="text-decoration:none; float:right; position:relative; top:20px; right:20px; color:dimgrey; ">추가하기</a>
                     <hr id="blackLine" />
                     
                     

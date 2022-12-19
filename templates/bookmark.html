@@ -6,34 +6,34 @@
         <hr id="greyLine" />
 
         <div class="yellowBox">
-                      <b style="font-size:35px;">찜한 맛집&nbsp; <span style = "font-size : 18px">♥찜♥ 을 한눈에 확인하세요</span></b>
+                      <b style="font-size:35px; letter-spacing:-2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;찜한 맛집&nbsp; <span style = "font-size : 18px; letter-spacing:-0.5px;">♥찜♥ 을 한눈에 확인하세요</span></b>
         </div>
-        <div style="text-align: center; background-color: lightyellow; height:800px">
+        <div style="text-align: center; background-color: lightyellow; ">
             <div
-                style="display: inline-block; width: 1040px; margin: auto; background-color: white; height:750px"
-            >
+                style="display: inline-block; width: 1040px; margin: auto; background-color: white; height:100%">             
                 <b style="font-size: 38px; color: black;"><br />{{session['id']}}</b>
                 
-                <b style="font-size: 30px; color: darkgreen;">의 찜한 맛집<br /></b>&nbsp;
+                <b style="font-size: 30px; color: darkgreen;">님이 찜한 맛집<br /></b>&nbsp;
                 <!--<b style="font-size: 24px; color: darkgreen;"><br />찜한 맛집 수 : {{bookmarked_total}}<br /></b>&nbsp;-->
                 
                 <hr id="blackLine" />
-               {% if bookmarked %}
-               {% for b in bookmarked %}
-               <br>
-                <a href="shop_detail/{{data[b].name}}" style="text-decoration: none; color : black">
+                {% if bookmarked %}
+                {% for b in bookmarked %}
+                <br>
                 <div>
-                    <div class="image" style = "float : left; width : 300px; height : 160px; margin : 20px 30px 60px 50px;">
-                        <a href="/shop_detail/{{ data[b].name }}" style = "text-decoration : none; color : black;">
-                        <img
-                            src="{{ url_for('static', filename='Images/' + data[b].img_path)}}"
-                            style="height: 200px;"
-                        />
-                    </div>
-                    <br/>
-                    <div class="list" style="float: left;">
-                        <div class = "information" style="vertical-align:baseline">
+                    <a href="/shop_detail/{{ data[b].name }}" style = "text-decoration : none; color : black;">
+                    
+                        <div class="Image" style = "float : left;">
+                            <img
+                                src="{{ url_for('static', filename='Images/' + data[b].img_path)}}"
+                            />
+                        </div>
+
+                        <br>
+                        <div class="list" style="float: left;">
+                            <div class = "information" style="vertical-align:baseline">
                             <b style="font-size: 30px; float: left; line-height:35px;">{{data[b].name}}</b>
+ 
                             <div class="yellowIcon" style=line-height:35px>
                                 {{data[b].category}}
                             </div>
@@ -41,30 +41,31 @@
                             <b style="font-size: 16px; float: left;">{{data[b].address}}</b><br>
                             <span style="font-size: 16px; float: left;">{{data[b].open_time}} ~ {{data[b].close_time}}</span><br>
                         </div>
-                        <br>
-                            {% for m in data[b].menu %}
-                            {% if loop.index==1 or loop.index==2 %}
-                                <div class="menuInfo" style="line-height:20px; float:left">
-                                    <span style="font-size:15px;">{{ m }}</span>
-                                <div class = "rating" style = "float:right; font-size : 17px;">
-                                    <span class = "starFilled" style= "color : gold; width: {{data[b].menu[m].rate}}em">
-                                        ★★★★★
-                                    </span>
+                            <br>
+                                {% for m in data[b].menu %}
+                                {% if loop.index==1 or loop.index==2 %}
+                                    <div class="menuInfo" style="line-height:20px; float:left">
+                                        <span style="font-size:15px;">{{ m }}</span>
+                                        
+                                    <div class = "rating" style = "float:right; font-size : 17px;">
+                                        <span class = "starFilled" style= "color : gold; width: {{data[b].menu[m].rate}}em">
+                                            ★★★★★
+                                        </span>
 
-                                    <span class = "starUnfilled">
-                                        ★★★★★
-                                    </span>
-                                    <span style="font-size:15px;">{{ data[b].menu[m].rate}}</span>
-                                </div>
-                                </div>
-                                </br>
-                            {% endif %}
-                            {% endfor %}
+                                        <span class = "starUnfilled">
+                                            ★★★★★
+                                        </span>
+                                        <span style="font-size:15px;">{{ '%0.2f' | format(data[b].menu[m].rate | float) }}</span>
+                                    </div>
+                                    </div>
+                            <br>
+                                {% endif %}
+                                {% endfor %}
+                        </div>
+                    </a>
                 </div>
-               </a>         
-            </div>
                 <hr id="blackLine" />
-            {% endfor %}
+                {% endfor %}
                 {% else %}
                 <script> alert("찜한 맛집이 없습니다!")</script>
                      <div style="font-weight:bold; color:black; font-size:24px";>
@@ -73,9 +74,7 @@
                          맛집을 ♥찜♥ 해주세요!
                      </div>
                 {% endif %}
-               
-                </div>
-            </div>
         </div>
+</div>
 
 {% endblock section %}

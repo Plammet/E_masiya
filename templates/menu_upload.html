@@ -6,16 +6,15 @@
             type="text/css"
             href="{{ url_for('static',filename='menu_upload.css') }}"
         />
-        <hr id="yellowLine" />
+       <div class="yellowBox">
+            <b style="font-size:40px; font-weight: bold ;">메뉴 등록&nbsp;
+            <span style = "font-size : 20px">{{name}}</span></b>
+    </div>
         <br /><br />
         <div style="text-align: center; color: darkgreen; font-size: 35px;">
             <b>대표 메뉴 등록</b>
-        </div>
-        <br /><br />
-        <h4 style="text-align: center ">
-            식당 이름 :  {{name}}
-        </h4>
-        <br>
+        </div><br>
+      
         <form action="/post_menu_upload" method="post" enctype="multipart/form-data" style="text-align: center;">
             <span style="font-size: 18px;">메뉴 이름 &ensp;</span>
             <input type="text" id="greenField" name="menuName" required/><br /><br />

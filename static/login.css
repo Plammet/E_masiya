@@ -55,10 +55,17 @@ div.logo{
 /*로그인 버튼*/
 .login{
 	border:0px;
+    padding: 10px 40px;
+    margin: 2px
 	outline:none;
 	cursor:pointer;
-	background-color:green;
+	background-color:darkgreen;
 	color:white;
-	font-weight:bold;
-	border-radius:20px;
+    font-size : 20px;
+	border-radius:25px;
+}
+
+.login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
