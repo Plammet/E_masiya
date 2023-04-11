@@ -1,5 +1,5 @@
 # 🟡E_masiya
-이맛이야 - 이화여대 주변 맛집 정보 웹
+이맛이야 - 이화여대 주변 맛집 정보 웹  
 http://plammet.pythonanywhere.com/
 ---
 
