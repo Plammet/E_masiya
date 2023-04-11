@@ -22,6 +22,9 @@
 
 ### E_masiya 프로젝트 기능 설명
 
+![pages](./화면구성1.png)
+![pages](./화면구성2.png)
+
 1. 맛집 등록 기능
     - shop_upload.html
     - 가게 이름, 주소, 카테고리 등 입력
